@@ -1,0 +1,157 @@
+// // --------------------------------------------------------------
+// //  Mobile Navigation
+// // --------------------------------------------------------------
+
+// Hamburger Nav
+.sliding-panel-button {
+	@include position(absolute, $gutter 24px null null);
+
+	background-color: transparent;
+	padding: 0;
+	z-index: 999;
+
+	@include media($tablet-landscape) {
+		display: none;
+	}
+
+	&:active,
+	&:hover,
+	&:focus {
+		background-color: transparent;
+	}
+
+	.admin-bar & {
+		@include position(absolute, 8px 24px null null);
+	}
+
+	// Global styles for Hamburger Lines.
+	.mobile-menu-bar {
+		@include size(40px 5px);
+
+		background-color: $color-black;
+		display: block;
+		margin: 7px auto;
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	}
+
+	// When open...
+	&.open {
+
+		// Change those lines.
+		.mobile-menu-bar:nth-of-type(1) {
+			transform: translateY(12px) rotate(45deg);
+		}
+
+		.mobile-menu-bar:nth-of-type(2) {
+			opacity: 0;
+		}
+
+		.mobile-menu-bar:nth-of-type(3) {
+			transform: translateY(-12px) rotate(-45deg);
+		}
+	} // &.open
+
+} // .sliding-panel-button
+
+// //--------------------------------------------------------------
+// // Mobile nav
+// //--------------------------------------------------------------
+.navigation-wrapper {
+	background-color: $color-white;
+
+	// Around entire nav + menu.
+	.main-navigation {
+
+		@include media($tablet-portrait) {
+			display: block;
+			padding-right: 0;
+		}
+	} // .main-navigation
+
+	// Container around primary nav.
+	.menu-primary-menu-container {
+		padding-top: 75px;
+		width: 100%;
+
+		@include media($tablet-landscape) {
+			padding-top: 0;
+		}
+	} // .menu-primary-menu-container
+
+	// Primary navigation.
+	.main-menu {
+
+		li {
+			width: 100%;
+
+			@include media($tablet-landscape) {
+				width: auto;
+			}
+		} // li
+	} // .main-menu
+} // .mobile-navigation-wrapper
+
+
+// //--------------------------------------------------------------
+// // Sub-menu functionality on mobile
+// //--------------------------------------------------------------
+.navigation-wrapper {
+
+	// If link has children...
+	.menu-item-has-children {
+
+		a {
+			display: flex;
+			justify-content: space-between;
+		} //
+
+		> ul {
+			display: none;
+
+			li {
+				margin-right: 0;
+			}
+
+			a {
+				border-bottom: none;
+				padding-right: 0;
+
+				&:after {
+					content: none;
+				}
+			}
+		} // > ul
+	} //.menu-item-has-children
+} // .mobile-navigation-wrapper
+
+
+// //--------------------------------------------------------------
+// // Sliding effect of mobile nav
+// //--------------------------------------------------------------
+.navigation-wrapper {
+
+	// Content of mobile menu.
+	&.sliding-panel-content {
+		@include position(fixed, 0 0 0 auto);
+		@include size(100%);
+
+		-webkit-overflow-scrolling: touch;
+		-webkit-transform: translateX(100%); // fixes on Safari 8
+		overflow-y: auto;
+		transform: translateX(100%);
+		transition: transform 0.25s linear;
+
+		@include media($tablet-landscape) {
+			@include position(initial, null null null null);
+			-webkit-transform: initial; // fixes on Safari 8
+			transform: initial;
+			width: initial;
+		}
+
+		// Make it appear!
+		&.is-visible {
+			-webkit-transform: translateX(0); // fixes on Safari 8
+			transform: translateX(0);
+		} // &.is-visible
+	} // .sliding-panel-content
+} // .mobile-navigation-wrapper

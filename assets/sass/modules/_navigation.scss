@@ -1,0 +1,197 @@
+//--------------------------------------------------------------
+// Navigation
+//--------------------------------------------------------------
+
+// Links
+a {
+	color: $color-link;
+
+	&:visited {
+		color: $color-link-visited;
+	} // &:visited
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color-link-hover;
+	} // &:hover, &:focus, &:active
+
+	&.home-link {
+		color: $color-black;
+		display: inline-block;
+		font-weight: 400;
+		line-height: 1;
+	}
+} // a
+
+// Default menu (active after a fresh WordPress install)
+.menu {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	font-family: $font-sans;
+	justify-content: space-between;
+	margin: 0;
+	max-width: 800px;
+	padding: 10px;
+	width: 100%;
+
+	@include media($tablet-landscape) {
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	li {
+		font-size: 22px;
+		margin: 0 10px 0 0;
+
+		&:last-of-type {
+			margin: 0;
+		} // &:last-of-type
+	} // li
+
+	a {
+		color: $color-black;
+		display: block;
+		padding: 10px 35px;
+		text-align: center;
+		transition: color 0.2s ease-in-out;
+	}
+
+	ul {
+		@include list-reset;
+	} // ul
+
+	&.menu-horizontal {
+
+		li {
+			display: inline-block;
+		} // li
+	} // &.menu-horizontal
+
+	&.menu-vertical {
+
+		li {
+			margin: 0;
+		} // li
+
+		a {
+			border-bottom: 1px solid $color-background-hr;
+			padding: 10px;
+		} // a
+	} // &.menu-vertical
+
+	&.dropdown {
+
+		// Sub-menu
+		ul {
+			@include position(absolute, 24px null null -999em);
+
+			box-shadow: 0 3px 3px rgba($color-black, 0.2);
+			float: left;
+			z-index: 99999;
+
+			// Sub-sub menu
+			ul {
+				left: -999em;
+				top: 0;
+			} // ul
+
+			// Sub-menu items
+			li {
+
+				&:hover > ul,
+				&.focus > ul {
+					left: 100%;
+				} // &:hover > ul, &.focus > ul
+			} // li
+
+			// Sub-menu links
+			a {
+				@include size(200px auto);
+			} // a
+
+			// &:hover > a,
+			// .focus > a {
+			// } // &:hover > a, .focus > a
+
+			// a:hover,
+			// a:focus {
+			// } // a:hover, a.focus
+		} // ul
+
+		// Display sub-menu on hover
+		li:hover > ul,
+		li:focus > ul {
+			left: auto;
+		} // li:hover > ul, li.focus > ul
+
+		// Menu items
+		li {
+			float: left;
+			position: relative;
+
+			// &:hover > a,
+			// &.focus > a {
+			// } // &:hover > a, &.focus > a
+		} // li
+	} // &.dropdown
+
+	// Menu hyperlinks
+	a {
+		display: block;
+		text-decoration: none;
+	} // a
+
+	// // Current items
+	// .current_page_item a,
+	// .current-menu-item a {
+	// } // .current_page_item a, .current-menu-item a
+} // .menu
+
+// Main navigation (after creating a menu in the dashboard)
+.main-navigation {
+	text-transform: uppercase;
+	// width: 100%;
+
+	// Menu area
+	ul {
+
+		@include media($phone-landscape) {
+			display: flex;
+		}
+	} // ul
+
+	&.toggled ul {
+		display: block;
+	} // &.toggled ul
+
+	@include media($tablet-landscape) {
+		display: block;
+	}
+} // .main-navigation
+
+// Navigation on Comment, Post and Posts
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		// margin: 0 0 rem(24) 0;
+		margin: 0;
+		overflow: hidden;
+	} // .site-main &
+
+	&.nav-previous {
+		@include size(50% auto);
+
+		float: left;
+	} // &.nav-previous
+
+	&.nav-next {
+		@include size(50% auto);
+
+		float: right;
+		text-align: right;
+	} // &.nav-next
+} // .comment-navigation, .posts-navigation, .post-navigation

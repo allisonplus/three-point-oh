@@ -1,0 +1,26 @@
+//--------------------------------------------------------------
+// Header
+//--------------------------------------------------------------
+
+// Site Header.
+.site-header {
+	background-color: $color-white;
+	margin: 0 auto;
+	max-width: 1600px;
+	padding: 0 2 * $gutter;
+	position: relative;
+	z-index: 9;
+} // .site-header
+
+// Site Title
+.site-title {
+	display: inline-block;
+	float: left;
+	margin: 0;
+} // .site-title
+
+// Site Description
+.site-description {
+	font-size: 24px;
+	margin: 0 0 24px 0;
+} // .site-description
