@@ -388,26 +388,3 @@ function atarr_get_social_share() {
 function atarr_do_social_share() {
 	echo atarr_get_social_share();
 }
-
-/**
- * Output the mobile navigation
- */
-function atarr_do_mobile_navigation_menu() {
-
-	// Figure out which menu we're pulling
-	$mobile_menu = has_nav_menu( 'mobile' ) ? 'mobile' : 'primary';
-?>
-	<nav id="mobile-menu" class="mobile-nav-menu">
-		<button class="close-mobile-menu"><span class="screen-reader-text"><?php _e( 'Close menu', 'atarr' ); ?></span><?php atarr_do_svg( array( 'icon' => 'close' ) ); ?></button>
-		<?php
-			wp_nav_menu( array(
-				'theme_location' => $mobile_menu,
-				'menu_id'        => 'primary-menu',
-				'menu_class'     => 'menu dropdown mobile-nav',
-				'link_before'    => '<span>',
-				'link_after'     => '</span>',
-			) );
-		?>
-	</nav>
-<?php
-}

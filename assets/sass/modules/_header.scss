@@ -2,11 +2,25 @@
 // Header
 //--------------------------------------------------------------
 
-.site-title {
-	font-size: 48px;
-}
+// Site Header.
+.site-header {
+	background-color: $color-white;
+	margin: 0 auto;
+	max-width: rem(1600);
+	padding: 0 2 * $gutter;
+	position: relative;
+	z-index: 9;
+} // .site-header
 
+// Site Title
+.site-title {
+	display: inline-block;
+	float: left;
+	margin: 0;
+} // .site-title
+
+// Site Description
 .site-description {
-	font-size: 24px;
-	margin: 0 0 24px 0;
-}
+	font-size: rem(24);
+	margin: 0 0 rem(24) 0;
+} // .site-description

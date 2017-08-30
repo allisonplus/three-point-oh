@@ -1,505 +1,157 @@
-//--------------------------------------------------------------
-// Mobile Navigation
-//--------------------------------------------------------------
+// // --------------------------------------------------------------
+// //  Mobile Navigation
+// // --------------------------------------------------------------
 
-// Fix scrolling on the entire body
-// when the more menu is visible
-.mobile-menu-more {
-	overflow: hidden;
-}
+// Hamburger Nav
+.sliding-panel-button {
+	@include position(absolute, $gutter 24px null null);
 
-// Fix the menu to the bottom of the window
-.mobile-nav-menu {
-	// @include transition(background-color 0.2s linear, width 0.2s linear);
+	background-color: transparent;
+	padding: 0;
+	z-index: 999;
 
-	background-color: rgba($color-black, 0);
-	display: block;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 0;
-
-	// Don't show this puppy above tablet-landscape
 	@include media($tablet-landscape) {
 		display: none;
 	}
 
-	// Add a background color to the menu
-	// when the "More" items are displayed
-	&.more {
-		background-color: rgba($color-black, 0.7);
-	}
-
-	&.more,
-	.sub-menu {
-		width: 100%;
-	}
-
-	.sub-menu {
-		// @include transition(opacity 0.5s linear);
-	}
-
-	// Adjust padding for admin bar
-	.admin-bar & {
-		padding-top: 56px;
-
-		@include media($wp-admin-bar) {
-			padding-top: 40px;
-		}
-	}
-
-	li {
-		cursor: pointer;
-	}
-}
-
-// Remove margins from all menu items
-.mobile-nav-menu {
-
-	// Only target the parent menu
-	.mobile-nav {
-
-		// Only target top-level items
-		> li {
-			flex: 1 0 20%;
-			margin: 0;
-
-			a {
-				padding: 0 10px;
-			}
-		}
-	}
-}
-
-// Make sure the first four items are equal widths
-.mobile-nav-menu {
-
-	// Only target the parent menu
-	.mobile-nav {
-		align-items: flex-end;
-		bottom: 0;
-		display: flex;
-		height: 64px;
-		justify-content: space-between;
-		position: absolute;
-		width: 100vw;
-
-		// Only target top-level items
-		> li:nth-child(-n+5) {
-			// @include transition(opacity 0.5s ease);
-
-			background-color: $color-white;
-			border-top: 1px solid rgba($color-black, 0.1);
-			flex-grow: 1;
-			height: 64px;
-			text-align: center;
-
-			&:hover {
-				background-color: $color-gallery;
-			}
-
-			> a {
-				display: block;
-				font-size: 12px;
-				height: 100%;
-				line-height: 1.2;
-
-				span {
-					@include vertical-align(middle);
-
-					display: block;
-				}
-			}
-		}
-	}
-}
-
-// Hide anything more than the first four items
-.mobile-nav-menu-hidden {
-	// @include transition(opacity 0.5s linear);
-
-	bottom: 0;
-	display: block;
-	max-height: 100%;
-	opacity: 0;
-	overflow: scroll;
-	padding: 84px 0;
-	position: absolute;
-	right: 0;
-	visibility: hidden;
-	width: 50vw;
-	z-index: -1;
-}
-
-.mobile-menu-more:not(.sub-menu-more) {
-
-	.mobile-nav-menu-hidden {
-		opacity: 1;
-	}
-}
-
-// Show the remaining menu items when the ".more" class is active
-.mobile-nav-menu.more {
-
-	.mobile-nav-menu-hidden {
-		visibility: visible;
-
-		li {
-			bottom: 0;
-			clear: both;
-			display: block;
-			float: right;
-			margin: 0;
-			position: relative;
-			right: 0;
-			width: 100%;
-
-			.sub-menu {
-				padding-left: 10%;
-				opacity: 1;
-			}
-
-			.sub-menu-more & {
-				display: none;
-			}
-
-			a {
-				color: $color-white;
-				padding: 10px 20px;
-			}
-		}
-	}
-}
-
-// Style the more/fly-in menu
-.mobile-nav-menu .mobile-nav ul.mobile-nav-menu-more,
-.mobile-nav-menu .mobile-nav > .sub-menu {
-	background-color: $color-gray;
-	height: 100vh;
-	left: 0;
-	position: absolute;
-	top: 0;
-}
-
-.mobile-nav-menu .mobile-nav {
-
-	ul {
-		box-shadow: none;
-
-		.mobile-menu-more:not(.sub-menu-more) & {
-			top: 0;
-		}
-	}
-}
-
-// Style the close button
-.close-mobile-menu {
-	@include size(32px);
-
-	background-color: transparent;
-	display: none;
-	position: absolute;
-	right: 12px;
-	top: 10px;
-	z-index: 1;
-
-	.admin-bar & {
-		top: 56px;
-
-		@include media($wp-admin-bar) {
-			top: 40px;
-		}
-	}
-
-	// Get rid of that nasty hover state
-	&:hover,
 	&:active,
+	&:hover,
 	&:focus {
 		background-color: transparent;
-
-		svg {
-			opacity: 0.6;
-		}
 	}
 
-	// Only display when more items are visible
-	.more & {
+	.admin-bar & {
+		@include position(absolute, 8px 24px null null);
+	}
+
+	// Global styles for Hamburger Lines.
+	.mobile-menu-bar {
+		@include size(40px 5px);
+
+		background-color: $color-black;
 		display: block;
+		margin: 7px auto;
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	}
 
-	svg {
-		@include size(100%);
-		// @include transition(opacity 0.5s ease);
+	// When open...
+	&.open {
 
-		fill: $color-white;
-	}
-}
-
-// Don't show the submenu when we hover the parent
-.mobile-nav.dropdown {
-
-	.menu-item-has-children:hover {
-
-		.sub-menu {
-			display: none;
-		}
-	}
-
-	.mobile-menu-more:not(.sub-menu-more) & {
-
-		.menu-item-has-children:hover {
-
-			.sub-menu {
-				display: block;
-				left: auto;
-				opacity: 1;
-				right: 0;
-			}
-		}
-	}
-
-	.visible,
-	.visible:hover,
-	.visible:focus,
-	.visible:active {
-
-		.sub-menu {
-			bottom: 84px;
-			display: block;
-			left: auto;
-			opacity: 1;
-			position: fixed;
-			right: 0;
-			top: auto;
-			width: 50vw;
-
-			.sub-menu {
-				bottom: 0;
-
-				@include media($tablet-portrait) {
-					bottom: auto;
-				}
-			}
+		// Change those lines.
+		.mobile-menu-bar:nth-of-type(1) {
+			transform: translateY(12px) rotate(45deg);
 		}
 
-		.sub-menu .sub-menu {
-			padding-left: 10px;
-			position: relative;
+		.mobile-menu-bar:nth-of-type(2) {
+			opacity: 0;
 		}
-	}
-}
 
-// Adjust link and anchor styles for submenus
-.mobile-nav.dropdown {
+		.mobile-menu-bar:nth-of-type(3) {
+			transform: translateY(-12px) rotate(-45deg);
+		}
+	} // &.open
 
-	.sub-menu {
-		left: 0;
-		opacity: 0;
-		width: 50vw;
-		z-index: -1;
+} // .sliding-panel-button
+
+// //--------------------------------------------------------------
+// // Mobile nav
+// //--------------------------------------------------------------
+.navigation-wrapper {
+	background-color: $color-white;
+
+	// Around entire nav + menu.
+	.main-navigation {
 
 		@include media($tablet-portrait) {
-			left: auto;
-			right: 0;
-		}
-
-		a {
-			color: $color-white;
-			font-size: 16px;
-			padding: 10px 20px;
-			text-align: left;
-		}
-
-		li {
 			display: block;
-			float: none;
-			margin: 0;
+			padding-right: 0;
 		}
-	}
-}
+	} // .main-navigation
 
-// Adjust submenu z-index when parent is visible
-.mobile-nav.dropdown .visible {
-
-	// Adjust z-index when visible
-	.sub-menu {
-		z-index: 1;
-	}
-}
-
-// Add styles for non-JS users
-// Add a horizontal scroll and faded edges
-.no-js {
-
-	&.admin-bar {
-
-		.mobile-nav-menu {
-			padding-top: 0;
-		}
-	}
-
-	.mobile-nav-menu {
-		-ms-overflow-style: -ms-autohiding-scrollbar;
-		-webkit-overflow-scrolling: touch;
-		bottom: 0;
-		font-size: 0;
-		height: 64px;
-		overflow-x: auto;
-		top: auto;
-		white-space: nowrap;
+	// Container around primary nav.
+	.menu-primary-menu-container {
+		padding-top: 75px;
 		width: 100%;
 
-		> div {
-			bottom: 0;
-			left: 0;
-
-			&:before,
-			&:after {
-				bottom: 0;
-				content: "";
-				height: 100%;
-				pointer-events: none;
-				position: fixed;
-				width: 25%;
-				z-index: 20;
-			}
-
-			&:after {
-				right: 0;
-				background: linear-gradient(to left,
-				rgba(255,255,255, 1) 0%,
-				rgba(255,255,255, 0) 100%
-				);
-			}
-
-			&:before {
-				left: 0;
-				background: linear-gradient(to left,
-				rgba(255,255,255, 0) 0%,
-				rgba(255,255,255, 1) 100%
-				);
-			}
+		@include media($tablet-landscape) {
+			padding-top: 0;
 		}
-	}
-}
+	} // .menu-primary-menu-container
 
-// Adjust display of menu items
-.no-js {
+	// Primary navigation.
+	.main-menu {
 
-	.mobile-nav-menu {
+		li {
+			width: 100%;
 
-		.mobile-nav {
+			@include media($tablet-landscape) {
+				width: auto;
+			}
+		} // li
+	} // .main-menu
+} // .mobile-navigation-wrapper
+
+
+// //--------------------------------------------------------------
+// // Sub-menu functionality on mobile
+// //--------------------------------------------------------------
+.navigation-wrapper {
+
+	// If link has children...
+	.menu-item-has-children {
+
+		a {
+			display: flex;
+			justify-content: space-between;
+		} //
+
+		> ul {
+			display: none;
+
+			li {
+				margin-right: 0;
+			}
 
 			a {
-				padding: 0 10px;
-				text-align: center;
+				border-bottom: none;
+				padding-right: 0;
 
-				span {
-					@include vertical-align(middle);
-
-					display: block;
+				&:after {
+					content: none;
 				}
 			}
+		} // > ul
+	} //.menu-item-has-children
+} // .mobile-navigation-wrapper
 
-			> li {
 
-				&:nth-child(n+6) {
-					display: inline-block;
-				}
+// //--------------------------------------------------------------
+// // Sliding effect of mobile nav
+// //--------------------------------------------------------------
+.navigation-wrapper {
 
-				&:first-of-type {
-					padding-left: 100px;
-				}
+	// Content of mobile menu.
+	&.sliding-panel-content {
+		@include position(fixed, 0 0 0 auto);
+		@include size(100%);
 
-				&:last-of-type {
-					padding-right: 100px;
-				}
-			}
+		-webkit-overflow-scrolling: touch;
+		-webkit-transform: translateX(100%); // fixes on Safari 8
+		overflow-y: auto;
+		transform: translateX(100%);
+		transition: transform 0.25s linear;
 
-			li {
-				background-color: $color-white;
-				border-top: 1px solid rgba($color-black, 0.1);
-				display: inline-block;
-				float: none;
-				font-size: 12px;
-				height: 64px;
-				left: 0;
-				margin: 0;
-				position: relative;
-				text-align: center;
-				vertical-align: top;
-				width: auto;
-
-				&:hover {
-					background-color: $color-white;
-				}
-			}
-		}
-	}
-}
-
-// Adjust display of submenus and links
-.no-js {
-
-	.mobile-nav-menu {
-
-		.mobile-nav {
-
-			li {
-
-				> a {
-					display: block;
-					font-size: 12px;
-					height: 100%;
-					line-height: 1.2;
-				}
-
-				&.menu-item-has-children {
-
-					> a {
-						display: inline-block;
-						vertical-align: top;
-					}
-
-					&:hover {
-
-						.sub-menu {
-							display: inline-block;
-							left: 0;
-						}
-					}
-				}
-			}
+		@include media($tablet-landscape) {
+			@include position(initial, null null null null);
+			-webkit-transform: initial; // fixes on Safari 8
+			transform: initial;
+			width: initial;
 		}
 
-		.mobile-nav.dropdown {
-
-			.sub-menu {
-				display: inline-block;
-				float: none;
-				left: 0;
-				opacity: 1;
-				position: relative;
-				top: auto;
-				width: auto;
-				z-index: 1;
-
-				a {
-					color: $color-link;
-				}
-
-				li {
-					border: none;
-				}
-			}
-		}
-	}
-
-	.mobile-nav-menu {
-
-		.menu.dropdown ul a {
-			width: auto;
-		}
-	}
-}
+		// Make it appear!
+		&.is-visible {
+			-webkit-transform: translateX(0); // fixes on Safari 8
+			transform: translateX(0);
+		} // &.is-visible
+	} // .sliding-panel-content
+} // .mobile-navigation-wrapper
