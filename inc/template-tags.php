@@ -380,11 +380,26 @@ function atarr_get_social_share() {
 
 	<?php
 	return ob_get_clean();
- }
+}
 
 /**
  * Echo social sharing icons.
  */
 function atarr_do_social_share() {
-	echo atarr_get_social_share();
+	echo atarr_get_social_share(); // WPCS: XSS OK.
+}
+
+/**
+ * Echo p5 orbs.
+ */
+function atarr_do_p5() {
+
+	// Start markup.
+	ob_start(); ?>
+
+	<script src="<?php echo esc_url( get_stylesheet_directory_uri() ) ?>/assets/js/concat/orbs.js"></script>
+
+	<div id="hero"></div>
+	<?php
+	return ob_get_clean();
 }

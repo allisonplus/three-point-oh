@@ -75,14 +75,14 @@ function atarr_scripts() {
 	// Enqueue p5.js.
 	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
 	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	// Enqueue the mobile nav script
-	// Since we're showing/hiding based on CSS and wp_is_mobile is wp_is_imperfect, enqueue this everywhere.
-	wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/mobile-nav-menu' . $suffix . '.js', array( 'jquery' ), $version, true );
+	// Enqueue the mobile nav script.
+	wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/mobile-nav-menu.js', array( 'jquery' ), $version, true );
 }
 add_action( 'wp_enqueue_scripts', 'atarr_scripts' );
 

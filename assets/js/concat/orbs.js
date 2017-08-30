@@ -1,21 +1,25 @@
 // Variables.
-let r;
-let g;
-let b;
-let a;
+var r;
+var g;
+var b;
+var a;
 
-let orbs = [];
-let orbAmount = 42;
+var canvas;
+var orbs = [];
+var orbAmount = 42;
 
 // Speeds.
-let speedMin = -6;
-let speedMax = 6;
+var speedMin = -6;
+var speedMax = 6;
 
-let timer;
+var timer;
 
 // Setup.
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	canvas = createCanvas(windowWidth, 400);
+	canvas.parent('hero');
+	canvas.position(0, 0);
+	canvas.style('z-index', '-1');
 
 	for (var i = 0; i < orbAmount; i++) {
 		orbs[i] = new Orb();
@@ -120,5 +124,5 @@ function Orb(mouseX=null,mouseY=null) {
 
 // Window resizer.
 function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
+	resizeCanvas(windowWidth, 400);
 }
