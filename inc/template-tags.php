@@ -124,13 +124,13 @@ add_action( 'save_post',     'atarr_category_transient_flusher' );
 /**
  * Return SVG markup.
  *
- * @param  array  $args {
+ * @param  array $args {
  *     Parameters needed to display an SVG.
  *
- *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
- *     @param string $title Optional. SVG title, e.g. "Facebook".
- *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
- * }
+ *     string $icon Required. Use the icon filename, e.g. "facebook-square".
+ *     string $title Optional. SVG title, e.g. "Fac
+ *     string $desc Optional. SVG description, e.g. "Share this post on Facebook".
+ * }.
  * @return string SVG markup.
  */
 function atarr_get_svg( $args = array() ) {
@@ -155,7 +155,7 @@ function atarr_get_svg( $args = array() ) {
 	// Parse args.
 	$args = wp_parse_args( $args, $defaults );
 
-	// Begin SVG markup
+	// Begin SVG markup.
 	$svg = '<svg class="icon icon-' . esc_html( $args['icon'] ) . '" aria-hidden="true">';
 
 	// If there is a title, display it.
@@ -237,7 +237,7 @@ function atarr_do_post_image( $size = 'thumbnail' ) {
 		return the_post_thumbnail( $size );
 	}
 
-	// Check for any attached image
+	// Check for any attached image.
 	$media = get_attached_media( 'image', get_the_ID() );
 	$media = current( $media );
 
@@ -346,11 +346,10 @@ function atarr_do_copyright_text() {
  * @return string
  */
 function atarr_get_social_share() {
-
 	// Build the sharing URLs.
-	$twitter_url  = 'https://twitter.com/share?text=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode ( get_the_permalink() );
-	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode ( get_the_permalink() );
-	$linkedin_url = 'https://www.linkedin.com/shareArticle?title=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode ( get_the_permalink() );
+	$twitter_url  = 'https://twitter.com/share?text=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
+	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( get_the_permalink() );
+	$linkedin_url = 'https://www.linkedin.com/shareArticle?title=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
 
 	// Start the markup.
 	ob_start(); ?>
