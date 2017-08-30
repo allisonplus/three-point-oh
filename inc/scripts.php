@@ -67,11 +67,14 @@ function atarr_scripts() {
 
 	// Enqueue styles.
 	wp_enqueue_style( 'atarr-google-font' );
-	wp_enqueue_style( 'animate.css' );
 	wp_enqueue_style( 'atarr-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
 	wp_enqueue_script( 'atarr-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
+
+	// Enqueue p5.js.
+	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
