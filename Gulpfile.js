@@ -1,4 +1,4 @@
-// Require our dependencies.
+// Require our dependencies
 const autoprefixer = require( 'autoprefixer' );
 const babel = require( 'gulp-babel' );
 const bourbon = require( 'bourbon' ).includePaths;
@@ -24,6 +24,7 @@ const sassdoc = require( 'sassdoc' );
 const sassLint = require( 'gulp-sass-lint' );
 const sort = require( 'gulp-sort' );
 const sourcemaps = require( 'gulp-sourcemaps' );
+const spritesmith = require( 'gulp.spritesmith' );
 const svgmin = require( 'gulp-svgmin' );
 const svgstore = require( 'gulp-svgstore' );
 const uglify = require( 'gulp-uglify' );
@@ -37,7 +38,8 @@ const paths = {
 	'php': [ './*.php', './**/*.php' ],
 	'sass': 'assets/sass/**/*.scss',
 	'concat_scripts': 'assets/scripts/concat/*.js',
-	'scripts': [ 'assets/js/*.js', '!assets/js/*.min.js', '!assets/js/customizer.js' ],
+	'scripts': [ 'assets/scripts/*.js', '!assets/scripts/*.min.js', '!assets/scripts/customizer.js' ],
+	'sprites': 'assets/images/sprites/*.png'
 };
 
 /**
@@ -184,6 +186,31 @@ gulp.task( 'imagemin', () =>
 );
 
 /**
+ * Delete the sprites.png before rebuilding sprite.
+ */
+gulp.task( 'clean:sprites', () => {
+	del([ 'assets/images/sprites.png' ]);
+});
+
+/**
+ * Concatenate images into a single PNG sprite.
+ *
+ * https://www.npmjs.com/package/gulp.spritesmith
+ */
+gulp.task( 'spritesmith', () =>
+	gulp.src( paths.sprites )
+		.pipe( plumber({'errorHandler': handleErrors}) )
+		.pipe( spritesmith({
+			'imgName': 'sprites.png',
+			'cssName': '../../assets/sass/base/_sprites.scss',
+			'imgPath': 'assets/images/sprites.png',
+			'algorithm': 'binary-tree'
+		}) )
+		.pipe( gulp.dest( 'assets/images/' ) )
+		.pipe( browserSync.stream() )
+);
+
+/**
  * Concatenate and transform JavaScript.
  *
  * https://www.npmjs.com/package/gulp-concat
@@ -213,7 +240,7 @@ gulp.task( 'concat', () =>
 		.pipe( sourcemaps.write() )
 
 		// Save project.js
-		.pipe( gulp.dest( 'assets/js' ) )
+		.pipe( gulp.dest( 'assets/scripts' ) )
 		.pipe( browserSync.stream() )
 );
 
@@ -228,7 +255,7 @@ gulp.task( 'uglify', [ 'concat' ], () =>
 		.pipe( uglify({
 			'mangle': false
 		}) )
-		.pipe( gulp.dest( 'assets/js' ) )
+		.pipe( gulp.dest( 'assets/scripts' ) )
 );
 
 /**
@@ -248,8 +275,8 @@ gulp.task( 'wp-pot', [ 'clean:pot' ], () =>
 		.pipe( plumber({'errorHandler': handleErrors}) )
 		.pipe( sort() )
 		.pipe( wpPot({
-			'domain': 'atarr',
-			'package': 'atarr'
+			'domain': '_s',
+			'package': '_s'
 		}) )
 		.pipe( gulp.dest( 'languages/_s.pot' ) )
 );
@@ -263,6 +290,7 @@ gulp.task( 'sass:lint', () =>
 	gulp.src([
 		'assets/sass/**/*.scss',
 		'!assets/sass/base/_normalize.scss',
+		'!assets/sass/base/_sprites.scss',
 		'!node_modules/**'
 	])
 		.pipe( sassLint() )
@@ -281,6 +309,7 @@ gulp.task( 'js:lint', () =>
 		'assets/scripts/*.js',
 		'!assets/scripts/project.js',
 		'!assets/scripts/*.min.js',
+		'!Gruntfile.js',
 		'!Gulpfile.js',
 		'!node_modules/**'
 	])
@@ -315,7 +344,7 @@ gulp.task( 'watch', function() {
 	browserSync({
 		'open': false,             // Open project in a new tab?
 		'injectChanges': true,     // Auto inject changes instead of full reload.
-		'proxy': 'http://localhost:8888/at-dark/',         // Use http://_s.dev:3000 to use BrowserSync.
+		'proxy': '_s.dev',         // Use http://_s.dev:3000 to use BrowserSync.
 		'watchOptions': {
 			'debounceDelay': 1000  // Wait 1 second before injecting.
 		}
@@ -326,6 +355,7 @@ gulp.task( 'watch', function() {
 	gulp.watch( paths.sass, [ 'styles' ]);
 	gulp.watch( paths.scripts, [ 'scripts' ]);
 	gulp.watch( paths.concat_scripts, [ 'scripts' ]);
+	gulp.watch( paths.sprites, [ 'sprites' ]);
 	gulp.watch( paths.php, [ 'markup' ]);
 });
 
@@ -337,6 +367,7 @@ gulp.task( 'i18n', [ 'wp-pot' ] );
 gulp.task( 'icons', [ 'svg' ] );
 gulp.task( 'scripts', [ 'uglify' ] );
 gulp.task( 'styles', [ 'cssnano' ] );
+gulp.task( 'sprites', [ 'spritesmith' ] );
 gulp.task( 'lint', [ 'sass:lint', 'js:lint' ] );
 gulp.task( 'docs', ['sassdoc'] );
-gulp.task( 'default', [ 'i18n', 'icons', 'styles', 'scripts', 'imagemin'] );
+gulp.task( 'default', [ 'sprites', 'i18n', 'icons', 'styles', 'scripts', 'imagemin'] );

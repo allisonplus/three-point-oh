@@ -124,13 +124,13 @@ add_action( 'save_post',     'atarr_category_transient_flusher' );
 /**
  * Return SVG markup.
  *
- * @param  array $args {
+ * @param  array  $args {
  *     Parameters needed to display an SVG.
  *
- *     string $icon Required. Use the icon filename, e.g. "facebook-square".
- *     string $title Optional. SVG title, e.g. "Fac
- *     string $desc Optional. SVG description, e.g. "Share this post on Facebook".
- * }.
+ *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
+ *     @param string $title Optional. SVG title, e.g. "Facebook".
+ *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
+ * }
  * @return string SVG markup.
  */
 function atarr_get_svg( $args = array() ) {
@@ -155,13 +155,14 @@ function atarr_get_svg( $args = array() ) {
 	// Parse args.
 	$args = wp_parse_args( $args, $defaults );
 
+	// Figure out which title to use.
+	$title = ( $args['title'] ) ? $args['title'] : $args['icon'];
+
 	// Begin SVG markup.
 	$svg = '<svg class="icon icon-' . esc_html( $args['icon'] ) . '" aria-hidden="true">';
 
-	// If there is a title, display it.
-	if ( $args['title'] ) {
-		$svg .= '<title>' . esc_html( $args['title'] ) . '</title>';
-	}
+	// Add title markup.
+	$svg .= '<title>' . esc_html( $title ) . '</title>';
 
 	// If there is a description, display it.
 	if ( $args['desc'] ) {
@@ -177,10 +178,10 @@ function atarr_get_svg( $args = array() ) {
 /**
  * Display an SVG.
  *
- * @param  array $args  Parameters needed to display an SVG.
+ * @param array $args  Parameters needed to display an SVG.
  */
 function atarr_do_svg( $args = array() ) {
-	echo atarr_get_svg( $args ); // WPCS: XSS OK.
+	echo atarr_get_svg( $args ); // WPCS: XSS ok.
 }
 
 /**
@@ -335,57 +336,8 @@ function atarr_do_copyright_text() {
 	if ( ! $copyright_text ) {
 		return false;
 	}
-
-	// Echo the text.
-	echo '<span class="copyright-text">' . wp_kses_post( $copyright_text ) . '</span>';
-}
-
-/**
- * Build social sharing icons.
- *
- * @return string
- */
-function atarr_get_social_share() {
-	// Build the sharing URLs.
-	$twitter_url  = 'https://twitter.com/share?text=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
-	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( get_the_permalink() );
-	$linkedin_url = 'https://www.linkedin.com/shareArticle?title=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
-
-	// Start the markup.
-	ob_start(); ?>
-	<div class="social-share">
-		<h5 class="social-share-title"><?php esc_html_e( 'Share This', 'atarr' ); ?></h5>
-		<ul class="social-icons menu menu-horizontal">
-			<li class="social-icon">
-				<a href="<?php echo esc_url( $twitter_url ); ?>" onclick="window.open(this.href, 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, top=150, left=0, width=600, height=300' ); return false;">
-					<?php atarr_do_svg( array( 'icon' => 'twitter-square', 'title' => 'Twitter', 'desc' => __( 'Share on Twitter', 'atarr' ) ) ); ?>
-					<span class="screen-reader-text"><?php esc_html_e( 'Share on Twitter', 'atarr' ); ?></span>
-				</a>
-			</li>
-			<li class="social-icon">
-				<a href="<?php echo esc_url( $facebook_url ); ?>" onclick="window.open(this.href, 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, top=150, left=0, width=600, height=300' ); return false;">
-					<?php atarr_do_svg( array( 'icon' => 'facebook-square', 'title' => 'Facebook', 'desc' => __( 'Share on Facebook', 'atarr' ) ) ); ?>
-					<span class="screen-reader-text"><?php esc_html_e( 'Share on Facebook', 'atarr' ); ?></span>
-				</a>
-			</li>
-			<li class="social-icon">
-				<a href="<?php echo esc_url( $linkedin_url ); ?>" onclick="window.open(this.href, 'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, top=150, left=0, width=475, height=505' ); return false;">
-					<?php atarr_do_svg( array( 'icon' => 'linkedin-square', 'title' => 'LinkedIn', 'desc' => __( 'Share on LinkedIn', 'atarr' ) ) ); ?>
-					<span class="screen-reader-text"><?php esc_html_e( 'Share on LinkedIn', 'atarr' ); ?></span>
-				</a>
-			</li>
-		</ul>
-	</div><!-- .social-share -->
-
-	<?php
-	return ob_get_clean();
-}
-
-/**
- * Echo social sharing icons.
- */
-function atarr_do_social_share() {
-	echo atarr_get_social_share(); // WPCS: XSS OK.
+		// Echo the text.
+	echo '<span class="copyright-text">&#169;' . date( 'Y' ) . ' ' . wp_kses_post( $copyright_text ) . '</span>'; // WPCS: XSS OK.
 }
 
 /**
@@ -400,16 +352,49 @@ function atarr_do_p5() {
 
 	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
 
-<div id="heroine">
-	<div class="content-wrapper">
+	<div id="heroine">
+		<div class="content-wrapper">
 
 <?php if ( is_single() ) {
 	the_title( '<h1 class="entry-title">', '</h1>' );
 } else {
 	the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 } ?>
-	</div><!-- .content-wrapper -->
-</div>
+		</div><!-- .content-wrapper -->
+	</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Social links for the footer.
+ */
+function atarr_get_footer_social_links() {
+
+	// Set an array of social networks.
+	$social_networks = array( 'Codepen', 'Github', 'Twitter', 'Linkedin' );
+	$email = get_theme_mod( 'atarr_email_link' );
+
+	ob_start(); ?>
+
+	<ul class="social-networks">
+
+	<?php // If there's no email, don't make this <li> in the first place .?>
+	<?php if ( ! empty( $email ) ) : ?>
+		<li class="social-network email">
+			<a href="mailto:<?php echo esc_html( $email ); ?>"></a>
+			<span class="screen-reader-text"><?php esc_html_e( 'Email me', 'atarr' ); ?></span>
+		</li>
+	<?php endif; ?>
+
+	<?php // Continue <li>'s with rest of social networks provided. ?>
+	<?php foreach ( $social_networks as $network ) : ?>
+		<li class="social-network <?php echo esc_attr( $network ); ?>">
+			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"></a>
+			<span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); echo esc_attr( $network ); ?></span>
+		</li>
+	<?php endforeach; ?>
+	</ul><!-- .social-networks -->
 	<?php
 	return ob_get_clean();
 }
