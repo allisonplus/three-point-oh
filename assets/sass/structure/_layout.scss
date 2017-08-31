@@ -22,19 +22,14 @@
 	}
 }
 
-.site-content {
-	// margin: 20px auto;
-
-	@include media($desktop) {
-		// margin: 40px auto 60px;
-	}
-}
-
 .primary {
 	@include fill-parent;
 
-	@include media($tablet-landscape) {
-		@include span-columns(8);
+	.blog & {
+
+		@include media($tablet-landscape) {
+			@include span-columns(8);
+		}
 	}
 }
 
@@ -43,5 +38,7 @@
 
 	@include media($tablet-landscape) {
 		@include span-columns(4);
+
+		margin-top: $gutter*4;
 	}
 }

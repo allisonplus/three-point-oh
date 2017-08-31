@@ -18,9 +18,9 @@
 
 // Form
 $gf-padding: 0; // set outer padding on form
-$gf-bg: $color-white; // background color of form
+$gf-bg: $white; // background color of form
 $gf-border-width: 0; // border-width on form
-$gf-border-color: $color-white; // border color
+$gf-border-color: $white; // border color
 
 // Fields / Rows
 $gf-field-margin-bottom: 25px; // margin between field and label below (vertical spacing between rows)
@@ -31,7 +31,7 @@ $gf-label-font-color: $color-mineshaft;
 $gf-label-font-weight: 700;
 
 // Inputs
-$gf-input-color-background: $color-white;
+$gf-input-color-background: $white;
 $gf-input-color-border: $color-input-border;
 $gf-input-color-text: $color-input-text;
 $gf-input-color-focus-text: $color-input-focus-text;
