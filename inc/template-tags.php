@@ -180,7 +180,7 @@ function atarr_get_svg( $args = array() ) {
  * @param  array $args  Parameters needed to display an SVG.
  */
 function atarr_do_svg( $args = array() ) {
-	echo atarr_get_svg( $args );
+	echo atarr_get_svg( $args ); // WPCS: XSS OK.
 }
 
 /**
@@ -392,13 +392,24 @@ function atarr_do_social_share() {
  * Echo p5 orbs.
  */
 function atarr_do_p5() {
+	// Build the URLs.
+	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
 
 	// Start markup.
 	ob_start(); ?>
 
-	<script src="<?php echo esc_url( get_stylesheet_directory_uri() ) ?>/assets/js/concat/orbs.js"></script>
+	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
 
-	<div id="hero"></div>
+<div id="heroine">
+	<div class="content-wrapper">
+
+<?php if ( is_single() ) {
+	the_title( '<h1 class="entry-title">', '</h1>' );
+} else {
+	the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+} ?>
+	</div><!-- .content-wrapper -->
+</div>
 	<?php
 	return ob_get_clean();
 }
