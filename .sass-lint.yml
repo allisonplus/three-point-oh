@@ -91,7 +91,7 @@ rules:
 
   clean-import-paths: 0
   empty-args: 0
-  hex-length: 1
+  hex-length: long
   hex-notation:
     - 1
     -

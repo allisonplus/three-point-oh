@@ -31,3 +31,75 @@
 		}
 	}
 }
+
+//--------------------------------------------------------------
+// Social network icons gathered from customizer (includes email icon).
+//--------------------------------------------------------------
+.social-networks {
+	@include list-reset;
+
+	// Each social network.
+	.social-network {
+		display: inline-block;
+		margin-right: 8px;
+
+		// No margin for the last <li> item.
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		// Make links take up full space.
+		a {
+			color: $pearl;
+			display: block;
+			font-size: 0; // ghost-space killah.
+			transition: fill 0.15s ease-in-out;
+
+			&:hover,
+			&:active {
+				fill: $color-link-hover;
+			}
+
+			&:before {
+				display: inline-block;
+				font-family: FontAwesome;
+				font-size: 18px;
+				line-height: 1;
+			}
+
+			&[href*="codepen.io"]:before {
+				content: "\f1cb";
+			}
+
+			&[href^="mailto:"]:before {
+				content: "\f003";
+			}
+
+			&[href*="github.com"]:before,
+			&[href*="github.io"]:before {
+				content: "\f09b";
+			}
+
+			&[href*="instagram.com"]:before {
+				content: "\f16d";
+			}
+
+			&[href*="linkedin.com"]:before {
+				content: "\f0e1";
+			}
+
+			&[href*="twitter.com"]:before {
+				content: "\f099";
+			}
+
+			&[href*="vimeo.com"]:before {
+				content: "\f27d";
+			}
+
+			&[href*="wordpress.com"]:before,
+			&[href*="wordpress.org"]:before {
+				content: "\f19a";
+			}
+		} // a
+	} // .social-network
+} // .social-networks

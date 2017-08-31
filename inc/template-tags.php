@@ -124,13 +124,13 @@ add_action( 'save_post',     'atarr_category_transient_flusher' );
 /**
  * Return SVG markup.
  *
- * @param  array  $args {
+ * @param  array $args {
  *     Parameters needed to display an SVG.
  *
- *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
- *     @param string $title Optional. SVG title, e.g. "Facebook".
- *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
- * }
+ *     string $icon Required. Use the icon filename, e.g. "facebook-square".
+ *     string $title Optional. SVG title, e.g. "Fac
+ *     string $desc Optional. SVG description, e.g. "Share this post on Facebook".
+ * }.
  * @return string SVG markup.
  */
 function atarr_get_svg( $args = array() ) {
@@ -337,7 +337,8 @@ function atarr_do_copyright_text() {
 		return false;
 	}
 		// Echo the text.
-	echo '<span class="copyright-text">&#169;' . date( 'Y' ) . ' ' . wp_kses_post( $copyright_text ) . '</span>'; // WPCS: XSS OK.
+	echo '<span class="copyright-text">&#169;' . date( 'Y' ) . '<span class="heart"> &#9825; </span>' . wp_kses_post( $copyright_text ) . '</span>'; // WPCS: XSS OK.
+
 }
 
 /**
@@ -391,7 +392,7 @@ function atarr_get_footer_social_links() {
 	<?php foreach ( $social_networks as $network ) : ?>
 		<li class="social-network <?php echo esc_attr( $network ); ?>">
 			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"></a>
-			<span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); echo esc_attr( $network ); ?></span>
+			<span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); ?><?php echo esc_attr( $network ); ?></span>
 		</li>
 	<?php endforeach; ?>
 	</ul><!-- .social-networks -->

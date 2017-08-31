@@ -15,9 +15,9 @@
 
 	<footer class="site-footer">
 		<div class="wrap">
-
 			<div class="site-info">
 				<?php atarr_do_copyright_text(); ?>
+				<?php echo atarr_get_footer_social_links(); // WPCS: XSS OK. ?>
 			</div>
 
 		</div><!-- .wrap -->

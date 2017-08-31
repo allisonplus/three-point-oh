@@ -20,13 +20,29 @@ function atarr_customize_register( $wp_customize ) {
 		'atarr_social_links_section',
 		array(
 			'title'       => esc_html__( 'Social Links', 'atarr' ),
-			'description' => esc_html__( 'These are the settings for social links. Please limit the number of social links to 5.', 'atarr' ),
+			'description' => esc_html__( 'These are the settings for social links.', 'atarr' ),
 			'priority'    => 90,
 		)
 	);
 
+	// Add our Contact Email field.
+	$wp_customize->add_setting(
+		'atarr_email_link',
+		array(
+			'default' => '',
+		)
+	);
+	$wp_customize->add_control(
+		'atarr_email_link',
+		array(
+			'label'   => esc_html__( 'Email', 'atarr' ),
+			'section' => 'atarr_social_links_section',
+			'type'    => 'email',
+		)
+	);
+
 	// Create an array of our social links for ease of setup.
-	$social_networks = array( 'twitter', 'facebook', 'instagram' );
+	$social_networks = array( 'Twitter', 'Codepen', 'Github', 'Linkedin' );
 
 	// Loop through our networks to setup our fields.
 	foreach ( $social_networks as $network ) {

@@ -72,6 +72,9 @@ function atarr_scripts() {
 	// Enqueue scripts.
 	wp_enqueue_script( 'atarr-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
 
+	// Font Awesome.
+	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
+
 	// Enqueue p5.js.
 	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
 	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
@@ -94,7 +97,7 @@ function atarr_include_svg_icons() {
 	// Define SVG sprite file.
 	$svg_icons = get_template_directory() . '/assets/images/svg-icons.svg';
 
-	// If it exsists, include it.
+	// If it exists, include it.
 	if ( file_exists( $svg_icons ) ) {
 		require_once( $svg_icons );
 	}
