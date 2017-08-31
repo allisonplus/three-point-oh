@@ -28,7 +28,7 @@
 	.mobile-menu-bar {
 		@include size(40px 5px);
 
-		background-color: $color-black;
+		background-color: $pearl;
 		display: block;
 		margin: 7px auto;
 		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -57,7 +57,7 @@
 // // Mobile nav
 // //--------------------------------------------------------------
 .navigation-wrapper {
-	background-color: $color-white;
+	background-color: $cinder;
 
 	// Around entire nav + menu.
 	.main-navigation {

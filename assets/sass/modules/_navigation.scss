@@ -17,14 +17,15 @@ a {
 	} // &:hover, &:focus, &:active
 
 	&.home-link {
-		color: $color-black;
+		color: $pearl;
 		display: inline-block;
 		font-weight: 400;
 		line-height: 1;
+		text-decoration: none;
 	}
 } // a
 
-// Default menu (active after a fresh WordPress install)
+// Default menu (active after a fresh WordPress install).
 .menu {
 	align-items: flex-start;
 	display: flex;
@@ -33,7 +34,7 @@ a {
 	justify-content: space-between;
 	margin: 0;
 	max-width: 800px;
-	padding: 10px;
+	padding: 10px 0 10px 10px;
 	width: 100%;
 
 	@include media($tablet-landscape) {
@@ -43,24 +44,27 @@ a {
 
 	li {
 		font-size: 22px;
-		margin: 0 10px 0 0;
+		position: relative;
 
-		&:last-of-type {
-			margin: 0;
-		} // &:last-of-type
+		&:not(:last-of-type) {
+			margin: 0 10px 0 0;
+
+			a:after {
+				@include position(absolute, null -10px null null);
+
+				color: $aqua;
+				font-size: 35px;
+				content: "\2022";
+				line-height: 1;
+			} // a:after
+		} // &:not(:last-of-type)
 	} // li
 
 	a {
-		color: $color-black;
+		color: $pearl;
 		display: block;
 		padding: 10px 35px;
-		text-align: center;
-		transition: color 0.2s ease-in-out;
 	}
-
-	ul {
-		@include list-reset;
-	} // ul
 
 	&.menu-horizontal {
 
@@ -143,10 +147,10 @@ a {
 		text-decoration: none;
 	} // a
 
-	// // Current items
-	// .current_page_item a,
-	// .current-menu-item a {
-	// } // .current_page_item a, .current-menu-item a
+	// Current items.
+	.current_page_item a,
+	.current-menu-item a {
+	} // .current_page_item a, .current-menu-item a
 } // .menu
 
 // Main navigation (after creating a menu in the dashboard)

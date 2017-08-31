@@ -190,7 +190,7 @@
       return new p5.MediaElement(elt);
     } else if ( elt.tagName === "SELECT" ){
       return createSelect( new p5.Element(elt) );
-    } 
+    }
     else {
       return new p5.Element(elt);
     }
