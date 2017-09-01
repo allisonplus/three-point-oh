@@ -56,14 +56,25 @@ h5,
 	border-bottom: 2px solid $revolver;
 	color: $revolver;
 	font-size: 24px;
+	margin: $gutter * 2 0;
+	padding: 10px 0;
+	position: relative;
 	text-transform: uppercase;
 
+	&:before {
+		@include size(100% 4px);
+		@include position(absolute, null null 5px 0);
+		background: $aqua;
+		content: "";
+		display: block;
+	}
 }
 
 h6,
 .h6 {
 	display: inline-block;
 	font-size: 22px;
+	margin: $gutter * 2 0;
 	position: relative;
 
 	&:after {

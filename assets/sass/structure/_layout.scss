@@ -25,7 +25,8 @@
 .primary {
 	@include fill-parent;
 
-	.blog & {
+	.blog &,
+	.single-post & {
 
 		@include media($tablet-landscape) {
 			@include span-columns(8);
@@ -39,6 +40,6 @@
 	@include media($tablet-landscape) {
 		@include span-columns(4);
 
-		margin-top: $gutter*4;
+		margin-top: $gutter * 4;
 	}
 }
