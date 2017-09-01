@@ -76,9 +76,9 @@ function atarr_scripts() {
 	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
 
 	// Enqueue p5.js.
-	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
-	// wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
+	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
