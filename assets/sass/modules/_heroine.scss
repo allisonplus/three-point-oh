@@ -6,34 +6,59 @@
 	@include size(auto 400px);
 
 	position: relative;
-
-	// .home & {
-	// }
-
-	// .page & {
-	// 	@include size(auto 200px);
-
-	// 	height: 200px;
-	// }
 }
 
 .heroine-wrapper {
-	// background-color: $revolver;
-	margin: 0;
+	color: $white;
+	display: flex;
+	flex-direction: column;
+	font-family: $font-serif;
+	font-size: 42px;
+	height: 100%;
+	justify-content: center;
+	line-height: 1.2;
+	margin: 0 auto;
+	padding: 0 2 * $gutter;
 
-	.content-wrapper {
-		@include outer-container;
-
-		margin: 0 auto;
-		padding: 0 2 * $gutter;
+	@include media($tablet-landscape) {
+		max-width: 1200px;
 	}
 
-	.entry-title {
-		margin: 0;
+	@include media($desktop) {
+		padding: 0;
+	}
 
-		a {
-			color: $white;
-			text-decoration: none;
+	p {
+		margin: 0;
+	}
+
+	.fed {
+		display: inline-block;
+		max-width: 340px;
+		user-select: none;
+	}
+
+	.row {
+		margin-top: $gutter;
+
+		@include media($tablet-landscape) {
+			display: flex;
 		}
 	}
-}
+
+	.text-shifting {
+		background-color: rgba($loulou, 0.5);
+		border-radius: 3px;
+		margin-right: 8px;
+		padding: 0 14px 5px;
+		user-select: none;
+
+		&:first-of-type {
+			padding: 0 14px 5px 0;
+
+			@include media($tablet-landscape) {
+				padding: 0 14px 5px;
+			}
+		}
+	}
+} // .heroine-wrapper
