@@ -129,8 +129,6 @@ rules:
   url-quotes: 0
   variable-for-property:
     - 1
-    -
-      properties: ['color']
 
   zero-unit: 1
 

@@ -48,21 +48,36 @@ h3,
 
 h4,
 .h4 {
-
+	font-size: 26px;
 }
 
 h5,
 .h5 {
+	border-bottom: 2px solid $revolver;
+	color: $revolver;
+	font-size: 24px;
+	text-transform: uppercase;
 
 }
 
 h6,
 .h6 {
+	display: inline-block;
+	font-size: 22px;
+	position: relative;
 
+	&:after {
+		@include size(100% 30%);
+		@include position(absolute, 50% null null 0);
+
+		background-color: rgba($aqua, 0.5);
+		content: "";
+		transform: translateY(-50%);
+		z-index: -1;
+	}
 }
 
 // Copy
-
 p {
 	margin: 0 0 24px 0;
 }
@@ -88,6 +103,14 @@ q {
 	&:after {
 		content: "";
 	}
+}
+
+blockquote {
+	border-left: 4px solid $aqua;
+	font-family: $font-serif;
+	font-weight: 100;
+	padding-left: 16px;
+	position: relative;
 }
 
 address {

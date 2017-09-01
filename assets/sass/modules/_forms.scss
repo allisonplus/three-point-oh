@@ -21,6 +21,8 @@ input[type="submit"] {
 	border-radius: 0;
 	color: $color-button-text;
 	min-height: 31px;
+	padding: 0 12px;
+	transition: background-color 0.2s ease-in-out;
 	vertical-align: top;
 
 	&:hover {

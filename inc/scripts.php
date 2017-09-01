@@ -19,20 +19,20 @@ function atarr_font_url() {
 	 * supported by the following, translate this to 'off'. Do not translate
 	 * into your own language.
 	 */
-	$garamond = _x( 'on', 'EB Garamond font: on or off', 'atarr' );
-	$libre_franklin = _x( 'on', 'Libre Franklin font: on or off', 'atarr' );
+	$playfair_display = _x( 'on', 'Playfair Display font: on or off', 'atarr' );
+	$roboto = _x( 'on', 'Roboto font: on or off', 'atarr' );
 
-	if ( 'off' !== $garamond || 'off' !== $libre_franklin ) {
+	if ( 'off' !== $playfair_display || 'off' !== $roboto ) {
 		$font_families = array();
 
-		if ( 'off' !== $garamond ) {
-			$font_families[] = 'EB Garamond';
+		if ( 'off' !== $$playfair_display ) {
+			$font_families[] = 'Playfair Display';
 		}
 
-		if ( 'off' !== $libre_franklin ) {
-			$font_families[] = 'Libre Franklin:400,700';
+		if ( 'off' !== $roboto ) {
+			$font_families[] = 'Roboto:400,700';
 		}
-		// https://fonts.googleapis.com/css?family=EB+Garamond|Libre+Franklin:400,700.
+		// https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
 		);
@@ -78,7 +78,7 @@ function atarr_scripts() {
 	// Enqueue p5.js.
 	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
 	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
+	// wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

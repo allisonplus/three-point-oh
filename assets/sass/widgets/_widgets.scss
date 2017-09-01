@@ -9,10 +9,22 @@
 	select {
 		max-width: 100%;
 	}
+
+	.search-field {
+		width: calc(100% - 79px);
+	}
+}
+
+.widget-title {
+	background-color: $revolver;
+	color: $white;
+	font-size: 24px;
+	line-height: 24px;
+	margin-bottom: 25px;
+	padding: 12px 16px 16px;
 }
 
 // Search widget
-
 .widget_search .search-submit {
 	display: none;
 }
