@@ -37,8 +37,8 @@ const paths = {
 	'images': [ 'assets/images/*', '!assets/images/*.svg' ],
 	'php': [ './*.php', './**/*.php' ],
 	'sass': 'assets/sass/**/*.scss',
-	'concat_scripts': 'assets/scripts/concat/*.js',
-	'scripts': [ 'assets/scripts/*.js', '!assets/scripts/*.min.js', '!assets/scripts/customizer.js' ],
+	'concat_scripts': 'assets/js/concat/*.js',
+	'scripts': [ 'assets/js/*.js', '!assets/js/*.min.js', '!assets/js/customizer.js' ],
 	'sprites': 'assets/images/sprites/*.png'
 };
 
@@ -240,7 +240,7 @@ gulp.task( 'concat', () =>
 		.pipe( sourcemaps.write() )
 
 		// Save project.js
-		.pipe( gulp.dest( 'assets/scripts' ) )
+		.pipe( gulp.dest( 'assets/js' ) )
 		.pipe( browserSync.stream() )
 );
 
@@ -255,14 +255,14 @@ gulp.task( 'uglify', [ 'concat' ], () =>
 		.pipe( uglify({
 			'mangle': false
 		}) )
-		.pipe( gulp.dest( 'assets/scripts' ) )
+		.pipe( gulp.dest( 'assets/js' ) )
 );
 
 /**
  * Delete the theme's .pot before we create a new one.
  */
 gulp.task( 'clean:pot', () =>
-	del([ 'languages/_s.pot' ])
+	del([ 'languages/atarr.pot' ])
 );
 
 /**
@@ -275,10 +275,10 @@ gulp.task( 'wp-pot', [ 'clean:pot' ], () =>
 		.pipe( plumber({'errorHandler': handleErrors}) )
 		.pipe( sort() )
 		.pipe( wpPot({
-			'domain': '_s',
-			'package': '_s'
+			'domain': 'atarr',
+			'package': 'atarr'
 		}) )
-		.pipe( gulp.dest( 'languages/_s.pot' ) )
+		.pipe( gulp.dest( 'languages/atarr.pot' ) )
 );
 
 /**
@@ -305,11 +305,10 @@ gulp.task( 'sass:lint', () =>
  */
 gulp.task( 'js:lint', () =>
 	gulp.src([
-		'assets/scripts/concat/*.js',
-		'assets/scripts/*.js',
-		'!assets/scripts/project.js',
-		'!assets/scripts/*.min.js',
-		'!Gruntfile.js',
+		'assets/js/concat/*.js',
+		'assets/js/*.js',
+		'!assets/js/project.js',
+		'!assets/js/*.min.js',
 		'!Gulpfile.js',
 		'!node_modules/**'
 	])
@@ -344,7 +343,7 @@ gulp.task( 'watch', function() {
 	browserSync({
 		'open': false,             // Open project in a new tab?
 		'injectChanges': true,     // Auto inject changes instead of full reload.
-		'proxy': '_s.dev',         // Use http://_s.dev:3000 to use BrowserSync.
+		'proxy': 'http://localhost:8888/at-dark/', // Use http://_s.dev:3000 to use BrowserSync.
 		'watchOptions': {
 			'debounceDelay': 1000  // Wait 1 second before injecting.
 		}
