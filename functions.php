@@ -47,7 +47,6 @@ if ( ! function_exists( 'atarr_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary Menu', 'atarr' ),
-			'mobile'  => esc_html__( 'Optional Mobile Menu', 'atarr' ),
 		) );
 
 		/**
@@ -114,6 +113,16 @@ function atarr_widgets_init() {
 
 }
 add_action( 'widgets_init', 'atarr_widgets_init' );
+
+/**
+ * ACF markup additions.
+ */
+require get_template_directory() . '/inc/acf.php';
+
+/**
+ * Custom queries..
+ */
+require get_template_directory() . '/inc/queries.php';
 
 /**
  * Implement the Custom Header feature.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Starry Theme Customizer.
+ * Stardust Theme Customizer.
  *
  * @package atarr
  */

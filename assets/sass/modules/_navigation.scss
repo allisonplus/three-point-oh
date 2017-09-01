@@ -53,8 +53,8 @@ a {
 				@include position(absolute, null -10px null null);
 
 				color: $aqua;
-				font-size: 35px;
 				content: "\2022";
+				font-size: 35px;
 				line-height: 1;
 			} // a:after
 		} // &:not(:last-of-type)

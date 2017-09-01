@@ -78,37 +78,6 @@ if ( ! function_exists( 'atarr_entry_footer' ) ) :
 endif;
 
 /**
- * Returns true if a blog has more than 1 category.
- *
- * @return bool
- */
-function atarr_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'atarr_categories' ) ) ) {
-		// Create an array of all the categories that are attached to posts.
-		$all_the_cool_cats = get_categories( array(
-			'fields'     => 'ids',
-			'hide_empty' => 1,
-
-			// We only need to know if there is more than one category.
-			'number'     => 2,
-		) );
-
-		// Count the number of categories that are attached to the posts.
-		$all_the_cool_cats = count( $all_the_cool_cats );
-
-		set_transient( 'atarr_categories', $all_the_cool_cats );
-	}
-
-	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so atarr_categorized_blog should return true.
-		return true;
-	} else {
-		// This blog has only 1 category so atarr_categorized_blog should return false.
-		return false;
-	}
-}
-
-/**
  * Flush out the transients used in atarr_categorized_blog.
  */
 function atarr_category_transient_flusher() {
@@ -185,48 +154,6 @@ function atarr_do_svg( $args = array() ) {
 }
 
 /**
- * Trim the title legnth.
- *
- * @param  array $args  Parameters include length and more.
- * @return string        The shortened excerpt.
- */
-function atarr_get_the_title( $args = array() ) {
-
-	// Set defaults.
-	$defaults = array(
-		'length'  => 12,
-		'more'    => '...',
-	);
-
-	// Parse args.
-	$args = wp_parse_args( $args, $defaults );
-
-	// Trim the title.
-	return wp_trim_words( get_the_title( get_the_ID() ), $args['length'], $args['more'] );
-}
-
-/**
- * Limit the excerpt length.
- *
- * @param  array $args  Parameters include length and more.
- * @return string        The shortened excerpt.
- */
-function atarr_get_the_excerpt( $args = array() ) {
-
-	// Set defaults.
-	$defaults = array(
-		'length' => 20,
-		'more'   => '...',
-	);
-
-	// Parse args.
-	$args = wp_parse_args( $args, $defaults );
-
-	// Trim the excerpt.
-	return wp_trim_words( get_the_excerpt(), absint( $args['length'] ), esc_html( $args['more'] ) );
-}
-
-/**
  * Echo an image, no matter what.
  *
  * @param string $size  The image size you want to display.
@@ -251,77 +178,6 @@ function atarr_do_post_image( $size = 'thumbnail' ) {
 	}
 
 	echo '<img src="' . esc_url( $media_url ) . '" class="attachment-thumbnail wp-post-image" alt="' . esc_html( get_the_title() ) . '" />';
-}
-
-/**
- * Return an image URI, no matter what.
- *
- * @param  string $size  The image size you want to return.
- * @return string         The image URI.
- */
-function atarr_get_post_image_uri( $size = 'thumbnail' ) {
-
-	// If featured image is present, use that.
-	if ( has_post_thumbnail() ) {
-
-		$featured_image_id = get_post_thumbnail_id( get_the_ID() );
-		$media = wp_get_attachment_image_src( $featured_image_id, $size );
-
-		if ( is_array( $media ) ) {
-			return current( $media );
-		}
-	}
-
-	// Check for any attached image.
-	$media = get_attached_media( 'image', get_the_ID() );
-	$media = current( $media );
-
-	// Set up default image path.
-	$media_url = get_stylesheet_directory_uri() . '/assets/images/placeholder.png';
-
-	// If an image is present, then use it.
-	if ( is_array( $media ) && 0 < count( $media ) ) {
-		$media_url = ( 'thumbnail' === $size ) ? wp_get_attachment_thumb_url( $media->ID ) : wp_get_attachment_url( $media->ID );
-	}
-
-	return $media_url;
-}
-
-/**
- * Get an attachment ID from it's URL.
- *
- * @param  string $attachment_url  The URL of the attachment.
- * @return int                      The attachment ID.
- */
-function atarr_get_attachment_id_from_url( $attachment_url = '' ) {
-
-	global $wpdb;
-
-	$attachment_id = false;
-
-	// If there is no url, return.
-	if ( '' == $attachment_url ) {
-		return false;
-	}
-
-	// Get the upload directory paths.
-	$upload_dir_paths = wp_upload_dir();
-
-	// Make sure the upload path base directory exists in the attachment URL, to verify that we're working with a media library image.
-	if ( false !== strpos( $attachment_url, $upload_dir_paths['baseurl'] ) ) {
-
-		// If this is the URL of an auto-generated thumbnail, get the URL of the original image.
-		$attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $attachment_url );
-
-		// Remove the upload path base directory from the attachment URL.
-		$attachment_url = str_replace( $upload_dir_paths['baseurl'] . '/', '', $attachment_url );
-
-		// Finally, run a custom database query to get the attachment ID from the modified attachment URL.
-		$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
-
-	}
-
-	return $attachment_id;
 }
 
 /**
