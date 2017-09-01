@@ -200,7 +200,7 @@ function atarr_do_copyright_text() {
 /**
  * Echo p5 orbs.
  */
-function atarr_do_p5() {
+function atarr_get_p5() {
 	// Build the URLs.
 	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
 
@@ -210,14 +210,18 @@ function atarr_do_p5() {
 	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
 
 	<div id="heroine">
-		<div class="content-wrapper">
+		<div class="heroine-wrapper">
 
-<?php if ( is_single() ) {
-	the_title( '<h1 class="entry-title">', '</h1>' );
-} else {
-	the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-} ?>
-		</div><!-- .content-wrapper -->
+			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'atarr' ); ?>
+
+			<div class="row">
+
+					<span class="text-shifting"><?php esc_html_e( 'Creative', 'atarr' ); ?></span>
+
+					<span class="text-shifting"><?php esc_html_e( 'Daydreamer', 'atarr' ); ?></span></p>
+
+			</div><!--.row-->
+		</div><!-- .heroine-wrapper -->
 	</div>
 	<?php
 	return ob_get_clean();
