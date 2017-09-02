@@ -1,0 +1,32 @@
+//--------------------------------------------------------------
+// Testimonials Carousel
+//--------------------------------------------------------------
+
+.testimonials {
+	margin: 0 auto;
+	max-width: 1000px;
+
+	.testimonial-single {
+		min-height: 100%;
+		text-align: center;
+		width: 100%;
+	}
+
+	// Wrapper around all content.
+	.content-shell {
+		margin: 0 auto;
+		max-width: 70%;
+	}
+
+	// Source photo.
+	.testimonial-photo {
+		border: 3px solid $loulou;
+		border-radius: 50%;
+	}
+
+	// Arrow colours.
+	.flickity-prev-next-button .arrow,
+	.flickity-prev-next-button.no-svg {
+		fill: $loulou;
+	}
+}

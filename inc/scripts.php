@@ -32,7 +32,7 @@ function atarr_font_url() {
 		if ( 'off' !== $roboto ) {
 			$font_families[] = 'Roboto:400,700';
 		}
-		// https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700
+		// https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700.
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
 		);
@@ -72,14 +72,6 @@ function atarr_scripts() {
 	// Enqueue scripts.
 	wp_enqueue_script( 'atarr-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
 
-	// Font Awesome.
-	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
-
-	// Enqueue p5.js.
-	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -88,6 +80,41 @@ function atarr_scripts() {
 	wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/mobile-nav-menu.js', array( 'jquery' ), $version, true );
 }
 add_action( 'wp_enqueue_scripts', 'atarr_scripts' );
+
+/**
+ * Enqueue external scripts and styles re: particular content.
+ */
+function atarr_external_scripts() {
+	/**
+	 * If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
+	 */
+	$debug = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG == true ) || ( isset( $_GET['script_debug'] ) ) ? true : false;
+
+	/**
+	 * If we are debugging the site, use a unique version every page load so as to ensure no cache issues.
+	 */
+	$version = '1.0.0';
+
+	/**
+	 * Should we load minified files?
+	 */
+	$suffix = ( true === $debug ) ? '' : '.min';
+
+	// Font Awesome.
+	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
+
+	// Testimonial Slider.
+	if ( is_front_page() ) {
+		wp_enqueue_style( 'atarr-carousel-style', 'https://unpkg.com/flickity@2/dist/flickity.min.css' );
+		wp_enqueue_script( 'atarr-carousel-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array( 'jquery' ) );
+	}
+
+	// Enqueue p5.js.
+	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
+}
+add_action( 'wp_enqueue_scripts', 'atarr_external_scripts' );
 
 /**
  * Add SVG definitions to <head>.
