@@ -26,7 +26,8 @@
 	@include fill-parent;
 
 	.blog &,
-	.single-post & {
+	.single-post &,
+	.archive & {
 
 		@include media($tablet-landscape) {
 			@include span-columns(8);
