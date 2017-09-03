@@ -201,13 +201,9 @@ function atarr_do_copyright_text() {
  * Echo p5 orbs for front page.
  */
 function atarr_get_main_p5() {
-	// Build the URLs.
-	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
 
 	// Start markup.
 	ob_start(); ?>
-
-	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
 
 	<div id="heroine">
 		<div class="heroine-wrapper">
@@ -227,17 +223,13 @@ function atarr_get_main_p5() {
  * Echo p5 orbs.
  */
 function atarr_get_beta_p5() {
-	// Build the URLs.
-	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
 
 	// Start markup.
 	ob_start(); ?>
 
-	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
-
 	<div id="heroine">
 		<div class="heroine-wrapper">
-		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+		<?php the_title( '<h2 class="page-title">', '</h2>' ); ?>
 		</div><!-- .heroine-wrapper -->
 	</div>
 	<?php
@@ -275,4 +267,12 @@ function atarr_get_footer_social_links() {
 	</ul><!-- .social-networks -->
 	<?php
 	return ob_get_clean();
+}
+
+/**
+ * Check if it's the blog.
+ */
+function atarr_is_blog() {
+
+	return ( is_archive() || is_author() || is_category() || is_home() || is_single() || is_tag()) && 'post' == get_post_type();
 }
