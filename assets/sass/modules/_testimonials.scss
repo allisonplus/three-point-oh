@@ -3,25 +3,45 @@
 //--------------------------------------------------------------
 
 .testimonials {
-	margin: 0 auto;
-	max-width: 1000px;
+	margin: 32px auto 0;
+
+	h2 {
+		margin-bottom: $gutter / 2;
+	}
+
+	.testimonials-shell {
+		padding: 32px 0;
+	}
 
 	.testimonial-single {
 		min-height: 100%;
-		text-align: center;
 		width: 100%;
 	}
 
-	// Wrapper around all content.
-	.content-shell {
-		margin: 0 auto;
-		max-width: 70%;
+	.testimonial-single-shell {
+		display: flex;
+		justify-content: center;
+		margin: 0 auto ;
+		max-width: 80%;
+		width: 100%;
 	}
 
 	// Source photo.
 	.testimonial-photo {
-		border: 3px solid $loulou;
+		@include size(100px);
+
 		border-radius: 50%;
+	}
+
+	.testimonial-name,
+	.testimonial-source,
+	.testimonial-link {
+		margin-left: 24px;
+		padding-left: 16px;
+	}
+
+	blockquote {
+		border-left: none;
 	}
 
 	// Arrow colours.
@@ -29,4 +49,4 @@
 	.flickity-prev-next-button.no-svg {
 		fill: $loulou;
 	}
-}
+} // .testimonials
