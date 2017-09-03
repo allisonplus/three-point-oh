@@ -3,10 +3,10 @@
  *
  * Functionality for testimonials: https://flickity.metafizzy.co
  */
-var elem = document.querySelector('.testimonials');
+var elem = document.querySelector('.testimonials-shell');
 var flkty = new Flickity( elem, {
 	// Options.
-	cellAlign: 'center',
+	cellAlign: 'left',
 	contain: true,
 	pageDots: false,
 	imagesLoaded: true,
