@@ -3,7 +3,7 @@
  *
  * Functionality for testimonials: https://flickity.metafizzy.co
  */
-var elem = document.querySelector('.testimonials-shell');
+var elem = document.querySelector( '.testimonials-shell' );
 var flkty = new Flickity( elem, {
 	// Options.
 	cellAlign: 'left',

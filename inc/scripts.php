@@ -72,12 +72,14 @@ function atarr_scripts() {
 	// Enqueue scripts.
 	wp_enqueue_script( 'atarr-scripts', get_template_directory_uri() . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
 
+	// Secret Identity content switcher for front page content.
+	if ( is_front_page() ) {
+		// wp_enqueue_script( 'atarr-super-heroine', get_template_directory_uri() . '/assets/js/super-heroine.js', array( 'jquery' ), $version, true );
+	}
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	// Enqueue the mobile nav script.
-	wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/mobile-nav-menu.js', array( 'jquery' ), $version, true );
 }
 add_action( 'wp_enqueue_scripts', 'atarr_scripts' );
 
@@ -107,6 +109,7 @@ function atarr_external_scripts() {
 	if ( is_front_page() ) {
 		wp_enqueue_style( 'atarr-carousel-style', 'https://unpkg.com/flickity@2/dist/flickity.min.css' );
 		wp_enqueue_script( 'atarr-carousel-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/carousel-testimonials.js', array( 'jquery' ), $version, true );
 	}
 
 	// Enqueue p5.js.

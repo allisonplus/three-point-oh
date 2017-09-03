@@ -5,6 +5,7 @@ var b;
 var a;
 
 var canvas;
+var heightOfCanvas; // changes depending on page.
 var orbs = [];
 var orbAmount = 42;
 
@@ -14,9 +15,22 @@ var speedMax = 6;
 
 var timer;
 
+// Conditional for page type.
+function isFront() {
+	var front = document.body;
+
+	if( front.classList.contains( 'home' ) ) {
+		return heightOfCanvas = 400;
+	} else {
+		return heightOfCanvas = 150;
+	}
+}
+
 // Setup.
 function setup() {
-	canvas = createCanvas(windowWidth, 400);
+	isFront();
+
+	canvas = createCanvas(windowWidth, heightOfCanvas);
 	canvas.parent('heroine');
 	canvas.position(0, 0);
 	canvas.style('z-index', '-1');
@@ -124,5 +138,5 @@ function Orb(mouseX=null,mouseY=null) {
 
 // Window resizer.
 function windowResized() {
-	resizeCanvas(windowWidth, 400);
+	resizeCanvas(windowWidth, heightOfCanvas);
 }
