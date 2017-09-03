@@ -57,13 +57,14 @@ h5,
 	color: $revolver;
 	font-size: 24px;
 	margin: $gutter * 2 0;
-	padding: 10px 0;
+	padding: 10px 0 16px;
 	position: relative;
 	text-transform: uppercase;
 
 	&:before {
 		@include size(100% 4px);
-		@include position(absolute, null null 5px 0);
+		@include position(absolute, null null 4px 0);
+
 		background: $aqua;
 		content: "";
 		display: block;

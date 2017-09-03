@@ -26,11 +26,10 @@
 	@include fill-parent;
 
 	.blog &,
-	.single-post &,
-	.archive & {
+	.single-post & {
 
 		@include media($tablet-landscape) {
-			@include span-columns(8);
+			@include span-columns(9);
 		}
 	}
 }
@@ -39,7 +38,7 @@
 	@include fill-parent;
 
 	@include media($tablet-landscape) {
-		@include span-columns(4);
+		@include span-columns(3);
 
 		margin-top: $gutter * 4;
 	}

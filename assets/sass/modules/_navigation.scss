@@ -43,18 +43,22 @@ a {
 	}
 
 	li {
-		font-size: 22px;
+		font-size: 18px;
 		position: relative;
 
 		&:not(:last-of-type) {
 			margin: 0 10px 0 0;
+
+			a {
+				padding: 10px 35px;
+			}
 
 			a:after {
 				@include position(absolute, null -10px null null);
 
 				color: $aqua;
 				content: "\2022";
-				font-size: 35px;
+				font-size: 32px;
 				line-height: 1;
 			} // a:after
 		} // &:not(:last-of-type)
@@ -63,7 +67,7 @@ a {
 	a {
 		color: $pearl;
 		display: block;
-		padding: 10px 35px;
+		padding: 10px 0 10px 35px;
 	}
 
 	&.menu-horizontal {

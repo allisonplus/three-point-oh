@@ -4,7 +4,7 @@
 
 // Wrapper around factoids.
 .factoids {
-	margin: 24px 0;
+	margin: 36px 0;
 
 	.factoid-shell {
 		display: flex;
@@ -13,6 +13,12 @@
 		@include media($tablet-landscape) {
 			justify-content: space-evenly;
 		}
+	}
+
+	h5 {
+		line-height: 1;
+		margin-top: 0;
+		padding-top: 0;
 	}
 } // .about-things
 
@@ -51,7 +57,7 @@
 			width: 75%;
 		}
 
-		h3 {
+		h4 {
 			margin: 0;
 			text-align: left;
 		} // h3
