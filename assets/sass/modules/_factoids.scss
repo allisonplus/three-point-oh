@@ -1,53 +1,18 @@
 //--------------------------------------------------------------
-// About Page
+// Factoids (on 'About' page)
 //--------------------------------------------------------------
-
-// Wrapper around bio + factoids.
-.about {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-
-	@include media($tablet-landscape) {
-		flex-direction: row;
-		padding: 22px 0;
-	}
-
-	// About Allison + Things to Know titles.w
-	h2 {
-		margin: 0 0 20px;
-		text-align: center;
-
-		&::after {
-			// border-bottom: rem(2) solid $color-gold;
-			content: "";
-			display: block;
-			margin: 0 auto;
-			padding-bottom: 15px;
-			width: 32px;
-		} // &::after
-	} // h2
-}
-
-// Wrapper around bio.
-.about-info {
-	padding: 10px 5px;
-	width: 100%;
-
-	@include media($tablet-landscape) {
-		background-color: lighten($color-silver, 15%);
-		padding: 20px 32px;
-		width: 55%;
-	}
-} // .about-info
 
 // Wrapper around factoids.
 .factoids {
+	margin: 24px 0;
 
 	.factoid-shell {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-evenly;
+
+		@include media($tablet-landscape) {
+			justify-content: space-evenly;
+		}
 	}
 } // .about-things
 
@@ -56,6 +21,10 @@
 	align-items: baseline;
 	display: flex;
 	margin-bottom: 24px;
+
+	@include media($tablet-portrait) {
+		max-width: calc(100% / 2);
+	}
 
 	@include media($tablet-landscape) {
 		max-width: calc(100% / 3);

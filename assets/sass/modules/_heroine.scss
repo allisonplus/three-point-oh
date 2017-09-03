@@ -3,9 +3,13 @@
 //--------------------------------------------------------------
 
 #heroine {
-	@include size(auto 400px);
+	@include size(auto 150px);
 
 	position: relative;
+
+	.home & {
+		@include size(auto 400px);
+	}
 }
 
 .heroine-wrapper {
@@ -28,6 +32,7 @@
 		padding: 0;
 	}
 
+	h2,
 	p {
 		margin: 0;
 	}
