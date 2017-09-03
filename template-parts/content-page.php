@@ -10,9 +10,6 @@
 ?>
 
 <article <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
@@ -23,11 +20,11 @@
 				'after'  => '</div>',
 			) );
 		?>
-
-		<?php if ( is_page( 'about' ) ) : ?>
-			<?php echo atarr_get_factoids(); // WPCS: XSS OK. ?>
-		<?php endif; ?>
 	</div><!-- .entry-content -->
+
+	<?php if ( is_page( 'about' ) ) : ?>
+		<?php echo atarr_get_factoids(); // WPCS: XSS OK. ?>
+	<?php endif; ?>
 
 	<footer class="entry-footer">
 		<?php

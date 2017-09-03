@@ -198,9 +198,9 @@ function atarr_do_copyright_text() {
 }
 
 /**
- * Echo p5 orbs.
+ * Echo p5 orbs for front page.
  */
-function atarr_get_p5() {
+function atarr_get_main_p5() {
 	// Build the URLs.
 	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
 
@@ -217,6 +217,27 @@ function atarr_get_p5() {
 				<span class="text-shifting"><?php esc_html_e( 'Creative', 'atarr' ); ?></span>
 				<span class="text-shifting"><?php esc_html_e( 'Daydreamer', 'atarr' ); ?></span></p>
 			</div><!--.row-->
+		</div><!-- .heroine-wrapper -->
+	</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Echo p5 orbs.
+ */
+function atarr_get_beta_p5() {
+	// Build the URLs.
+	$orbs_url = get_stylesheet_directory_uri() . '/assets/js/concat/orbs.js';
+
+	// Start markup.
+	ob_start(); ?>
+
+	<script src="<?php echo esc_url( $orbs_url ); ?>"></script>
+
+	<div id="heroine">
+		<div class="heroine-wrapper">
+		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 		</div><!-- .heroine-wrapper -->
 	</div>
 	<?php

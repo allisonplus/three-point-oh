@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-	<?php echo atarr_get_p5(); // WPCS: XSS OK. ?>
+	<?php echo atarr_get_beta_p5(); // WPCS: XSS OK. ?>
 
 	<div class="wrap">
 		<div class="primary content-area">
