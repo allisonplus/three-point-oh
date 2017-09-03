@@ -251,6 +251,10 @@ gulp.task( 'concat', () =>
   */
 gulp.task( 'uglify', [ 'concat' ], () =>
 	gulp.src( paths.scripts )
+		// Convert ES6+ to ES2015.
+		.pipe( babel({
+			presets: [ 'latest' ]
+		}) )
 		.pipe( rename({'suffix': '.min'}) )
 		.pipe( uglify({
 			'mangle': false
