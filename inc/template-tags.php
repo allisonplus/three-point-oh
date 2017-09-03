@@ -58,22 +58,6 @@ if ( ! function_exists( 'atarr_entry_footer' ) ) :
 							printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'atarr' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'atarr' ), esc_html__( '1 Comment', 'atarr' ), esc_html__( '% Comments', 'atarr' ) );
-			echo '</span>';
-		}
-
-		edit_post_link(
-			sprintf(
-				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'atarr' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 
@@ -270,9 +254,28 @@ function atarr_get_footer_social_links() {
 }
 
 /**
- * Check if it's the blog.
+ * Echo card image, no matter what.
+ *
+ * @param string $size  The image size you want to display.
  */
-function atarr_is_blog() {
+function atarr_do_card_image( $size ) {
 
-	return ( is_archive() || is_author() || is_category() || is_home() || is_single() || is_tag()) && 'post' == get_post_type();
+	// If featured image is present, use that.
+	if ( has_post_thumbnail() ) {
+		return the_post_thumbnail( $size );
+	}
+
+	// Check for any attached image.
+	$media = get_attached_media( 'image', get_the_ID() );
+	$media = current( $media );
+
+	// Set up default image path.
+	$media_url = get_stylesheet_directory_uri() . '/assets/images/placeholder.jpg';
+
+	// If an image is present, then use it.
+	if ( is_array( $media ) && 0 < count( $media ) ) {
+		$media_url = ( 'thumbnail' === $size ) ? wp_get_attachment_thumb_url( $media->ID ) : wp_get_attachment_url( $media->ID );
+	}
+
+	echo '<img src="' . esc_url( $media_url ) . '" class="wp-post-image" alt="' . esc_html( get_the_title() ) . '" />';
 }
