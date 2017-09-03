@@ -211,15 +211,11 @@ function atarr_get_p5() {
 
 	<div id="heroine">
 		<div class="heroine-wrapper">
-
 			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'atarr' ); ?>
 
 			<div class="row">
-
-					<span class="text-shifting"><?php esc_html_e( 'Creative', 'atarr' ); ?></span>
-
-					<span class="text-shifting"><?php esc_html_e( 'Daydreamer', 'atarr' ); ?></span></p>
-
+				<span class="text-shifting"><?php esc_html_e( 'Creative', 'atarr' ); ?></span>
+				<span class="text-shifting"><?php esc_html_e( 'Daydreamer', 'atarr' ); ?></span></p>
 			</div><!--.row-->
 		</div><!-- .heroine-wrapper -->
 	</div>

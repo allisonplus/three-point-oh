@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-	<?php get_template_part( 'template-parts/content', 'orbs' ); ?>
+	<?php echo atarr_get_p5(); // WPCS: XSS OK. ?>
 
 	<div class="wrap">
 		<div class="primary content-area">
