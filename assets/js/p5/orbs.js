@@ -19,11 +19,7 @@ var timer;
 function isFront() {
 	var front = document.body;
 
-	if( front.classList.contains( 'home' ) ) {
-		return heightOfCanvas = 400;
-	} else {
-		return heightOfCanvas = 150;
-	}
+	return front.classList.contains( 'home' ) ? heightOfCanvas = 400 : heightOfCanvas = 150;
 }
 
 // Setup.
@@ -136,7 +132,8 @@ function Orb(mouseX=null,mouseY=null) {
 	};
 }
 
-// Window resizer.
+// // Window resizer.
 function windowResized() {
 	resizeCanvas(windowWidth, heightOfCanvas);
 }
+

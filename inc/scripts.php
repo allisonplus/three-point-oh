@@ -74,7 +74,7 @@ function atarr_scripts() {
 
 	// Secret Identity content switcher for front page content.
 	if ( is_front_page() ) {
-		// wp_enqueue_script( 'atarr-super-heroine', get_template_directory_uri() . '/assets/js/super-heroine.js', array( 'jquery' ), $version, true );
+		wp_enqueue_script( 'atarr-super-heroine', get_template_directory_uri() . '/assets/js/super-heroine.js', array( 'jquery' ), $version, true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -115,7 +115,7 @@ function atarr_external_scripts() {
 	// Enqueue p5.js.
 	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
 	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/concat/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
+	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/p5/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
 }
 add_action( 'wp_enqueue_scripts', 'atarr_external_scripts' );
 
