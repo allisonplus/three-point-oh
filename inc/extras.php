@@ -187,3 +187,11 @@ function atarr_get_post_image_uri( $size = 'thumbnail' ) {
 
 	return $media_url;
 }
+
+/**
+ * Check if it's the blog.
+ */
+function atarr_is_blog() {
+
+	return ( is_archive() || is_author() || is_category() || is_home() || is_single() || is_tag()) && 'post' == get_post_type();
+}
