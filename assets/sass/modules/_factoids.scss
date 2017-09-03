@@ -1,0 +1,90 @@
+//--------------------------------------------------------------
+// About Page
+//--------------------------------------------------------------
+
+// Wrapper around bio + factoids.
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	@include media($tablet-landscape) {
+		flex-direction: row;
+		padding: 22px 0;
+	}
+
+	// About Allison + Things to Know titles.w
+	h2 {
+		margin: 0 0 20px;
+		text-align: center;
+
+		&::after {
+			// border-bottom: rem(2) solid $color-gold;
+			content: "";
+			display: block;
+			margin: 0 auto;
+			padding-bottom: 15px;
+			width: 32px;
+		} // &::after
+	} // h2
+}
+
+// Wrapper around bio.
+.about-info {
+	padding: 10px 5px;
+	width: 100%;
+
+	@include media($tablet-landscape) {
+		background-color: lighten($color-silver, 15%);
+		padding: 20px 32px;
+		width: 55%;
+	}
+} // .about-info
+
+// Wrapper around factoids.
+.factoids {
+
+	.factoid-shell {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+} // .about-things
+
+// Each separate factoid.
+.factoid {
+	align-items: baseline;
+	display: flex;
+	margin-bottom: 24px;
+
+	@include media($tablet-landscape) {
+		max-width: calc(100% / 3);
+	}
+
+	p {
+		margin: 0;
+	}
+
+	// Icon.
+	.fa {
+		color: $loulou;
+		font-size: 30px;
+	} // .fa
+
+	// Fact content (title + description).
+	.fact-content {
+		display: flex;
+		flex-direction: column;
+		padding: 0 15px;
+		width: 100%;
+
+		@include media($tablet-landscape) {
+			width: 75%;
+		}
+
+		h3 {
+			margin: 0;
+			text-align: left;
+		} // h3
+	} // .fact-content
+} // factoid
