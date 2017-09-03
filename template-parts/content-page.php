@@ -23,6 +23,10 @@
 				'after'  => '</div>',
 			) );
 		?>
+
+		<?php if ( is_page( 'about' ) ) : ?>
+			<?php echo atarr_get_factoids(); // WPCS: XSS OK. ?>
+		<?php endif; ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
