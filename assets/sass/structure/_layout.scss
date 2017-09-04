@@ -22,9 +22,24 @@
 	}
 }
 
+.site-main {
+
+	.archive &,
+	.blog & {
+
+		display: flex;
+		flex-wrap: wrap;
+
+		@include media($phone-landscape) {
+			justify-content: space-around;
+		}
+	}
+}
+
 .site-content {
 
-	.blog & {
+	.blog &,
+	.single-post & {
 		margin-top: 36px;
 	}
 }
@@ -33,7 +48,7 @@
 	@include fill-parent;
 
 	.blog &,
-	.single-post & {
+	.single-post {
 
 		@include media($tablet-landscape) {
 			@include span-columns(9);

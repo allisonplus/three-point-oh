@@ -1,0 +1,56 @@
+//--------------------------------------------------------------
+// Archive
+//--------------------------------------------------------------
+.archive {
+
+	.grid {
+
+		display: grid;
+		width: 100%;
+
+		@include media($phone-landscape) {
+			grid-gap: 2%;
+			grid-template-columns: repeat(2, 49%);
+		}
+
+		@include media($tablet-landscape) {
+			grid-gap: 3%;
+			grid-template-columns: repeat(3, 31.33%);
+		}
+
+		.post-card {
+			@include media($phone-landscape) {
+				width: 100%;
+			}
+		}
+
+		.post-card:first-of-type,
+		.post-card:nth-of-type(3) {
+
+			@include media($tablet-landscape) {
+				grid-column: 1 / 3;
+			}
+		}
+
+		.post-card:nth-of-type(2),
+		.post-card:nth-of-type(4) {
+			flex-direction: column;
+
+			@include media($tablet-landscape) {
+				grid-row: span 2;
+			}
+
+			.entry-content {
+				width: 100%;
+			}
+		}
+
+		.post-card:nth-of-type(5),
+		.post-card:nth-of-type(6) {
+
+			@include media($tablet-landscape) {
+				grid-column: 2 / 4;
+			}
+		}
+	} // .grid
+} // .archive
