@@ -1,0 +1,144 @@
+// http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+php+scss
+// * prism.js default theme for JavaScript, CSS and HTML
+// @author Lea Verou
+
+// sass-lint:disable-all
+code[class*="language-"],
+pre[class*="language-"] {
+	// word-break: normal;
+	// word-spacing: normal;
+	// word-wrap: normal;
+
+	-moz-hyphens: none;
+	-moz-tab-size: 4;
+	-ms-hyphens: none;
+	-o-tab-size: 4;
+	-webkit-hyphens: none;
+	// text-shadow: 0 rem(1) $color-white;
+	color: $black;
+	direction: ltr;
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	hyphens: none;
+	line-height: 1.5;
+	tab-size: 4;
+	text-align: left;
+	white-space: pre;
+	word-break: break-all;
+	word-spacing: normal;
+	word-wrap: break-word;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+	background: $color-sail;
+	// background-color: $color-whitesmoke;
+	text-shadow: none;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+	background: $color-sail;
+	text-shadow: none;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+//Code blocks.
+pre[class*="language-"] {
+	margin: 8px 0;
+	overflow: auto;
+	padding: 16px;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	// background-color: $color-code;
+	background-color: $white;
+}
+
+// Inline code.
+:not(pre) > code[class*="language-"] {
+	border-radius: 4px;
+	padding: 1px;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: $color-slate;
+}
+
+.token.punctuation {
+	color: $color-gray;
+}
+
+.namespace {
+	opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: $color-cranberry;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: $color-lime;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: $color-copper;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: $color-teal;
+}
+
+.token.function {
+	color: $color-persimmon;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: $color-mustard;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+// sass-lint:enable-all
