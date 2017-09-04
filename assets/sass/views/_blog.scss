@@ -3,15 +3,30 @@
 //--------------------------------------------------------------
 .blog {
 
+	.site-main {
+		display: flex;
+		flex-wrap: wrap;
+
+		@include media($phone-landscape) {
+			justify-content: space-between;
+		}
+	}
+
 	.post-card {
 		border: 1px solid $revolver;
 		display: flex;
 		flex-direction: column;
 		position: relative;
+		width: 100%;
+
+		@include media($phone-landscape) {
+			width: calc((100% / 2) - 2%);
+		}
 
 		@include media($tablet-landscape) {
 			align-items: flex-start;
 			flex-direction: row;
+			width: 100%;
 		}
 
 		// Swap the order of those ones, please.
@@ -23,15 +38,19 @@
 
 			// Reverse triangle fun!
 			.entry-content::before {
-				@include position(absolute, 25% -6% null null);
-				@include size(0 0);
 
-				border: solid transparent;
-				border-left-color: $white;
-				border-width: 15px;
-				content: "";
-				margin-top: -15px;
-				pointer-events: none;
+				@include media($tablet-landscape) {
+					@include position(absolute, 25% -6% null null);
+					@include size(0 0);
+
+					border: solid transparent;
+					border-left-color: $white;
+					border-width: 15px;
+					content: "";
+					margin-top: -15px;
+					pointer-events: none;
+
+				}
 			} // &::before
 		} // &:nth-child(odd)
 	} // .post-card
@@ -67,16 +86,19 @@
 
 		// // Triangle fun!
 		&::before {
-			@include position(absolute, 25% 100% null null);
 
-			border: solid transparent;
-			border-right-color: $white;
-			border-width: 15px;
-			content: " ";
-			height: 0;
-			margin-top: -15px;
-			pointer-events: none;
-			width: 0;
+			@include media($tablet-landscape) {
+				@include position(absolute, 25% 100% null null);
+
+				border: solid transparent;
+				border-right-color: $white;
+				border-width: 15px;
+				content: " ";
+				height: 0;
+				margin-top: -15px;
+				pointer-events: none;
+				width: 0;
+			}
 		} // &::before
 
 		&::after {
