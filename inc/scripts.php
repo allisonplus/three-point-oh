@@ -25,7 +25,7 @@ function atarr_font_url() {
 	if ( 'off' !== $playfair_display || 'off' !== $roboto ) {
 		$font_families = array();
 
-		if ( 'off' !== $$playfair_display ) {
+		if ( 'off' !== $playfair_display ) {
 			$font_families[] = 'Playfair Display';
 		}
 
@@ -113,9 +113,11 @@ function atarr_external_scripts() {
 	}
 
 	// Enqueue p5.js.
-	wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery' ), $version, true );
-	wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/p5/orbs.js', array( 'jquery', 'atarr-p5' ), $version, true );
+	if ( ! atarr_is_blog() ) {
+		wp_enqueue_script( 'atarr-p5', get_template_directory_uri() . '/assets/js/p5/p5' . $suffix . '.js', array( 'jquery' ), $version, true );
+		wp_enqueue_script( 'atarr-p5-dom', get_template_directory_uri() . '/assets/js/p5/p5.dom' . $suffix . '.js', array( 'jquery', 'atarr-p5' ), $version, true );
+		wp_enqueue_script( 'orbs', get_template_directory_uri() . '/assets/js/p5/orbs.js', array( 'jquery', 'atarr-p5', 'atarr-p5-dom' ), $version, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'atarr_external_scripts' );
 
