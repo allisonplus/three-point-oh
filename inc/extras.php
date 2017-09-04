@@ -113,7 +113,7 @@ function atarr_get_attachment_id_from_url( $attachment_url = '' ) {
 }
 
 /**
- * Trim the title legnth.
+ * Trim the title lengtth.
  *
  * @param  array $args  Parameters include length and more.
  * @return string        The shortened excerpt.
@@ -155,6 +155,21 @@ function atarr_get_the_excerpt( $args = array() ) {
 }
 
 /**
+ * Returns a "Continue Reading" link for excerpts
+ */
+function atarr_continue_reading_link() {
+	return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Read More', 'atarr' ) . '</a>';
+}
+
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and atarr_continue_reading_link().
+ */
+function atarr_auto_excerpt_more() {
+	return ' &hellip;' . atarr_continue_reading_link();
+}
+add_filter( 'excerpt_more', 'atarr_auto_excerpt_more' );
+
+/**
  * Return an image URI, no matter what.
  *
  * @param  string $size  The image size you want to return.
@@ -193,4 +208,45 @@ function atarr_get_post_image_uri( $size = 'thumbnail' ) {
  */
 function atarr_is_blog() {
 	return ( (( is_archive() ) || ( is_author() ) || ( is_category() ) || ( is_home() ) || ( is_single() ) || ( is_tag() ) ) ) ? true : false ;
+}
+
+/**
+ * Prints HTML with customized meta information single-post.
+ *
+ * @author Allison Tarr
+ */
+function atarr_card_posted_on() {
+
+	// Set up category stuff.
+	$category = get_the_category();
+	$category_name = '';
+	$category_link = '';
+
+	// Setup defaults.
+	$defaults = array(
+		'link'          => get_the_permalink(),
+		'date'          => get_the_date( 'F j, Y' ),
+		'category'      => $category_name,
+		'category_link' => $category_link,
+	);
+
+	// If there is an array of categories.
+	if ( is_array( $category ) ) {
+		$category_name = $category[0]->name;
+		$category_link = get_category_link( $category[0]->cat_ID );
+	}
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+	ob_start();
+	?>
+
+	<p class="posted-on"><time class="entry-date"><?php echo esc_attr( $args['date'] ); ?></time></p>
+	<p class="meta-content">
+		<span class="category"><span class="posted-emphasis"><?php esc_html_e( 'in ', 'atarr' ); ?></span><a class="category-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $category_name ); ?></a></span>
+	</p>
+
+	<?php
+	return ob_get_clean();
 }
