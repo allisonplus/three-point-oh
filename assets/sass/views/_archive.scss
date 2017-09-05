@@ -22,8 +22,17 @@
 		}
 
 		.post-card {
+			transition: transform 0.25s ease-in-out;
+
 			@include media($phone-landscape) {
 				width: 100%;
+			}
+
+			&:hover,
+			&:focus,
+			&:active {
+				box-shadow: 1px 1px 30px 7px rgba($revolver, 0.6);
+				transform: scale(1.02);
 			}
 
 			// Getting rid of reverse triangle fun.

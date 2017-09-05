@@ -24,8 +24,11 @@
 	}
 
 	.image-gallery {
+		display: grid;
+		grid-gap: $gutter;
+		grid-template-columns: repeat(3, 1fr);
 		list-style-type: none;
-		margin: 20px 0;
+		margin: 42px 0;
 		padding: 0;
 
 		a,
@@ -34,12 +37,10 @@
 		}
 
 		.portfolio-gallery-single {
-			box-shadow: $shadow;
 			font-size: 0; // ghost-space killah.
-			margin-right: $gutter * 2;
 
-			&:last-of-type {
-				margin-right: 0;
+			img {
+				box-shadow: $shadow;
 			}
 		}
 	} // .image-gallery

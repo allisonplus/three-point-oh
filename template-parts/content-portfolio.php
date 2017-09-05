@@ -42,10 +42,10 @@
 			<ul class="image-gallery">
 				<?php foreach ( $images as $image ) : ?>
 				<li class="portfolio-gallery-single">
-					<a href="<?php echo esc_url( $image['url'] ); ?>">
-						<img src="<?php echo esc_url( $image['sizes']['featured-card'] ); ?>" alt="<?php echo esc_html( $image['alt'] ); ?>" />
-					</a>
-					<!-- <p><?php echo esc_html( $image['caption'] ); ?></p> -->
+					<img src="<?php echo esc_url( $image['sizes']['featured-card'] ); ?>" alt="<?php echo esc_html( $image['alt'] ); ?>" />
+				<?php if ( $image['caption'] ) : ?>
+					<p><?php echo esc_html( $image['caption'] ); ?></p>
+				<?php endif ?>
 				</li>
 				<?php endforeach; ?>
 			</ul>
