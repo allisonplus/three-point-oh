@@ -1,0 +1,14 @@
+//--------------------------------------------------------------
+// Single
+//--------------------------------------------------------------
+.single-post {
+
+	.entry-title {
+		margin-top: 0;
+	}
+
+	article {
+		box-shadow: $shadow;
+		padding: $gutter;
+	}
+} // .single-post

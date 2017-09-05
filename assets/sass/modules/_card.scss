@@ -2,7 +2,7 @@
 // Card (variations used for both blog + portfolio)
 //--------------------------------------------------------------
 .post-card {
-	box-shadow: 1px 1px 30px 7px rgba($pearl, 0.6);
+	box-shadow: $shadow;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -138,7 +138,7 @@
 			content: "\f054";
 			font-family: fontAwesome;
 			margin-left: 5px;
-			transition: font-weight 0.2s ease-in-out, margin 0.2s ease-in-out;
+			transition: margin 0.2s ease-in-out;
 			vertical-align: bottom;
 		}
 
