@@ -1,10 +1,13 @@
 //--------------------------------------------------------------
-// Archive
+// Archive: Portfolio CPT
 //--------------------------------------------------------------
 .archive {
 
-	.grid {
+	.page-title {
+		text-align: center;
+	}
 
+	.grid {
 		display: grid;
 		width: 100%;
 
@@ -22,16 +25,30 @@
 			@include media($phone-landscape) {
 				width: 100%;
 			}
-		}
 
+			// Getting rid of reverse triangle fun.
+			.entry-content::before {
+
+				@include media($tablet-landscape) {
+					content: none;
+				}
+			} // &::before
+		} // .post-card
+
+		// First two horizontal cards.
 		.post-card:first-of-type,
 		.post-card:nth-of-type(3) {
+
+			.entry-content {
+				height: auto;
+			}
 
 			@include media($tablet-landscape) {
 				grid-column: 1 / 3;
 			}
 		}
 
+		// Vertical cards.
 		.post-card:nth-of-type(2),
 		.post-card:nth-of-type(4) {
 			flex-direction: column;
@@ -45,12 +62,33 @@
 			}
 		}
 
+		// Last two horizontal cards.
 		.post-card:nth-of-type(5),
 		.post-card:nth-of-type(6) {
+
+			.entry-content {
+				height: auto;
+			}
 
 			@include media($tablet-landscape) {
 				grid-column: 2 / 4;
 			}
 		}
 	} // .grid
+} // .archive
+
+
+//--------------------------------------------------------------
+// Archive: Blog Tags + Categories
+//--------------------------------------------------------------
+.archive {
+
+	&.category,
+	&.tag {
+
+		.entry-content {
+			height: auto;
+			width: 100%;
+		}
+	} // &.category, &.tag
 } // .archive

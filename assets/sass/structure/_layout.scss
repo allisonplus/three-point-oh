@@ -22,11 +22,10 @@
 	}
 }
 
-.site-main {
-
-	.archive &,
-	.blog & {
-
+.flex-shell {
+	.blog &,
+	.archive.tag &,
+	.archive.category & {
 		display: flex;
 		flex-wrap: wrap;
 
@@ -37,7 +36,6 @@
 }
 
 .site-content {
-
 	.blog &,
 	.single-post & {
 		margin-top: 36px;
@@ -48,7 +46,7 @@
 	@include fill-parent;
 
 	.blog &,
-	.single-post {
+	.single-post & {
 
 		@include media($tablet-landscape) {
 			@include span-columns(9);

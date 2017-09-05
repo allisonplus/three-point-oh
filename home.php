@@ -27,10 +27,12 @@ get_header(); ?>
 					</header>
 
 				<?php
-				endif;
+				endif; ?>
 
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+				<div class="flex-shell">
+
+				<!-- /* Start the Loop */ -->
+				<?php while ( have_posts() ) : the_post();
 
 					/*
 					 * Include the Post-Format-specific template for the content.
@@ -48,7 +50,7 @@ get_header(); ?>
 				get_template_part( 'template-parts/content', 'none' );
 
 			endif; ?>
-
+				</div><!--.flex-shell-->
 			</main><!-- #main -->
 		</div><!-- .primary -->
 

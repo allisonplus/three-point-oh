@@ -13,7 +13,7 @@
 	}
 
 	@include media($tablet-landscape) {
-		align-items: flex-start;
+		align-items: stretch;
 		flex-direction: row;
 		width: 100%;
 	}
@@ -118,11 +118,13 @@
 		} // &::after
 	} // .entry-content
 
+	// 'Read more' link.
 	.button {
 		color: $revolver;
 		display: inline-block;
 		font-size: 15px;
 		letter-spacing: 1px;
+		line-height: 1;
 		margin-top: $gutter;
 		text-decoration: none;
 		width: 160px;
@@ -131,10 +133,23 @@
 			margin-top: 0;
 		}
 
+		// Chevron.
+		&:after {
+			content: "\f054";
+			font-family: fontAwesome;
+			margin-left: 5px;
+			transition: font-weight 0.2s ease-in-out, margin 0.2s ease-in-out;
+			vertical-align: bottom;
+		}
+
 		&:hover,
 		&:active,
 		&:focus {
 
+			// Chevron.
+			&:after {
+				margin-left: 8px;
+			}
 		}
 	} // .button
 } // post-card

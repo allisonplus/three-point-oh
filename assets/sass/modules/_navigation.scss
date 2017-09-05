@@ -65,8 +65,7 @@ a {
 
 		&:hover > a,
 		&:focus > a {
-			background-color: $aqua;
-			color: $cinder;
+
 		} // &:hover > a, &.focus > a
 	} // li
 
@@ -74,7 +73,6 @@ a {
 		color: $color-whitesmoke;
 		display: block;
 		padding: 10px 0 10px 35px;
-		transition: all 0.25s ease-in-out;
 	}
 
 	&.menu-horizontal {
@@ -161,7 +159,6 @@ a {
 	// Current items.
 	.current_page_item a,
 	.current-menu-item a {
-		border-bottom: 2px solid $aqua;
 	} // .current_page_item a, .current-menu-item a
 } // .menu
 
