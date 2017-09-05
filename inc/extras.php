@@ -250,3 +250,35 @@ function atarr_card_posted_on() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Filter the archive title
+ * Removes "Category:"/"Author", etc. from title.
+ *
+ * @param string $title Archive title.
+ * @return string Filtered title.
+ */
+function atarr_archive_title( $title ) {
+
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+		$title = $title . esc_html( ' Archives', 'atarr' );
+	} elseif ( is_post_type_archive( 'portfolio' ) ) {
+		$title = esc_html( 'Featured Work', 'atarr' );
+	} elseif ( is_author() ) {
+		$title = get_the_author();
+	} elseif ( is_date() ) {
+		if ( is_year() ) {
+			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+		} elseif ( is_month() ) {
+			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+		} elseif ( is_day() ) {
+			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'F j, Y', 'daily archives date format' ) ) );
+		}
+	} else {
+		$title = __( 'Archives' );
+	}
+
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'atarr_archive_title' );
