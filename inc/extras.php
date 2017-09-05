@@ -215,7 +215,7 @@ function atarr_is_blog() {
  *
  * @author Allison Tarr
  */
-function atarr_card_posted_on() {
+function atarr_card_posted_on( $args = array() ) {
 
 	// Set up category stuff.
 	$category = get_the_category();

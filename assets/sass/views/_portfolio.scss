@@ -1,0 +1,46 @@
+//--------------------------------------------------------------
+// Portfoliio
+//--------------------------------------------------------------
+.single-portfolio {
+
+	.entry-title {
+		background: linear-gradient(43deg, $cinder 10%, $loulou 55%, $aqua 85%);
+		color: $white;
+		line-height: 1;
+		padding: 12px 16px 16px;
+
+		a {
+			text-decoration: none;
+		}
+	} // .entry-title
+
+	.portfolio-featured {
+		box-shadow: $shadow;
+		float: left;
+
+		@include media($tablet-landscape) {
+			margin-right: $gutter * 2;
+		}
+	}
+
+	.image-gallery {
+		list-style-type: none;
+		margin: 20px 0;
+		padding: 0;
+
+		a,
+		li {
+			display: inline-block;
+		}
+
+		.portfolio-gallery-single {
+			box-shadow: $shadow;
+			font-size: 0; // ghost-space killah.
+			margin-right: $gutter * 2;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	} // .image-gallery
+} // .portfolio
