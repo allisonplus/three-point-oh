@@ -11,7 +11,7 @@
 
 <article <?php post_class( 'post-card' ); ?>>
 	<header class="entry-header">
-	<?php atarr_do_card_image( 'featured-card' ); ?>
+	<a href="<?php echo esc_url( get_permalink() ); ?>"><?php atarr_do_card_image( 'featured-card' ); ?></a>
 	</header><!-- .entry-header -->
 
 		<div class="entry-content">
