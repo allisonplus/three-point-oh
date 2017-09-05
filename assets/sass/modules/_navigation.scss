@@ -191,6 +191,7 @@ a {
 	.site-main & {
 		margin: 0;
 		overflow: hidden;
+		width: 100%;
 	} // .site-main &
 
 	&.nav-previous {
@@ -205,4 +206,41 @@ a {
 		float: right;
 		text-align: right;
 	} // &.nav-next
+
+	.nav-links {
+		display: flex;
+		margin-bottom: $gutter * 2;
+
+		.nav-previous,
+		.nav-next {
+			@include size(50% auto);
+
+			a {
+				-webkit-appearance: none; // Remove iOS styles
+				background-color: $color-button-background;
+				border: none;
+				border-radius: 0;
+				color: $color-button-text;
+				min-height: 31px;
+				padding: 4px 10px;
+				text-decoration: none;
+				transition: background-color 0.2s ease-in-out;
+				vertical-align: top;
+
+				&:hover {
+					background-color: $color-button-background-hover;
+				}
+
+				&:active,
+				&:focus {
+					background-color: $color-button-background-hover;
+				}
+			}
+		} // .nav-previous, .nav-next
+
+		.nav-next {
+			text-align: right;
+		}
+	} //.nav-links
 } // .comment-navigation, .posts-navigation, .post-navigation
+
