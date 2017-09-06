@@ -2,8 +2,8 @@
  * File super-heroine.js
  *
  */
-const listOne = [ 'INFJ', 'WordPress', 'Creative', 'Coding', 'Inclusive'];
-const listTwo = ['Hula Hooper', 'Poet', 'Writer', 'Curator', 'Detective', 'Technologist', 'Feminist', 'of the Internet', 'Aesthetician', 'Daydreamer'];
+const listOne = [ 'INFJ', 'Internet', 'Introverted', 'WordPress', 'Creative', 'Coding', 'Inclusive'];
+const listTwo = [ 'Poet', 'Writer', 'Curator', 'Detective', 'Technologist', 'Feminist', 'Artist', 'Daydreamer'];
 
 const interval = 3000;
 let wordHistory = '';

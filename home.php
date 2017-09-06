@@ -43,7 +43,10 @@ get_header(); ?>
 
 				endwhile;
 
-				the_posts_navigation();
+				the_post_navigation( array(
+					'prev_text' => __( '<h4 class="pre-title">Previous Post</span><span class="title">%title</h4>' ),
+					'next_text' => __( '<h4 class="pre-title">Next Post</span><span class="title">%title</h4>' ),
+				) );
 
 			else :
 
