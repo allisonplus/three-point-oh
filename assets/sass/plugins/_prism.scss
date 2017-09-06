@@ -8,14 +8,12 @@ pre[class*="language-"] {
 	// word-break: normal;
 	// word-spacing: normal;
 	// word-wrap: normal;
-
 	-moz-hyphens: none;
 	-moz-tab-size: 4;
 	-ms-hyphens: none;
 	-o-tab-size: 4;
 	-webkit-hyphens: none;
-	// text-shadow: 0 rem(1) $color-white;
-	color: $black;
+	color: $white;
 	direction: ltr;
 	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 	hyphens: none;
@@ -32,8 +30,7 @@ pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
-	background: $color-sail;
-	// background-color: $color-whitesmoke;
+	background-color: #383e49;
 	text-shadow: none;
 }
 
@@ -41,7 +38,7 @@ pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
-	background: $color-sail;
+	background-color: #9aa2b1;
 	text-shadow: none;
 }
 
@@ -61,8 +58,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	// background-color: $color-code;
-	background-color: $white;
+	background-color: $revolver;
 }
 
 // Inline code.
@@ -79,30 +75,30 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: $color-gray;
+	color: $color-cadet;
 }
 
-.namespace {
-	opacity: 0.7;
+.token.selector,
+.token.tag {
+	color: $color-sun;
 }
 
 .token.property,
-.token.tag,
 .token.boolean,
 .token.number,
 .token.constant,
 .token.symbol,
+.token.attr-name,
 .token.deleted {
-	color: $color-cranberry;
+	color: $color-lavender;
 }
 
-.token.selector,
-.token.attr-name,
 .token.string,
 .token.char,
+.token.attr-value,
 .token.builtin,
 .token.inserted {
-	color: $color-lime;
+	color: $color-mustard;
 }
 
 .token.operator,
@@ -110,23 +106,22 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	color: $color-copper;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
 	color: $color-teal;
 }
 
+.token.atrule,
+.token.keyword {
+	color: $color-rose;
+}
+
 .token.function {
-	color: $color-persimmon;
+	color: $aqua;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-	color: $color-mustard;
+	color: $color-rose;
 }
 
 .token.important,
@@ -140,5 +135,45 @@ pre[class*="language-"] {
 
 .token.entity {
 	cursor: help;
+}
+
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 0;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: $color-slate;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
 }
 // sass-lint:enable-all
