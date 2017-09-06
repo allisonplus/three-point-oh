@@ -20,7 +20,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php atarr_posted_on(); ?>
+			<?php echo atarr_card_posted_on(); // WPCS: XSS OK. ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>

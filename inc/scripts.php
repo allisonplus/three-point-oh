@@ -26,13 +26,13 @@ function atarr_font_url() {
 		$font_families = array();
 
 		if ( 'off' !== $playfair_display ) {
-			$font_families[] = 'Playfair Display';
+			$font_families[] = 'Playfair Display:400,700';
 		}
 
 		if ( 'off' !== $roboto ) {
 			$font_families[] = 'Roboto:400,700';
 		}
-		// https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:400,700.
+		// https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,700.
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
 		);

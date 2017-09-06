@@ -4,11 +4,79 @@
 .single-post {
 
 	.entry-title {
+		line-height: 1;
 		margin-top: 0;
-	}
+
+		&:after {
+			background: $gradient;
+			content: "";
+			display: block;
+			height: 2px;
+			margin-top: $gutter;
+		}
+	} // .entry-title
 
 	article {
 		box-shadow: $shadow;
-		padding: $gutter;
+		padding: $gutter * 1.5 $gutter * 2;
 	}
+
+	// Date + Posted in Category Info.
+	.entry-meta {
+		display: flex;
+
+		p {
+			font-size: 16px;
+			margin: 0;
+		}
+
+		.meta-content {
+			margin-left: 5px;
+		}
+
+		.category-link {
+			background-color: lighten($aqua, 25%);
+			border: 1px solid lighten($aqua, 15%);
+			border-radius: 2px;
+			padding: 2px;
+			text-decoration: none;
+			transition: all 0.15s ease-in-out;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: lighten($aqua, 15%);
+			}
+		} // category-link
+	} // .entry-meta
+
+	.entry-content {
+		margin: 20px 0 $gutter;
+	}
+
+	.tags-links {
+		font-size: 14px;
+		font-weight: 600;
+
+		a {
+			background-color: lighten($aqua, 15%);
+			border-radius: 4px 1px 1px 4px;
+			box-shadow: 0 3px 0 0 $aqua, 0 4px 0 0 $aqua;
+			color: $revolver;
+			display: inline-block;
+			line-height: 1;
+			margin: 0 $gutter 0 0;
+			padding: 6px 6px 4px;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
+			transition: transform 0.2s linear;
+
+			&:hover,
+			&:active,
+			&:focus {
+				transform: translateY(-10%);
+			}
+		}
+	} // .tags-link
 } // .single-post

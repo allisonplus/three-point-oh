@@ -44,18 +44,12 @@ if ( ! function_exists( 'atarr_entry_footer' ) ) :
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function atarr_entry_footer() {
-		// Hide category and tag text for pages.
+		// Hide tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'atarr' ) );
-			if ( $categories_list && atarr_categorized_blog() ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'atarr' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'atarr' ) );
+			$tags_list = get_the_tag_list();
 			if ( $tags_list ) {
-							printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'atarr' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( '%1$s ', 'atarr' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
 	}
@@ -194,8 +188,8 @@ function atarr_get_main_p5() {
 			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'atarr' ); ?>
 
 			<div class="row">
-				<span class="text-shifting"><?php esc_html_e( 'Creative', 'atarr' ); ?></span>
-				<span class="text-shifting"><?php esc_html_e( 'Daydreamer', 'atarr' ); ?></span></p>
+				<span class="text-shifting"><?php esc_html_e( 'Internet', 'atarr' ); ?></span>
+				<span class="text-shifting"><?php esc_html_e( 'Poet', 'atarr' ); ?></span></p>
 			</div><!--.row-->
 		</div><!-- .heroine-wrapper -->
 	</div>

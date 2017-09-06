@@ -99,5 +99,23 @@
 			height: auto;
 			width: 100%;
 		}
+
+		// Swap the order of those ones, please.
+		.post-card {
+			&:nth-child(odd) {
+
+			@include media($tablet-landscape) {
+				flex-direction: row-reverse;
+			}
+
+				// Reverse triangle fun!
+				.entry-content::before {
+
+					@include media($tablet-landscape) {
+						@include position(absolute, 25% -3.25% null null);
+					}
+				} // &::before
+			} // &:nth-child(odd)
+		} // .post-card
 	} // &.category, &.tag
 } // .archive
