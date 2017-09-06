@@ -31,6 +31,13 @@
 .entry-content,
 .entry-summary {
 	margin: 36px 0 0;
+
+	.page &,
+	.single-post & {
+		a {
+			border-bottom: 3px solid $aqua;
+		}
+	}
 }
 
 .page-links {

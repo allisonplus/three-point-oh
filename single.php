@@ -18,7 +18,10 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content', get_post_format() );
 
-				the_post_navigation();
+				the_post_navigation( array(
+					'prev_text' => __( '<h4 class="pre-title">Previous Post</span><span class="title">%title</h4>' ),
+					'next_text' => __( '<h4 class="pre-title">Next Post</span><span class="title">%title</h4>' ),
+				) );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :

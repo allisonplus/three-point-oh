@@ -17,18 +17,19 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php
-		// Featured image.
-		if ( has_post_thumbnail() ) {
-			the_post_thumbnail( 'large', [ 'class' => 'portfolio-featured' ] );
-		}
+		<?php // Featured image.
+		if ( has_post_thumbnail() ) : ?>
+		<div class="portfolio-featured-wrapper">
+			<?php the_post_thumbnail( 'large', [ 'class' => 'portfolio-featured' ] ); ?>
+		</div>
+		<?php endif ?>
 
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'atarr' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-			if ( get_field( 'url' ) ) : ?>
+		<?php the_content( sprintf(
+			/* translators: %s: Name of current post. */
+			wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'atarr' ), array( 'span' => array( 'class' => array() ) ) ),
+			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+		) );
+		if ( get_field( 'url' ) ) : ?>
 			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'Project Link', 'atarr' ); ?></a>
 		<?php endif; ?>
 	</div><!-- .entry-content -->
