@@ -21,6 +21,9 @@
 		if ( has_post_thumbnail() ) : ?>
 		<div class="portfolio-featured-wrapper">
 			<?php the_post_thumbnail( 'large', [ 'class' => 'portfolio-featured' ] ); ?>
+		<?php if ( get_field( 'url' ) ) : ?>
+			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'View Live', 'atarr' ); ?></a>
+		<?php endif ?>
 		</div>
 		<?php endif ?>
 
@@ -28,10 +31,7 @@
 			/* translators: %s: Name of current post. */
 			wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'atarr' ), array( 'span' => array( 'class' => array() ) ) ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		) );
-		if ( get_field( 'url' ) ) : ?>
-			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'Project Link', 'atarr' ); ?></a>
-		<?php endif; ?>
+		) ); ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">

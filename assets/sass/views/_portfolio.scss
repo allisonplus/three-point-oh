@@ -20,21 +20,33 @@
 
 	.portfolio-featured-wrapper {
 		font-size: 0; // ghost-space killah.
-		margin-bottom: $gutter * 2;
+		position: relative;
 		text-align: center;
 
 		@include media($tablet-landscape) {
 			float: left;
-			// margin-bottom: 0;
 			margin-right: $gutter * 2;
 		}
 	}
 
 	.project-link {
-		background: $gradient;
-		color: $white;
+		background-color: $white;
+		border: 1px solid darken($pearl, 20%);
+		color: $revolver;
+		display: block;
+		font-size: 16px;
+		margin: $gutter auto;
+		max-width: 120px;
 		padding: 8px 24px;
+		text-align: center;
 		text-decoration: none;
+		transition: background-color 0.15s ease-in-out;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $pearl;
+		}
 	}
 
 	.image-gallery {
