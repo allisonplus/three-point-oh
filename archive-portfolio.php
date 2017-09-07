@@ -25,27 +25,34 @@ get_header(); ?>
 
 				<div class="grid">
 
+				<?php $featured_work = atarr_query_portfolio();
 
-				<?php
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+				if ( $featured_work->have_posts() ) :
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content-post-card' );
+					while ( $featured_work->have_posts() ) : $featured_work->the_post();
 
-				endwhile;
+						get_template_part( 'template-parts/content-post-card' );
 
-				the_posts_navigation();
+					endwhile; ?>
 
-			else :
+					<div class="nav-links">
+						<div class="nav-previous">
+							<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous', $featured_work->max_num_pages ); // WPCS: XSS OK. ?> </h4>
+						</div>
+						<div class="nav-next">
+							<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next', $featured_work->max_num_pages ); // WPCS: XSS OK. ?></h4>
+						</div>
+					</div><!--.nav-links-->
 
-				get_template_part( 'template-parts/content', 'none' );
+					<?php wp_reset_postdata();
 
+				else :
+
+					get_template_part( 'template-parts/content', 'none' );
+
+				endif;
 			endif; ?>
+
 				</div>
 
 			</main><!-- #main -->

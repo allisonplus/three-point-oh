@@ -19,3 +19,19 @@ function atarr_query_testimonials() {
 		'update_post_term_cache' => false,
 	) );
 }
+
+/**
+ * Portfolio Query.
+ *
+ * @return WP_Query Portfolio CPT.
+ */
+function atarr_query_portfolio() {
+
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+	return new WP_Query( array(
+		'post_type'      => 'portfolio',
+		'posts_per_page' => 6,
+		'paged'          => $paged,
+	) );
+}
