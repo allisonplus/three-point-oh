@@ -43,7 +43,7 @@ get_header(); ?>
 
 				endwhile; ?>
 
-				<div class="nav-links">
+				<div class="nav-links page-nav">
 					<div class="nav-previous">
 						<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous' ); // WPCS: XSS OK. ?> </h4>
 					</div>

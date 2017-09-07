@@ -34,15 +34,19 @@ get_header(); ?>
 						get_template_part( 'template-parts/content-post-card' );
 
 					endwhile; ?>
+				</div><!--.grid-->
 
-					<div class="nav-links">
+					<?php if ( $featured_work->max_num_pages > 1 ) { ?>
+
+					<div class="nav-links page-nav">
 						<div class="nav-previous">
-							<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous', $featured_work->max_num_pages ); // WPCS: XSS OK. ?> </h4>
+							<?php echo get_next_posts_link( '<h4 class="pre-title">' . esc_html( 'Previous', 'atarr' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
 						</div>
 						<div class="nav-next">
-							<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next', $featured_work->max_num_pages ); // WPCS: XSS OK. ?></h4>
+							<?php echo get_previous_posts_link( '<h4 class="pre-title">' . esc_html( 'Next', 'atarr' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
 						</div>
 					</div><!--.nav-links-->
+					<?php } ?>
 
 					<?php wp_reset_postdata();
 
@@ -52,8 +56,6 @@ get_header(); ?>
 
 				endif;
 			endif; ?>
-
-				</div>
 
 			</main><!-- #main -->
 		</div><!-- .primary -->
