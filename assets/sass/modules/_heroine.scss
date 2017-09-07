@@ -24,6 +24,14 @@
 	margin: 0 auto;
 	padding: 0 2 * $gutter;
 
+	&:after {
+		@include position(absolute, 0 0 0 0);
+
+		background-color: $revolver;
+		content: "";
+		z-index: -1;
+	}
+
 	@include media($tablet-landscape) {
 		max-width: 1200px;
 	}

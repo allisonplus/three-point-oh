@@ -158,7 +158,12 @@ function atarr_get_the_excerpt( $args = array() ) {
  * Returns a "Continue Reading" link for excerpts
  */
 function atarr_continue_reading_link() {
-	return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Read More', 'atarr' ) . '</a>';
+
+	if ( is_post_type_archive() ) {
+		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Learn More', 'atarr' ) . '</a>';
+	} else {
+		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Read More', 'atarr' ) . '</a>';
+	}
 }
 
 /**
@@ -212,6 +217,8 @@ function atarr_is_blog() {
 
 /**
  * Prints HTML with customized meta information single-post.
+ *
+ * @param  array $args  Link, date + category particulars..
  *
  * @author Allison Tarr
  */

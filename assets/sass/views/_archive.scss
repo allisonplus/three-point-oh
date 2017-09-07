@@ -21,11 +21,16 @@
 			grid-template-columns: repeat(3, 31.33%);
 		}
 
+		// Varying styles from modules/_card.scss.
 		.post-card {
 			transition: transform 0.25s ease-in-out;
 
 			@include media($phone-landscape) {
 				width: 100%;
+			}
+
+			.entry-title {
+				font-size: 30px;
 			}
 
 			&:hover,

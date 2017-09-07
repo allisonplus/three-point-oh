@@ -59,7 +59,12 @@
 		margin: 0;
 
 		@include media($tablet-landscape) {
+			font-size: 25px;
 			margin: 0 0 $gutter;
+		}
+
+		@include media($desktop) {
+			font-size: 30px;
 		}
 
 		&:after {
@@ -119,36 +124,22 @@
 
 	// 'Read more' link.
 	.button {
+		background-color: $white;
+		border: 1px solid darken($pearl, 20%);
 		color: $revolver;
-		display: inline-block;
-		font-size: 15px;
-		letter-spacing: 1px;
-		line-height: 1;
-		margin-top: $gutter;
+		display: block;
+		font-size: 16px;
+		margin: $gutter 0 0;
+		max-width: 135px;
+		padding: 8px 24px;
+		text-align: center;
 		text-decoration: none;
-		width: 160px;
-
-		@include media($tablet-landscape) {
-			margin-top: 0;
-		}
-
-		// Chevron.
-		&:after {
-			content: "\f054";
-			font-family: fontAwesome;
-			margin-left: 5px;
-			transition: margin 0.2s ease-in-out;
-			vertical-align: bottom;
-		}
+		transition: background-color 0.15s ease-in-out;
 
 		&:hover,
 		&:active,
 		&:focus {
-
-			// Chevron.
-			&:after {
-				margin-left: 8px;
-			}
+			background-color: $pearl;
 		}
 	} // .button
 } // post-card
