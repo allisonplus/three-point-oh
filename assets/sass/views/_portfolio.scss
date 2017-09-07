@@ -27,7 +27,7 @@
 			float: left;
 			margin-right: $gutter * 2;
 		}
-	}
+	} // .portfolio-featured-wrapper
 
 	.project-link {
 		background-color: $white;
@@ -47,7 +47,7 @@
 		&:focus {
 			background-color: $pearl;
 		}
-	}
+	} // .project-link
 
 	.image-gallery {
 		display: grid;
@@ -68,6 +68,6 @@
 			img {
 				box-shadow: $shadow;
 			}
-		}
+		} // .portfolio-gallery-single
 	} // .image-gallery
 } // .portfolio

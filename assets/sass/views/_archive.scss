@@ -35,6 +35,10 @@
 				transform: scale(1.02);
 			}
 
+			.entry-content {
+				justify-content: space-evenly;
+			}
+
 			// Getting rid of reverse triangle fun.
 			.entry-content::before {
 

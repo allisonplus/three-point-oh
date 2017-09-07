@@ -148,6 +148,11 @@ var {
 	font-size: 15px;
 }
 
+p > code,
+li > code {
+	background-color: $pearl;
+}
+
 abbr,
 acronym {
 	border-bottom: 1px dotted $color-border-abbr;

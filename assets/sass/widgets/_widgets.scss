@@ -13,7 +13,13 @@
 	.search-field {
 		width: calc(100% - 79px);
 	}
-}
+
+	&:first-of-type {
+		.widget-title {
+			margin-top: 0;
+		}
+	}
+} // .widget
 
 .widget-title {
 	background: $gradient;
@@ -22,6 +28,11 @@
 	line-height: 24px;
 	margin-bottom: 25px;
 	padding: 12px 16px 16px;
+
+	.widget_categories &,
+	.widget_recent_entries & {
+		margin-bottom: $gutter;
+	}
 }
 
 // Search widget
