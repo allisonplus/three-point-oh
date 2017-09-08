@@ -1,58 +1,49 @@
-/**
- * File super-heroine.js
- *
- */
-const listOne = [ 'INFJ', 'Internet', 'Introverted', 'WordPress', 'Creative', 'Coding', 'Inclusive'];
-const listTwo = [ 'Poet', 'Writer', 'Curator', 'Detective', 'Technologist', 'Feminist', 'Artist', 'Daydreamer'];
+// /**
+//  * File super-heroine.js
+//  *
+//  */
 
-const interval = 3000;
-let wordHistory = '';
+// Get values from ACF fields via wp_localize_script in /inc/acf.php
+const desc = acf_vars.list_parent.descriptor_list;
+const subj = acf_vars.list_parent.subject_list;
 
-// **Grab elements.
-const containerNumber = document.getElementsByClassName( 'text-shifting' );
+// Reformat data from ACF fields.
+const listOne = desc.map( descriptors => descriptors.descriptors );
+const listTwo = subj.map( subjects => subjects.subjects );
 
-identityCycle( containerNumber[0], listOne );
+const listParent = document.querySelector( '.list-parent' );
 
-// Stagger switching timing.
-setTimeout( function() {
-	identityCycle( containerNumber[1], listTwo );
+function makeList( wordList ) {
+	const shuffledList = shuffleThings( wordList );
 
-}, interval/2 );
+	const listTemplate = `
+		<ul class="word-list">
+		${shuffledList.map(descriptor => `<li>${descriptor}</li>`).join('')}
+		</ul>
+	`;
 
-// **Start it off.
-function identityCycle( container, whichList ) {
-
-	setInterval( function() {
-		replaceContent( container, whichList );
-	}, interval );
-};
-
-// **Choose random word from chosen array.
-function getRandomWords( listChoice ) {
-	const word = listChoice[Math.floor( Math.random()*listChoice.length )];
-	return word;
+	listParent.insertAdjacentHTML( 'beforeEnd', listTemplate );
 }
 
-// **Markup Replacement.
-function replaceContent( container, whichList ) {
 
-	const identity = getRandomWords( whichList );
-	const noRepeat = compareWords(identity);
+function shuffleThings( array ) {
+	var currentIndex = array.length, temporaryValue, randomIndex;
 
-	// **Replace.
-	if( noRepeat ) {
-		container.textContent = identity;
-	} else {
-		replaceContent( container );
+		// While there remain elements to shuffle.
+		while (0 !== currentIndex) {
+
+		// Pick a remaining element.
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
 	}
 
-	wordHistory = identity;
+	return array;
 }
 
-function compareWords( currentWord ) {
-	if( currentWord === wordHistory ) {
-		return false;
-	} else {
-		return true;
-	}
-}
+makeList(listOne);
+makeList(listTwo);
