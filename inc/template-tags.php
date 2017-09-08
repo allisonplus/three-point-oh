@@ -180,6 +180,9 @@ function atarr_do_copyright_text() {
  */
 function atarr_get_main_p5() {
 
+	// Make ACF variables to JS.
+	atarr_identity_variables();
+
 	// Start markup.
 	ob_start(); ?>
 

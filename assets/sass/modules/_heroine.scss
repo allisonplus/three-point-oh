@@ -1,13 +1,13 @@
 //--------------------------------------------------------------
 // Heroine
 //--------------------------------------------------------------
-
 #heroine {
 	@include size(auto 150px);
 
 	overflow: hidden;
 	position: relative;
 
+	// Front page.
 	.home & {
 		@include size(auto 400px);
 	}
@@ -24,20 +24,21 @@
 	margin: 0 auto;
 	padding: 0 2 * $gutter;
 
-	&:after {
-		@include position(absolute, 0 0 0 0);
-
-		background-color: $revolver;
-		content: "";
-		z-index: -1;
-	}
-
 	@include media($tablet-landscape) {
 		max-width: 1200px;
 	}
 
 	@include media($desktop) {
 		padding: 0;
+	}
+
+	// Backup background if no JS enacted.
+	&:after {
+		@include position(absolute, 0 0 0 0);
+
+		background-color: $revolver;
+		content: "";
+		z-index: -1;
 	}
 
 	h2,
@@ -48,39 +49,127 @@
 	.page-title {
 		user-select: none;
 	}
+} // .heroine-wrapper
 
-	.fed,
-	.row {
-		font-size: 42px;
-	}
+
+.heroine-wrapper {
 
 	.fed {
-		display: inline-block;
-		max-width: 340px;
+		font-size: 46px;
+		margin-bottom: $gutter * 2;
+		width: 340px;
+	}
+
+	.fed,
+	.list-parent {
 		user-select: none;
 	}
 
-	.row {
-		margin-top: $gutter;
+	.list-parent {
+		display: flex;
+		flex-direction: column;
 
-		@include media($tablet-landscape) {
-			display: flex;
+		@include media($phone-landscape) {
+			flex-direction: row;
+			position: relative;
 		}
 	}
 
-	.text-shifting {
-		background-color: rgba($loulou, 0.5);
-		border-radius: 3px;
-		margin-right: 8px;
-		padding: 0 14px 5px;
-		user-select: none;
+	.word-list {
+		@include size(230px 43px);
 
+		margin: 0;
+		padding: 0;
+		position: relative;
+
+		// First list {descriptors}.
 		&:first-of-type {
-			padding: 0 14px 5px 0;
 
-			@include media($tablet-landscape) {
-				padding: 0 14px 5px;
+			li {
+				@include position(absolute, 0 null null 0);
+
+				animation: topToBottom 21s infinite;
+				animation-delay: 1s;
+			} // li
+		} // &:first-of-type
+
+		// Second list {subjects}.
+		&:last-of-type {
+
+			li {
+				animation: topToBottom 21s linear 0s infinite reverse;
+			} // li
+
+			@include media($phone-landscape) {
+				margin-left: 14px;
+			}
+		} // &:last-of-type
+
+		li {
+			@include position(absolute, 0 null null 0);
+
+			background-color: rgba($loulou, 0.2);
+			border-radius: 3px;
+			font-size: 32px;
+			letter-spacing: 2px;
+			list-style-type: none;
+			opacity: 0;
+			padding: 0 10px 5px;
+			text-align: center;
+			width: 100%;
+
+			@for $i from 0 through 9 {
+				&:nth-of-type(#{$i}) {
+					animation-delay: -3s * $i;
+				}
+			}
+		} // li
+
+		// Fallback to show the first <li> in each list if there's no JS.
+		.no-js & {
+			li:first-of-type {
+				opacity: 1;
 			}
 		}
-	}
+	} // .word-list
 } // .heroine-wrapper
+
+
+//--------------------------------------------------------------
+// Vertical Fade-In Animation.
+//--------------------------------------------------------------
+@keyframes topToBottom {
+	0% {
+		opacity: 0;
+	}
+
+	2% {
+		-webkit-transform: translateY(-30px);
+		opacity: 0;
+	}
+
+	5% {
+		-webkit-transform: translateY(0);
+		opacity: 1;
+	}
+
+	17% {
+		-webkit-transform: translateY(0);
+		opacity: 1;
+	}
+
+	20% {
+		-webkit-transform: translateY(30px);
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0;
+	}
+} // @keyframes topToBottom
+
+
