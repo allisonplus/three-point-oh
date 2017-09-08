@@ -232,16 +232,14 @@ function atarr_get_footer_social_links() {
 	<?php // If there's no email, don't make this <li> in the first place .?>
 	<?php if ( ! empty( $email ) ) : ?>
 		<li class="social-network email">
-			<a href="mailto:<?php echo esc_html( $email ); ?>"></a>
-			<span class="screen-reader-text"><?php esc_html_e( 'Email me', 'atarr' ); ?></span>
+			<a href="mailto:<?php echo esc_html( $email ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Email me', 'atarr' ); ?></span></a>
 		</li>
 	<?php endif; ?>
 
 	<?php // Continue <li>'s with rest of social networks provided. ?>
 	<?php foreach ( $social_networks as $network ) : ?>
 		<li class="social-network <?php echo esc_attr( $network ); ?>">
-			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"></a>
-			<span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); ?><?php echo esc_attr( $network ); ?></span>
+			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); ?><?php echo esc_attr( $network ); ?></span></a>
 		</li>
 	<?php endforeach; ?>
 	</ul><!-- .social-networks -->
