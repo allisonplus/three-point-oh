@@ -187,10 +187,9 @@ function atarr_get_main_p5() {
 		<div class="heroine-wrapper">
 			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'atarr' ); ?>
 
-			<div class="row">
-				<span class="text-shifting"><?php esc_html_e( 'Internet', 'atarr' ); ?></span>
-				<span class="text-shifting"><?php esc_html_e( 'Poet', 'atarr' ); ?></span></p>
-			</div><!--.row-->
+			<div class="list-parent">
+
+			</div>
 		</div><!-- .heroine-wrapper -->
 	</div>
 	<?php
