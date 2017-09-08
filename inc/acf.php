@@ -106,3 +106,14 @@ function atarr_get_factoids() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Transferring ACF fields to js/secret-heroine.js file
+ */
+function atarr_identity_variables() {
+
+	wp_localize_script( 'atarr-super-heroine', 'acf_vars', array(
+			'list_parent' => get_field( 'heroine_secret_identity' ),
+		)
+	);
+}
