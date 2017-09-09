@@ -106,10 +106,10 @@ function atarr_external_scripts() {
 	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
 
 	// Testimonial Slider.
-	if ( is_front_page() ) {
+	if ( is_front_page() || is_singular( 'portfolio' ) ) {
 		wp_enqueue_style( 'atarr-carousel-style', 'https://unpkg.com/flickity@2/dist/flickity.min.css' );
 		wp_enqueue_script( 'atarr-carousel-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/carousel-testimonials.js', array( 'jquery' ), $version, true );
+		wp_enqueue_script( 'atarr-mobile-nav', get_template_directory_uri() . '/assets/js/carousel.js', array( 'jquery' ), $version, true );
 	}
 
 	// Enqueue p5.js.

@@ -13,6 +13,11 @@ var flkty = new Flickity( elem, {
 });
 
 // Selector for specific/individual section.
-// var flkty = new Flickity( '.testimonials', {
-// 	// Options.
-// });
+var portfolio = document.querySelector( '.image-gallery' );
+var portfolioSingle = new Flickity( portfolio, {
+	// Options.
+	cellAlign: 'center',
+	contain: true,
+	pageDots: false,
+	imagesLoaded: true,
+});
