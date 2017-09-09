@@ -14,11 +14,13 @@
 	}
 
 	.testimonial-single {
+		display: flex;
 		min-height: 100%;
 		width: 100%;
 	}
 
 	.testimonial-single-shell {
+		align-items: center;
 		display: flex;
 		justify-content: center;
 		margin: 0 auto ;
@@ -28,7 +30,7 @@
 
 	// Source photo.
 	.testimonial-photo {
-		@include size(100px);
+		@include size(120px);
 
 		border-radius: 50%;
 	}
@@ -36,13 +38,42 @@
 	.testimonial-name,
 	.testimonial-source,
 	.testimonial-link {
-		margin-left: 24px;
-		padding-left: 16px;
+		font-family: $font-serif;
+		font-size: 20px;
+		margin-bottom: 0;
+		margin-left: 36px;
+	}
+
+	.testimonial-link,
+	.testimonial-source {
+		line-height: 1;
+	}
+
+	.quote-container {
+		margin-left: 50px;
+		padding: 20px 0;
 	}
 
 	blockquote {
 		border-left: none;
-	}
+		margin: 0 0 0 20px;
+		position: relative;
+		z-index: 4;
+
+		p {
+			font-size: 22px;
+
+			&:before {
+				@include position(absolute, -70px null null -44px);
+
+				color: darken($aqua, 25%);
+				content: "\201C";
+				font-size: 140px;
+				opacity: 0.3;
+				z-index: -1;
+			}
+		}
+	} // blockquote
 
 	// Arrow colours.
 	.flickity-prev-next-button .arrow,

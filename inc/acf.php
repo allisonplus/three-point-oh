@@ -49,7 +49,7 @@ function atarr_get_testimonial_section() {
 						<img class="testimonial-photo" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_html( $alt ); ?>">
 					<?php endif; ?>
 
-					<div class="quote-content">
+					<div class="quote-container">
 						<figcaption>
 							<?php the_content(); ?>
 						</figcaption>
@@ -63,7 +63,7 @@ function atarr_get_testimonial_section() {
 						<?php if ( ! empty( $source ) ) : ?>
 							<p class="testimonial-source"><?php echo esc_html( $source ); ?></p>
 						<?php endif; ?>
-					</div><!--.quote-content-->
+					</div><!--.quote-container-->
 				</div><!--.testimonial-single-shell-->
 			</figure><!--.testimonial-single-->
 
