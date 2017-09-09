@@ -77,7 +77,34 @@ function atarr_get_testimonial_section() {
 }
 
 /**
- * Testimonial Section
+ * Single Portfolio Image(s)
+ */
+function atarr_get_portfolio_gallery() {
+	ob_start(); ?>
+
+	<?php
+
+	// Get gallery of images.
+	$images = get_field( 'images' );
+	$size = 'large';
+
+	if ( $images ) : ?>
+
+		<ul class="image-gallery">
+			<?php foreach ( $images as $image ) : ?>
+			<li class="portfolio-gallery-single">
+				<?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
+
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Factoids Section (About Page)
  */
 function atarr_get_factoids() {
 	ob_start(); ?>
@@ -94,8 +121,8 @@ function atarr_get_factoids() {
 					<?php the_sub_field( 'icon' ); ?>
 
 					<div class="fact-content">
-						<h4><?php the_sub_field( 'fact_title' ); ?></h4>
-						<p><?php the_sub_field( 'fact' ); ?></p>
+						<h4><?php esc_html( the_sub_field( 'fact_title' ) ); ?></h4>
+						<p><?php esc_html( the_sub_field( 'fact' ) ); ?></p>
 					</div>
 				</div> <!--/.factoid-->
 			<?php endwhile; ?>
