@@ -6,15 +6,33 @@
  */
 
 /**
- * Testimonial Section
+ * 'How I Can Help' Section
  */
 function atarr_get_help() {
 
+	$helping_list = get_field( 'helping_section' );
+
 	ob_start(); ?>
 
-		<section class="I-can-help">
+		<section class="i-can-help">
 			<h2><?php esc_html_e( 'How I Can Help', 'atarr' ); ?></h2>
 
+				<?php if ( have_rows( 'helping_section' ) ) : ?>
+
+				<div class="help-shell">
+					<?php while ( have_rows( 'helping_section' ) ) : the_row(); ?>
+
+					<div class="help-single">
+						<?php echo esc_html( the_sub_field( 'icon' ) ); ?>
+						<h3><?php echo esc_html( the_sub_field( 'title' ) ); ?></h3>
+						<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
+					</div>
+					<?php endwhile; ?>
+				</div>
+
+				<?php endif; ?>
+
+			</div><!--.help-shell-->
 		</section><!--.section-->
 
 	<?php
