@@ -14,11 +14,17 @@
 	}
 }
 
-.site-header,
-.site-footer {
+.site-header {
 
 	@include media($tablet-landscape) {
 		padding: 0 2 * $gutter;
+	}
+}
+
+.site-footer {
+
+	@include media($tablet-landscape) {
+		padding: $gutter 2 * $gutter;
 	}
 }
 

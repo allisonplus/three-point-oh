@@ -41,7 +41,7 @@
 	// Each social network.
 	.social-network {
 		display: inline-block;
-		margin-right: 8px;
+		margin-right: 10px;
 
 		// No margin for the last <li> item.
 		&:last-of-type {
@@ -50,21 +50,27 @@
 
 		// Make links take up full space.
 		a {
+			background-color: $cinder;
 			color: $pearl;
 			display: block;
-			font-size: 0; // ghost-space killah.
-			transition: fill 0.15s ease-in-out;
+			outline: 1px solid $cinder;
+			transform: rotate(45deg);
+			transition: outline-color 0.2s ease-in-out;
 
 			&:hover,
 			&:active {
-				fill: $color-link-hover;
+				outline-color: $pearl;
 			}
 
 			&:before {
+				@include size(30px auto);
+
 				display: inline-block;
 				font-family: FontAwesome;
 				font-size: 18px;
 				line-height: 1;
+				padding: 6px;
+				transform: rotate(-45deg);
 			}
 
 			&[href*="codepen.io"]:before {
