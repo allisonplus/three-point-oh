@@ -1,0 +1,32 @@
+
+.caldera-grid {
+	max-width: 900px;
+
+	input[type="submit"] {
+		background-color: $white;
+		border: 1px solid darken($pearl, 20%);
+		color: $revolver;
+		display: block;
+		font-size: 16px;
+		margin: $gutter 0 0;
+		padding: 8px 24px;
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 0.15s ease-in-out;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $pearl;
+		}
+	}
+}
+
+.caldera-grid .checkbox-inline + .checkbox-inline,
+.caldera-grid .radio-inline + .radio-inline {
+	margin-left: 0 !important;
+
+	@include media($phone-landscape) {
+		margin-left: 10px !important;
+	}
+}
