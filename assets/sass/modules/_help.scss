@@ -14,7 +14,7 @@
 	}
 
 	.help-single {
-		box-shadow: $shadow;
+		border: 1px solid darken($pearl, 20%);
 		padding: $gutter $gutter * 2;
 		width: calc((100% / 3 - 20px));
 

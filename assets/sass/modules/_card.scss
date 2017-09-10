@@ -2,7 +2,7 @@
 // Card (variations used for both blog + portfolio)
 //--------------------------------------------------------------
 .post-card {
-	box-shadow: $shadow;
+	border: 1px solid darken($pearl, 20%);
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -16,6 +16,12 @@
 		align-items: stretch;
 		flex-direction: row;
 		width: 100%;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: $shadow;
 	}
 
 	// Swap the order of those ones, please.
@@ -50,6 +56,11 @@
 
 		@include media($tablet-landscape) {
 			text-align: left;
+		}
+
+		a,
+		img {
+			display: block;
 		}
 	} // .entry-header
 

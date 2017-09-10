@@ -23,7 +23,7 @@
 
 		// Varying styles from modules/_card.scss.
 		.post-card {
-			transition: transform 0.25s ease-in-out;
+			transition: box-shadow 0.2s ease-in-out;
 
 			@include media($phone-landscape) {
 				width: 100%;
@@ -31,13 +31,6 @@
 
 			.entry-title {
 				font-size: 30px;
-			}
-
-			&:hover,
-			&:focus,
-			&:active {
-				box-shadow: 1px 1px 30px 7px rgba($revolver, 0.6);
-				transform: scale(1.02);
 			}
 
 			.entry-content {
