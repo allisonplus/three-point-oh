@@ -1,0 +1,28 @@
+//--------------------------------------------------------------
+// Contact CTA
+//--------------------------------------------------------------
+.contact-info {
+	background-color: $revolver;
+	color: $pearl;
+	padding: 40px 0;
+	text-align: center;
+
+	.section-title {
+		color: $pearl;
+		margin-top: 0;
+	}
+}
+
+.email-cta {
+	border: 1px solid $pearl;
+	color: $pearl;
+	display: inline-block;
+	margin: 0 auto;
+	padding: 10px 20px;
+
+	&:hover {
+		background: $pearl;
+		color: $black;
+		transition: all 0.2s ease-in-out;
+	}
+}

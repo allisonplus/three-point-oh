@@ -273,3 +273,32 @@ function atarr_do_card_image( $size ) {
 
 	echo '<img src="' . esc_url( $media_url ) . '" class="wp-post-image" alt="' . esc_html( get_the_title() ) . '" />';
 }
+
+
+/**
+ * Contact CTA section.
+ */
+function atarr_do_contact_cta() {
+
+	// Grab email from customizer.
+	$email = get_theme_mod( 'atarr_email_link' );
+
+	// Stop if there's nothing to display.
+	if ( ! $email ) {
+		return false;
+	}
+
+	ob_start(); ?>
+
+	<section class="contact-info">
+		<div class="wrap">
+			<h2 class="section-title"><?php esc_html_e( 'Contact Me', 'atarr' ); ?></h2>
+			<p><?php esc_html_e( 'If you have cool stuff to share or want to talk shop over a coffee, I\'d love to hear from you!', 'atarr' ); ?></p>
+			<a class="email-cta" href="mailto:<?php echo wp_kses_post( $email ); ?>"><?php echo esc_attr( $email ); ?></a>
+		</div>
+	</section> <!--/.contact-info-->
+
+	<?php
+	return ob_get_clean();
+}
+
