@@ -60,6 +60,8 @@ get_header(); ?>
 			</main><!-- #main -->
 		</div><!-- .primary -->
 
+
 	</div><!-- .wrap -->
+<?php echo atarr_do_contact_cta(); // WPCS: XSS OK. ?>
 
 <?php get_footer(); ?>

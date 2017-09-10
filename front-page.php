@@ -50,13 +50,14 @@ get_header(); ?>
 
 			endif; ?>
 
-			<?php
-				echo atarr_get_help(); // WPCS: XSS OK.
-				echo atarr_get_testimonial_section(); // WPCS: XSS OK.
-			?>
 
 			</main><!-- #main -->
 		</div><!-- .primary -->
+			<?php
+				echo atarr_get_help(); // WPCS: XSS OK.
+				echo atarr_get_testimonial_section(); // WPCS: XSS OK.
+				echo atarr_do_contact_cta(); // WPCS: XSS OK.
+			?>
 	</div><!-- .wrap -->
 
 <?php get_footer(); ?>

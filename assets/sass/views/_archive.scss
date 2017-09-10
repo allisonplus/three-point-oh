@@ -3,10 +3,6 @@
 //--------------------------------------------------------------
 .archive {
 
-	.page-title {
-		text-align: center;
-	}
-
 	.grid {
 		display: grid;
 		width: 100%;
@@ -23,7 +19,6 @@
 
 		// Varying styles from modules/_card.scss.
 		.post-card {
-			transition: box-shadow 0.2s ease-in-out;
 
 			@include media($phone-landscape) {
 				width: 100%;

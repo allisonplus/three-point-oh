@@ -12,10 +12,14 @@ function atarr_get_help() {
 
 	$helping_list = get_field( 'helping_section' );
 
+	// Stop if there's nothing to display.
+	if ( ! $helping_list ) {
+		return false;
+	}
+
 	ob_start(); ?>
 
 		<section class="i-can-help">
-			<h2 class="section-title"><?php esc_html_e( 'How I Can Help', 'atarr' ); ?></h2>
 
 				<?php if ( have_rows( 'helping_section' ) ) : ?>
 
@@ -49,7 +53,7 @@ function atarr_get_testimonial_section() {
 		<?php $testimonials = atarr_query_testimonials(); ?>
 
 		<section class="testimonials">
-			<div class="testimonials-shell">
+			<div class="testimonials-shell wrap">
 		<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 
 		<?php

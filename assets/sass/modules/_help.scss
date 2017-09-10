@@ -6,7 +6,12 @@
 
 	.help-shell {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
+
+		@include media($tablet-portrait) {
+			flex-direction: row;
+		}
 	}
 
 	.section-title {
@@ -15,8 +20,17 @@
 
 	.help-single {
 		border: 1px solid darken($pearl, 20%);
+		margin-top: $gutter * 2;
 		padding: $gutter $gutter * 2;
-		width: calc((100% / 3 - 20px));
+
+		@include media($tablet-portrait) {
+			margin-top: 0;
+			width: calc((100% / 3 - 8px));
+		}
+
+		@include media($tablet-landscape) {
+			width: calc((100% / 3 - 20px));
+		}
 
 		.fa {
 			color: $loulou;

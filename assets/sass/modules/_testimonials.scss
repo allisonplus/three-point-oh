@@ -22,10 +22,15 @@
 	.testimonial-single-shell {
 		align-items: center;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		margin: 0 auto ;
 		max-width: 82%;
 		width: 100%;
+
+		@include media($tablet-landscape) {
+			flex-direction: row;
+		}
 
 		a {
 			border-bottom: 2px solid $pearl;
@@ -48,9 +53,13 @@
 
 	blockquote {
 		border-left: none;
-		margin: 0 0 0 20px;
+		margin: 0;
 		position: relative;
 		z-index: 4;
+
+		@include media($tablet-portrait) {
+			margin: 0 0 0 20px;
+		}
 
 		p {
 			font-size: 20px;
@@ -70,8 +79,12 @@
 	.quote-container {
 		font-family: $font-serif;
 		font-size: 18px;
-		margin-left: 50px;
+		margin-left: 10px;
 		padding: 20px 0;
+
+		@include media($tablet-portrait) {
+			margin-left: 50px;
+		}
 	}
 
 	.testimonial-name,
