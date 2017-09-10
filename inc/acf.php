@@ -15,7 +15,7 @@ function atarr_get_help() {
 	ob_start(); ?>
 
 		<section class="i-can-help">
-			<h2><?php esc_html_e( 'How I Can Help', 'atarr' ); ?></h2>
+			<h2 class="section-title"><?php esc_html_e( 'How I Can Help', 'atarr' ); ?></h2>
 
 				<?php if ( have_rows( 'helping_section' ) ) : ?>
 
@@ -49,8 +49,6 @@ function atarr_get_testimonial_section() {
 		<?php $testimonials = atarr_query_testimonials(); ?>
 
 		<section class="testimonials">
-			<h2><?php esc_html_e( 'People Say Nice Things', 'atarr' ); ?></h2>
-
 			<div class="testimonials-shell">
 		<?php while ( $testimonials->have_posts() ) : $testimonials->the_post(); ?>
 

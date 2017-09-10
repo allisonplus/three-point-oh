@@ -9,9 +9,13 @@
 		justify-content: space-between;
 	}
 
+	.section-title {
+		text-align: center;
+	}
+
 	.help-single {
 		box-shadow: $shadow;
-		padding: $gutter;
+		padding: $gutter $gutter * 2;
 		width: calc((100% / 3 - 20px));
 
 		.fa {
@@ -36,6 +40,7 @@
 		} // h3
 
 		p {
+			line-height: 1.75;
 			margin-bottom: 0;
 		}
 	}

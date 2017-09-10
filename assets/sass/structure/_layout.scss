@@ -37,7 +37,8 @@
 
 .site-content {
 	.blog &,
-	.single-post & {
+	.single-post &,
+	.single-testimonials & {
 		margin-top: 36px;
 	}
 }
@@ -46,7 +47,8 @@
 	@include fill-parent;
 
 	.blog &,
-	.single-post & {
+	.single-post &,
+	.single-testimonials & {
 
 		@include media($tablet-landscape) {
 			@include span-columns(9);
