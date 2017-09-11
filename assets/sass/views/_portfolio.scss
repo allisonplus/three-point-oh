@@ -65,7 +65,7 @@
 
 	.image-gallery {
 		list-style-type: none;
-		margin-bottom: $gutter * 2;
+		margin-bottom: 40px;
 		padding: 0;
 
 		.portfolio-gallery-single {
@@ -76,5 +76,9 @@
 				min-height: 100%;
 			} // img
 		} // .portfolio-gallery-single
+
+		.flickity-page-dots .dot {
+			background-color: $loulou;
+		}
 	} // .image-gallery
 } // .portfolio
