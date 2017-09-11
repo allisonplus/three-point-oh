@@ -41,7 +41,7 @@
 	// Each social network.
 	.social-network {
 		display: inline-block;
-		margin-right: 10px;
+		margin-right: 8px;
 
 		// No margin for the last <li> item.
 		&:last-of-type {
@@ -51,19 +51,19 @@
 		// Make links take up full space.
 		a {
 			background-color: $cinder;
+			border: 1px solid $cinder;
 			color: $pearl;
 			display: block;
-			outline: 1px solid $cinder;
 			transform: rotate(45deg);
-			transition: outline-color 0.2s ease-in-out;
+			transition: border 0.15s ease-in-out;
 
 			&:hover,
 			&:active {
-				outline-color: $pearl;
+				border-color: $pearl;
 			}
 
 			&:before {
-				@include size(30px auto);
+				@include size(28px auto);
 
 				display: inline-block;
 				font-family: FontAwesome;

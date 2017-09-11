@@ -4,16 +4,75 @@
 .site-footer {
 	background-color: $cinder;
 	color: $pearl;
-	font-size: 18px;
+	font-size: 14px;
+
+	// Get rid of clearfix b/c flexbox.
+	.wrap {
+		&:after {
+			content: none;
+		}
+	}
+
+	.footer-shell {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		@include media($phone-landscape) {
+			flex-direction: row;
+		}
+	}
+
+	.site-info {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		margin-bottom: $gutter;
+		width: 100%;
+
+		@include media($phone-landscape) {
+			margin-bottom: 0;
+			width: auto;
+		}
+	}
+
+	// Footer menu.
+	.menu-footer-container {
+
+		// Site credits, etc.
+		ul {
+			list-style-type: none;
+			margin: 0 0 0 25px;
+			padding: 0;
+
+			@include media($tablet-landscape) {
+				margin: 0 0 0 14px;
+			}
+
+			li {
+				font-size: 14px;
+			}
+
+			a {
+				padding: 0 0 0 6px;
+				position: relative;
+
+				&:before {
+					@include position(absolute, null null 50% -16px);
+
+					color: $aqua;
+					content: "\2022";
+					font-size: 32px;
+					line-height: 1;
+					transform: translateY(50%);
+				}
+			}
+		}
+	} // .menu-footer-container
 
 	.heart {
 		color: $aqua;
 		margin: 0 3px;
 	}
-}
-
-.site-info {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-}
+} // .site-footer

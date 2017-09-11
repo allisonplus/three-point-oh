@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 .archive {
 
+	// Grid system.
 	.grid {
 		display: grid;
 		width: 100%;
@@ -16,30 +17,6 @@
 			grid-gap: 3%;
 			grid-template-columns: repeat(3, 31.33%);
 		}
-
-		// Varying styles from modules/_card.scss.
-		.post-card {
-
-			@include media($phone-landscape) {
-				width: 100%;
-			}
-
-			.entry-title {
-				font-size: 30px;
-			}
-
-			.entry-content {
-				justify-content: space-evenly;
-			}
-
-			// Getting rid of reverse triangle fun.
-			.entry-content::before {
-
-				@include media($tablet-landscape) {
-					content: none;
-				}
-			} // &::before
-		} // .post-card
 
 		// First two horizontal cards.
 		.post-card:first-of-type,
@@ -80,6 +57,61 @@
 				grid-column: 2 / 4;
 			}
 		}
+	} // .grid
+} // .archive
+
+
+//--------------------------------------------------------------
+// Varying styles from modules/_card.scss.
+//--------------------------------------------------------------
+.archive {
+
+	.grid {
+		.post-card {
+
+			@include media($phone-landscape) {
+				width: 100%;
+			}
+
+			// Card title.
+			.entry-title {
+				font-size: 30px;
+
+				@include media($tablet-landscape) {
+					font-size: 25px;
+				}
+
+				@include media($desktop) {
+					font-size: 30px;
+				}
+			}
+
+			// Title, excerpt + link.
+			.entry-content {
+				justify-content: space-evenly;
+			}
+
+			// Project excerpt.
+			.card-excerpt {
+				font-size: 16px;
+
+				@include media($tablet-landscape) {
+					font-size: 14px;
+				}
+
+				@include media($desktop) {
+					font-size: 16px;
+				}
+			}
+
+			// Getting rid of reverse triangle fun.
+			.entry-content::before {
+
+				@include media($tablet-landscape) {
+					content: none;
+				}
+			} // &::before
+		} // .post-card
 	} // .grid
 } // .archive
 

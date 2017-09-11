@@ -20,7 +20,9 @@
 	margin: 0 auto;
 	padding: 10px 20px;
 
-	&:hover {
+	&:hover,
+	&:focus,
+	&:active {
 		background: $pearl;
 		color: $black;
 		transition: all 0.2s ease-in-out;

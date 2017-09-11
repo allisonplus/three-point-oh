@@ -14,12 +14,12 @@
 	</div><!-- #content -->
 
 	<footer class="site-footer">
-		<div class="wrap">
+		<div class="wrap footer-shell">
 			<div class="site-info">
-				<?php atarr_do_copyright_text(); ?>
-				<?php echo atarr_get_footer_social_links(); // WPCS: XSS OK. ?>
+				<?php echo atarr_do_copyright_text(); // WPCS: XSS OK. ?>
 			</div>
 
+			<?php echo atarr_get_social_links(); // WPCS: XSS OK. ?>
 		</div><!-- .wrap -->
 	</footer><!-- .site-footer -->
 </div><!-- #page -->

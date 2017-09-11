@@ -22,9 +22,10 @@
 }
 
 .site-footer {
+	padding: $gutter 0;
 
 	@include media($tablet-landscape) {
-		padding: $gutter 2 * $gutter;
+		padding: 8px 2 * $gutter;
 	}
 }
 

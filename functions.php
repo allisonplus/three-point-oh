@@ -48,6 +48,7 @@ if ( ! function_exists( 'atarr_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary Menu', 'atarr' ),
+			'footer'  => esc_html__( 'Footer Menu', 'atarr' ),
 		) );
 
 		/**
@@ -96,7 +97,7 @@ function atarr_widgets_init() {
 
 	// Define sidebars.
 	$sidebars = array(
-		'sidebar-1'  => esc_html__( 'Sidebar 1', 'atarr' ),
+		'sidebar-1'  => esc_html__( 'Sidebar', 'atarr' ),
 	);
 
 	// Loop through each sidebar and register.

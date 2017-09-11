@@ -170,9 +170,19 @@ function atarr_do_copyright_text() {
 	if ( ! $copyright_text ) {
 		return false;
 	}
-		// Echo the text.
-	echo '<span class="copyright-text">&#169;' . date( 'Y' ) . '<span class="heart"> &#9825; </span>' . wp_kses_post( $copyright_text ) . '</span>'; // WPCS: XSS OK.
 
+	ob_start(); ?>
+
+	<span class="copyright-text">&#169; <?php echo intval( date( 'Y' ) ); ?> <?php echo wp_kses_post( $copyright_text ); ?></span>
+	<?php
+		wp_nav_menu( array(
+			'theme_location' => 'footer',
+			'menu_id'        => 'footer-menu',
+		) );
+	?>
+
+	<?php
+	return ob_get_clean();
 }
 
 /**
@@ -217,9 +227,9 @@ function atarr_get_beta_p5() {
 }
 
 /**
- * Social links for the footer.
+ * Social links.
  */
-function atarr_get_footer_social_links() {
+function atarr_get_social_links() {
 
 	// Set an array of social networks.
 	$social_networks = array( 'Codepen', 'Github', 'Twitter', 'Linkedin' );
