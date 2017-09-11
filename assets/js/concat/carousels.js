@@ -24,8 +24,6 @@ var portfolio = document.querySelector( '.image-gallery' );
 	var portfolioSingle = new Flickity( portfolio, {
 		// Options.
 		cellAlign: 'center',
-		contain: true,
-		pageDots: false,
 		imagesLoaded: true,
 	});
 }
