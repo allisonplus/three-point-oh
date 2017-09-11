@@ -24,6 +24,7 @@ textarea {
 // Output headings.
 #{headings(1, 6)} {
 	font-family: $font-serif;
+	margin-bottom: 12px;
 } // #{headings(1, 6)}
 
 // Headers
@@ -31,19 +32,16 @@ textarea {
 h1,
 .h1 {
 	font-size: 42px;
-
 }
 
 h2,
 .h2 {
 	font-size: 36px;
-
 }
 
 h3,
 .h3 {
 	font-size: 30px;
-
 }
 
 h4,
