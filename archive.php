@@ -36,11 +36,18 @@ get_header(); ?>
 					 */
 					get_template_part( 'template-parts/content-post-card' );
 
-				endwhile;
+				endwhile; ?>
 
-				the_posts_navigation();
+				<div class="nav-links page-nav">
+					<div class="nav-previous">
+						<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous' ); // WPCS: XSS OK. ?> </h4>
+					</div>
+					<div class="nav-next">
+						<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next' ); // WPCS: XSS OK. ?></h4>
+					</div>
+				</div><!--.nav-links-->
 
-			else :
+			<?php else :
 
 				get_template_part( 'template-parts/content', 'none' );
 
