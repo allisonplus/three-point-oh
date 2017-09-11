@@ -289,3 +289,40 @@ function atarr_archive_title( $title ) {
 	return $title;
 }
 add_filter( 'get_the_archive_title', 'atarr_archive_title' );
+
+/**
+ * Trim the title lengtth.
+ *
+ * @return string        The shortened excerpt.
+ */
+function atarr_get_styled_pagination() {
+
+	$next_link = get_next_posts_link( __( 'Previous' ) );
+	$prev_link = get_previous_posts_link( __( 'Next' ) );
+
+	// Start markup.
+	ob_start();
+
+	if ( $prev_link || $next_link ) : ?>
+
+	<div class="nav-links page-nav">
+
+		<div class="nav-previous">
+		<?php if ( $next_link ) : ?>
+			<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous' ); // WPCS: XSS OK.  ?> </h4>
+		<?php endif; ?>
+		</div>
+
+		<div class="nav-next">
+		<?php if ( $prev_link ) : ?>
+			<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next' ); // WPCS: XSS OK.  ?></h4>
+		<?php endif; ?>
+		</div>
+
+	<?php endif; ?>
+
+	</div><!--.nav-links-->
+
+	<?php
+	return ob_get_clean();
+}

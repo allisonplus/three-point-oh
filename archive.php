@@ -38,14 +38,7 @@ get_header(); ?>
 
 				endwhile; ?>
 
-				<div class="nav-links page-nav">
-					<div class="nav-previous">
-						<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous' ); // WPCS: XSS OK. ?> </h4>
-					</div>
-					<div class="nav-next">
-						<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next' ); // WPCS: XSS OK. ?></h4>
-					</div>
-				</div><!--.nav-links-->
+				<?php echo atarr_get_styled_pagination(); // WPCS: XSS OK. ?>
 
 			<?php else :
 
