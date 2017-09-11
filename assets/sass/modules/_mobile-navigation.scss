@@ -82,6 +82,7 @@
 	.main-menu {
 
 		li {
+			background-color: $cinder;
 			width: 100%;
 
 			@include media($tablet-landscape) {

@@ -88,6 +88,7 @@
 		}
 
 		a {
+			border-bottom: none;
 			text-decoration: none;
 		}
 	} // .entry-title
@@ -152,6 +153,7 @@
 		&:active,
 		&:focus {
 			background-color: $pearl;
+			border: 1px solid darken($pearl, 20%);
 		}
 	} // .button
 } // post-card

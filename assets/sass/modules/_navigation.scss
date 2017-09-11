@@ -24,6 +24,18 @@ a {
 		line-height: 1;
 		text-decoration: none;
 	}
+
+	.page-content &,
+	.entry-content & {
+		border-bottom: 2px solid $aqua;
+		transition: border 0.2s ease-in-out;
+
+		&:hover,
+		&:focus,
+		&:active {
+			border-bottom: 3px solid $aqua;
+		}
+	}
 } // a
 
 // Default menu (active after a fresh WordPress install).
