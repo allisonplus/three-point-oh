@@ -45,7 +45,8 @@
 .site-content {
 	.blog &,
 	.single-post &,
-	.single-testimonials & {
+	.single-testimonials &,
+	.search-results & {
 		margin-top: 36px;
 	}
 }
@@ -55,7 +56,8 @@
 
 	.blog &,
 	.single-post &,
-	.single-testimonials & {
+	.single-testimonials &,
+	.search-results & {
 
 		@include media($tablet-landscape) {
 			@include span-columns(9);

@@ -21,7 +21,8 @@
 	}
 } // .widget
 
-.widget-title {
+.widget-title,
+.widgettitle {
 	background: $gradient;
 	color: $white;
 	font-size: 24px;
@@ -33,4 +34,16 @@
 // Search widget
 .widget_search .search-submit {
 	display: none;
+}
+
+
+.widget-shell {
+	display: flex;
+	flex-direction: column;
+
+
+	@include media($tablet-landscape) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
 }

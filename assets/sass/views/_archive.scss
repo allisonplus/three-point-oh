@@ -117,12 +117,13 @@
 
 
 //--------------------------------------------------------------
-// Archive: Blog Tags + Categories
+// Archive: Blog Dates, Tags + Categories
 //--------------------------------------------------------------
 .archive {
 
 	&.category,
-	&.tag {
+	&.tag,
+	&.date {
 
 		.entry-content {
 			height: auto;
