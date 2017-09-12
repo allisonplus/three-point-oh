@@ -5,6 +5,9 @@
  * @package atarr
  */
 
+// Hide ACF menu.
+add_filter( 'acf/settings/show_admin', '__return_false' );
+
 /**
  * 'How I Can Help' Section
  */
@@ -106,7 +109,7 @@ function atarr_get_portfolio_gallery() {
 
 	// Get gallery of images.
 	$images = get_field( 'images' );
-	$size = 'large';
+	$size = 'portfolio';
 
 	if ( $images ) : ?>
 

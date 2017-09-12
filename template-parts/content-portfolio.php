@@ -22,9 +22,9 @@
 			<?php echo atarr_get_portfolio_gallery(); // WPCS: XSS OK.  ?>
 
 		<?php if ( get_field( 'url' ) ) : ?>
-			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'View Live', 'atarr' ); ?></a> -->
-		</div>
+			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'View Live', 'atarr' ); ?></a>
 		<?php endif ?>
+		</div>
 
 		<div class="entry-content">
 			<h3><?php esc_html_e( 'Project Details', 'atarr' ); ?></h3>

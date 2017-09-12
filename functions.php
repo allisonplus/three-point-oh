@@ -44,6 +44,7 @@ if ( ! function_exists( 'atarr_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'featured-card', 450, 321, array( 'center', 'center' ) );
+		add_image_size( 'portfolio', 600, 400, array( 'center', 'center' ) );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
