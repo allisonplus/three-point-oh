@@ -34,7 +34,10 @@
 		}
 
 		&:not(:nth-of-type(2)) {
-			margin-top: 40px;
+
+			@include media($tablet-landscape) {
+				margin-top: 40px;
+			}
 		}
 
 		.fa {
@@ -65,15 +68,22 @@
 
 		// CTA link in center card.
 		.button-cta {
-			@include position(absolute, null null $gutter 50.1%);
-
 			background-color: $white;
 			border: 1px solid $loulou;
 			color: $revolver;
+			display: block;
 			font-size: 16px;
+			margin: $gutter auto 0;
+			max-width: 135px;
 			padding: 8px 24px;
-			transform: translateX(-50.1%);
+			text-align: center;
 			transition: all 0.2s ease-in-out;
+
+			@include media($tablet-landscape) {
+				@include position(absolute, null null $gutter 50.1%);
+
+				transform: translateX(-50.1%);
+			}
 
 			&:hover,
 			&:active,

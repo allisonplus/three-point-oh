@@ -3,14 +3,21 @@
 //--------------------------------------------------------------
 
 .testimonials {
-	margin: 32px auto 0;
+	margin: $gutter 0;
+
+	@include media($tablet-portrait) {
+		margin: $gutter * 2 0;
+	}
 
 	h2 {
 		margin-bottom: $gutter / 2;
 	}
 
 	.testimonials-shell {
-		padding: 32px 0;
+
+		@include media($phone-landscape) {
+			padding: 26px 0;
+		}
 	}
 
 	.testimonial-single {
@@ -94,7 +101,11 @@
 
 	.testimonial-link,
 	.testimonial-source {
-		line-height: 1;
+		line-height: 1.4;
+
+		@include media($phone-landscape) {
+			line-height: 1;
+		}
 	}
 
 	.testimonial-name {
