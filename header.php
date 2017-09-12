@@ -37,7 +37,7 @@
 			<span class="mobile-menu-bar line-1"></span>
 			<span class="mobile-menu-bar line-2"></span>
 			<span class="mobile-menu-bar line-3"></span>
-			<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'rcs' ); ?></span>
+			<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'atarr' ); ?></span>
 		</button>
 
 		<div class="navigation-wrapper sliding-panel-content header-mobile">

@@ -30,6 +30,7 @@ function atarr_customize_register( $wp_customize ) {
 		'atarr_email_link',
 		array(
 			'default' => '',
+			'sanitize_callback' => 'atarr_sanitize_customizer_email',
 		)
 	);
 	$wp_customize->add_control(
