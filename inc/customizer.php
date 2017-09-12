@@ -30,7 +30,7 @@ function atarr_customize_register( $wp_customize ) {
 		'atarr_email_link',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'atarr_sanitize_customizer_email',
+			'sanitize_callback' => 'atarr_sanitize_customizer_text',
 		)
 	);
 	$wp_customize->add_control(
@@ -79,7 +79,7 @@ function atarr_customize_register( $wp_customize ) {
 		'atarr_copyright_text',
 		array(
 			'default' => '',
-			'sanitize_callback' => 'atarr_sanitize_copyright_text',
+			'sanitize_callback' => 'atarr_sanitize_customizer_text',
 		)
 	);
 	$wp_customize->add_control(
