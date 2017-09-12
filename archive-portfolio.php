@@ -40,10 +40,10 @@ get_header(); ?>
 
 					<div class="nav-links page-nav">
 						<div class="nav-previous">
-							<?php echo get_next_posts_link( '<h4 class="pre-title">' . esc_html( 'Previous', 'atarr' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
+							<?php echo get_next_posts_link( '<h4 class="pre-title">' . esc_html( 'Previous', 'starry' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
 						</div>
 						<div class="nav-next">
-							<?php echo get_previous_posts_link( '<h4 class="pre-title">' . esc_html( 'Next', 'atarr' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
+							<?php echo get_previous_posts_link( '<h4 class="pre-title">' . esc_html( 'Next', 'starry' ) . '</h4>', $featured_work->max_num_pages ); // WPCS: XSS OK. ?>
 						</div>
 					</div><!--.nav-links-->
 					<?php } ?>

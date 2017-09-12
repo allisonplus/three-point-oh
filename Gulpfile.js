@@ -279,7 +279,7 @@ gulp.task( 'wp-pot', [ 'clean:pot' ], () =>
 		.pipe( plumber({'errorHandler': handleErrors}) )
 		.pipe( sort() )
 		.pipe( wpPot({
-			'domain': 'atarr',
+			'domain': 'starry',
 			'package': 'atarr'
 		}) )
 		.pipe( gulp.dest( 'languages/atarr.pot' ) )

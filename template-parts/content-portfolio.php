@@ -22,15 +22,15 @@
 			<?php echo atarr_get_portfolio_gallery(); // WPCS: XSS OK.  ?>
 
 		<?php if ( get_field( 'url' ) ) : ?>
-			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'View Live', 'atarr' ); ?></a>
+			<a class="button project-link" href="<?php esc_url( the_field( 'url' ) ); ?>"><?php esc_html_e( 'View Live', 'starry' ); ?></a>
 		<?php endif ?>
 		</div>
 
 		<div class="entry-content">
-			<h3><?php esc_html_e( 'Project Details', 'atarr' ); ?></h3>
+			<h3><?php esc_html_e( 'Project Details', 'starry' ); ?></h3>
 			<?php the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'atarr' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'starry' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) ); ?>
 		</div><!-- .entry-content -->
@@ -39,7 +39,7 @@
 	<footer class="entry-footer">
 
 		<?php wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'atarr' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'starry' ),
 			'after'  => '</div>',
 		) );
 		?>

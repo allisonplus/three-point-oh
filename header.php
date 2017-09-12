@@ -26,18 +26,18 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'atarr' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'starry' ); ?></a>
 
 	<header class="site-header">
 		<div class="wrap">
 
-		<h1 class="site-title"><a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html_e( 'Allison Tarr', 'atarr' ); ?></a></h1>
+		<h1 class="site-title"><a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html_e( 'Allison Tarr', 'starry' ); ?></a></h1>
 
 		<button class="sliding-panel-button mobile-menu-toggle" type="button">
 			<span class="mobile-menu-bar line-1"></span>
 			<span class="mobile-menu-bar line-2"></span>
 			<span class="mobile-menu-bar line-3"></span>
-			<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'atarr' ); ?></span>
+			<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'starry' ); ?></span>
 		</button>
 
 		<div class="navigation-wrapper sliding-panel-content header-mobile">

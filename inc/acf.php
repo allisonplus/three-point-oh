@@ -148,7 +148,7 @@ function atarr_get_factoids() {
 	<?php if ( has_sub_field( 'factoids' ) ) : ?>
 
 		<section class="factoids">
-			<h5><?php esc_html_e( 'Extras', 'atarr' ); ?></h5>
+			<h5><?php esc_html_e( 'Extras', 'starry' ); ?></h5>
 
 			<div class="factoid-shell">
 			<?php while ( has_sub_field( 'factoids' ) ) : ?>

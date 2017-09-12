@@ -19,8 +19,8 @@ get_header(); ?>
 				get_template_part( 'template-parts/content-portfolio' );
 
 				the_post_navigation( array(
-					'prev_text' => __( '<h4 class="pre-title">Previous:<span class="title">%title</span></h4>' ),
-					'next_text' => __( '<h4 class="pre-title">Next:<span class="title">%title</span></h4>' ),
+					'prev_text' => '<h4 class="pre-title">' . __( 'Previous', 'starry' ) . '<span class="title">%title</span></h4>',
+					'next_text' => '<h4 class="pre-title">' . __( 'Next', 'starry' ) . '<span class="title">%title</span></h4>',
 				) );
 
 			endwhile; // End of the loop.

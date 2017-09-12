@@ -19,8 +19,8 @@ function atarr_font_url() {
 	 * supported by the following, translate this to 'off'. Do not translate
 	 * into your own language.
 	 */
-	$playfair_display = _x( 'on', 'Playfair Display font: on or off', 'atarr' );
-	$roboto = _x( 'on', 'Roboto font: on or off', 'atarr' );
+	$playfair_display = _x( 'on', 'Playfair Display font: on or off', 'starry' );
+	$roboto = _x( 'on', 'Roboto font: on or off', 'starry' );
 
 	if ( 'off' !== $playfair_display || 'off' !== $roboto ) {
 		$font_families = array();

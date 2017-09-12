@@ -19,8 +19,8 @@ function atarr_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'atarr_social_links_section',
 		array(
-			'title'       => esc_html__( 'Social Links', 'atarr' ),
-			'description' => esc_html__( 'These are the settings for social links.', 'atarr' ),
+			'title'       => esc_html__( 'Social Links', 'starry' ),
+			'description' => esc_html__( 'These are the settings for social links.', 'starry' ),
 			'priority'    => 90,
 		)
 	);
@@ -36,7 +36,7 @@ function atarr_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'atarr_email_link',
 		array(
-			'label'   => esc_html__( 'Email', 'atarr' ),
+			'label'   => esc_html__( 'Email', 'starry' ),
 			'section' => 'atarr_social_links_section',
 			'type'    => 'email',
 		)
@@ -58,7 +58,7 @@ function atarr_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			'atarr_' . $network . '_link',
 			array(
-				'label'   => sprintf( esc_html__( '%s Link', 'atarr' ), ucwords( $network ) ),
+				'label'   => sprintf( esc_html__( '%s Link', 'starry' ), ucwords( $network ) ),
 				'section' => 'atarr_social_links_section',
 				'type'    => 'text',
 			)
@@ -69,7 +69,7 @@ function atarr_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'atarr_footer_section',
 		array(
-			'title'    => esc_html__( 'Footer Customization', 'atarr' ),
+			'title'    => esc_html__( 'Footer Customization', 'starry' ),
 			'priority' => 90,
 		)
 	);
@@ -79,13 +79,14 @@ function atarr_customize_register( $wp_customize ) {
 		'atarr_copyright_text',
 		array(
 			'default' => '',
+			'sanitize_callback' => 'atarr_sanitize_copyright_text',
 		)
 	);
 	$wp_customize->add_control(
 		'atarr_copyright_text',
 		array(
-			'label'       => esc_html__( 'Copyright Text', 'atarr' ),
-			'description' => esc_html__( 'The copyright text will be displayed beneath the menu in the footer.', 'atarr' ),
+			'label'       => esc_html__( 'Copyright Text', 'starry' ),
+			'description' => esc_html__( 'The copyright text will be displayed beneath the menu in the footer.', 'starry' ),
 			'section'     => 'atarr_footer_section',
 			'type'        => 'text',
 			'sanitize'    => 'html',

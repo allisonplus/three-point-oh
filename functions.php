@@ -20,11 +20,11 @@ if ( ! function_exists( 'atarr_setup' ) ) :
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on atarr, use a find and replace
-		 * to change 'atarr' to the name of your theme in all the template files.
+		 * to change 'starry' to the name of your theme in all the template files.
 		 * You will also need to update the Gulpfile with the new text domain
 		 * and matching destination POT file.
 		 */
-		load_theme_textdomain( 'atarr', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'starry', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -48,8 +48,8 @@ if ( ! function_exists( 'atarr_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary Menu', 'atarr' ),
-			'footer'  => esc_html__( 'Footer Menu', 'atarr' ),
+			'primary' => esc_html__( 'Primary Menu', 'starry' ),
+			'footer'  => esc_html__( 'Footer Menu', 'starry' ),
 		) );
 
 		/**
@@ -98,7 +98,7 @@ function atarr_widgets_init() {
 
 	// Define sidebars.
 	$sidebars = array(
-		'sidebar-1'  => esc_html__( 'Sidebar', 'atarr' ),
+		'sidebar-1'  => esc_html__( 'Sidebar', 'starry' ),
 	);
 
 	// Loop through each sidebar and register.
@@ -106,7 +106,7 @@ function atarr_widgets_init() {
 		register_sidebar( array(
 			'name'          => $sidebar_name,
 			'id'            => $sidebar_id,
-			'description'   => sprintf( esc_html__( 'Widget area for %s', 'atarr' ), $sidebar_name ),
+			'description'   => sprintf( esc_html__( 'Widget area for %s', 'starry' ), $sidebar_name ),
 			'before_widget' => '<aside class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h3 class="widget-title">',

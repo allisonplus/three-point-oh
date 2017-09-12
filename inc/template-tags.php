@@ -25,12 +25,12 @@ if ( ! function_exists( 'atarr_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s', 'post date', 'atarr' ),
+			esc_html_x( 'Posted on %s', 'post date', 'starry' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
-			esc_html_x( 'by %s', 'post author', 'atarr' ),
+			esc_html_x( 'by %s', 'post author', 'starry' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -49,7 +49,7 @@ if ( ! function_exists( 'atarr_entry_footer' ) ) :
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list();
 			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_html__( '%1$s ', 'atarr' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( '%1$s ', 'starry' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
 	}
@@ -84,12 +84,12 @@ function atarr_get_svg( $args = array() ) {
 
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', 'atarr' );
+		return esc_html__( 'Please define default parameters in the form of an array.', 'starry' );
 	}
 
 	// YUNO define an icon?
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return esc_html__( 'Please define an SVG icon filename.', 'atarr' );
+		return esc_html__( 'Please define an SVG icon filename.', 'starry' );
 	}
 
 	// Set defaults.
@@ -198,7 +198,7 @@ function atarr_get_main_p5() {
 
 	<div id="heroine">
 		<div class="heroine-wrapper">
-			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'atarr' ); ?>
+			<p class="fed"><?php esc_html_e( 'Front-end Developer &', 'starry' ); ?>
 
 			<div class="list-parent">
 
@@ -242,14 +242,14 @@ function atarr_get_social_links() {
 	<?php // If there's no email, don't make this <li> in the first place .?>
 	<?php if ( ! empty( $email ) ) : ?>
 		<li class="social-network email">
-			<a href="mailto:<?php echo esc_html( $email ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Email me', 'atarr' ); ?></span></a>
+			<a href="mailto:<?php echo esc_html( $email ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Email me', 'starry' ); ?></span></a>
 		</li>
 	<?php endif; ?>
 
 	<?php // Continue <li>'s with rest of social networks provided. ?>
 	<?php foreach ( $social_networks as $network ) : ?>
 		<li class="social-network <?php echo esc_attr( $network ); ?>">
-			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'atarr' ); ?><?php echo esc_attr( $network ); ?></span></a>
+			<a href="<?php echo esc_url( get_theme_mod( 'atarr_' . $network . '_link' ) ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Visit my ', 'starry' ); ?><?php echo esc_attr( $network ); ?></span></a>
 		</li>
 	<?php endforeach; ?>
 	</ul><!-- .social-networks -->
@@ -302,8 +302,8 @@ function atarr_do_contact_cta() {
 
 	<section class="contact-info">
 		<div class="wrap">
-			<h2 class="section-title"><?php esc_html_e( 'Contact Me', 'atarr' ); ?></h2>
-			<p><?php esc_html_e( 'If you have cool stuff to share or want to talk shop over a coffee, I\'d love to hear from you!', 'atarr' ); ?></p>
+			<h2 class="section-title"><?php esc_html_e( 'Contact Me', 'starry' ); ?></h2>
+			<p><?php esc_html_e( 'If you have cool stuff to share or want to talk shop over a coffee, I\'d love to hear from you!', 'starry' ); ?></p>
 			<a class="email-cta" href="mailto:<?php echo wp_kses_post( $email ); ?>"><?php echo esc_attr( $email ); ?></a>
 		</div>
 	</section> <!--/.contact-info-->

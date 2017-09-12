@@ -160,9 +160,9 @@ function atarr_get_the_excerpt( $args = array() ) {
 function atarr_continue_reading_link() {
 
 	if ( is_post_type_archive() ) {
-		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Learn More', 'atarr' ) . '</a>';
+		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Learn More', 'starry' ) . '</a>';
 	} else {
-		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Read More', 'atarr' ) . '</a>';
+		return ' <a class="button" href="' . get_permalink() . '">' . esc_html( 'Read More', 'starry' ) . '</a>';
 	}
 }
 
@@ -251,7 +251,7 @@ function atarr_card_posted_on( $args = array() ) {
 
 	<p class="posted-on"><time class="entry-date"><?php echo esc_attr( $args['date'] ); ?></time></p>
 	<p class="meta-content">
-		<span class="category"><span class="posted-emphasis"><?php esc_html_e( 'in ', 'atarr' ); ?></span><a class="category-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $category_name ); ?></a></span>
+		<span class="category"><span class="posted-emphasis"><?php esc_html_e( 'in ', 'starry' ); ?></span><a class="category-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $category_name ); ?></a></span>
 	</p>
 
 	<?php
@@ -269,21 +269,21 @@ function atarr_archive_title( $title ) {
 
 	if ( is_category() ) {
 		$title = single_cat_title( '', false );
-		$title = $title . esc_html( ' Archives', 'atarr' );
+		$title = $title . esc_html( ' Archives', 'starry' );
 	} elseif ( is_post_type_archive( 'portfolio' ) ) {
-		$title = esc_html( 'Featured Work', 'atarr' );
+		$title = esc_html( 'Featured Work', 'starry' );
 	} elseif ( is_author() ) {
 		$title = get_the_author();
 	} elseif ( is_date() ) {
 		if ( is_year() ) {
-			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+			$title = sprintf( __( '%s Archives', 'starry' ), get_the_date( _x( 'Y', 'yearly archives date format', 'starry' ) ) );
 		} elseif ( is_month() ) {
-			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+			$title = sprintf( __( '%s Archives', 'starry' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'starry' ) ) );
 		} elseif ( is_day() ) {
-			$title = sprintf( __( '%s Archives' ), get_the_date( _x( 'F j, Y', 'daily archives date format' ) ) );
+			$title = sprintf( __( '%s Archives', 'starry' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'starry' ) ) );
 		}
 	} else {
-		$title = __( 'Archives' );
+		$title = __( 'Archives', 'starry' );
 	}
 
 	return $title;
@@ -297,8 +297,8 @@ add_filter( 'get_the_archive_title', 'atarr_archive_title' );
  */
 function atarr_get_styled_pagination() {
 
-	$next_link = get_next_posts_link( __( 'Previous' ) );
-	$prev_link = get_previous_posts_link( __( 'Next' ) );
+	$next_link = get_next_posts_link( __( 'Previous', 'starry' ) );
+	$prev_link = get_previous_posts_link( __( 'Next', 'starry' ) );
 
 	// Start markup.
 	ob_start();
@@ -309,13 +309,13 @@ function atarr_get_styled_pagination() {
 
 		<div class="nav-previous">
 		<?php if ( $next_link ) : ?>
-			<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous' ); // WPCS: XSS OK.  ?> </h4>
+			<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous', 'starry' ); // WPCS: XSS OK.  ?> </h4>
 		<?php endif; ?>
 		</div>
 
 		<div class="nav-next">
 		<?php if ( $prev_link ) : ?>
-			<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next' ); // WPCS: XSS OK.  ?></h4>
+			<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next', 'starry' ); // WPCS: XSS OK.  ?></h4>
 		<?php endif; ?>
 		</div>
 
