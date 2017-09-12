@@ -212,7 +212,7 @@ function atarr_get_post_image_uri( $size = 'thumbnail' ) {
  * Check if it's the blog.
  */
 function atarr_is_blog() {
-	return ( (( is_archive() ) || ( is_author() ) || ( is_category() ) || ( is_home() ) || ( is_single() ) || ( is_tag() ) ) ) ? true : false ;
+	return ( (( is_archive() ) || ( is_404() ) || ( is_search() ) || ( is_author() ) || ( is_category() ) || ( is_home() ) || ( is_single() ) || ( is_tag() ) ) ) ? true : false ;
 }
 
 /**
