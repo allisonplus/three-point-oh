@@ -56,8 +56,11 @@ get_header(); ?>
 			<?php
 				echo atarr_get_help(); // WPCS: XSS OK.
 				echo atarr_get_testimonial_section(); // WPCS: XSS OK.
-				echo atarr_do_contact_cta(); // WPCS: XSS OK.
 			?>
 	</div><!-- .wrap -->
+
+	<?php
+		echo atarr_do_contact_cta(); // WPCS: XSS OK.
+	?>
 
 <?php get_footer(); ?>
