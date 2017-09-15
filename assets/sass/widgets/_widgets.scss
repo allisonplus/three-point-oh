@@ -21,6 +21,21 @@
 	}
 } // .widget
 
+.widget {
+
+	.menu {
+		// flex-direction: column;
+		display: block;
+		margin: 0 0 48px;
+		padding: 0 0 0 40px;
+
+		a {
+			color: $cinder;
+			padding: 0;
+		}
+	}
+}
+
 .widget-title,
 .widgettitle {
 	background: $gradient;
