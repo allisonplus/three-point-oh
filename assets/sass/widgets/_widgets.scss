@@ -24,10 +24,24 @@
 .widget {
 
 	.menu {
-		// flex-direction: column;
 		display: block;
 		margin: 0 0 48px;
 		padding: 0 0 0 40px;
+
+		li {
+
+			&:not(:last-of-type) {
+				margin: 0;
+
+				a {
+					padding: 0;
+				}
+
+				a:after {
+					content: none;
+				} // a:after
+			} // &:not(:last-of-type)
+		}
 
 		a {
 			color: $cinder;
