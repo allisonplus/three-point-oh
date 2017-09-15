@@ -74,7 +74,7 @@ function atarr_scripts() {
 
 	// Secret Identity content switcher for front page content.
 	if ( is_front_page() ) {
-		wp_enqueue_script( 'atarr-super-heroine', get_template_directory_uri() . '/assets/js/super-heroine.js', array( 'jquery' ), $version, true );
+		wp_enqueue_script( 'atarr-super-heroine', get_template_directory_uri() . '/assets/js/super-heroine.js', array(), $version, true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -139,13 +139,13 @@ add_action( 'wp_footer', 'atarr_google_analytics' );
 function atarr_google_analytics() {
 	// Hook into the footer. ?>
 	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		// })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-60848717-1', 'auto');
-		ga('send', 'pageview');
+		// ga('create', 'UA-60848717-1', 'auto');
+		// ga('send', 'pageview');
 	</script>
 
 	<?php
