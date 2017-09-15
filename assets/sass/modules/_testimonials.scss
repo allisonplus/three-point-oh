@@ -31,9 +31,16 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		margin: 0 auto ;
-		max-width: 82%;
+		margin: 0 auto;
 		width: 100%;
+
+		@include media($phone-landscape) {
+			max-width: 58%;
+		}
+
+		@include media($tablet-portrait) {
+			max-width: 72%;
+		}
 
 		@include media($tablet-landscape) {
 			flex-direction: row;
@@ -72,13 +79,17 @@
 			font-size: 20px;
 
 			&:before {
-				@include position(absolute, -70px null null -44px);
+				@include position(absolute, -90px null null -15px);
 
 				color: darken($aqua, 25%);
 				content: "\201C";
 				font-size: 140px;
 				opacity: 0.3;
 				z-index: -1;
+
+				@include media($phone-landscape) {
+					@include position(absolute, -70px null null -44px);
+				}
 			}
 		}
 	} // blockquote
@@ -89,7 +100,7 @@
 		margin-left: 10px;
 		padding: 20px 0;
 
-		@include media($tablet-portrait) {
+		@include media($tablet-landscape) {
 			margin-left: 50px;
 		}
 	}

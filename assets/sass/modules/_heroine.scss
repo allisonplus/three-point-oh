@@ -76,11 +76,15 @@
 	}
 
 	.word-list {
-		@include size(230px 43px);
+		@include size(100% 43px);
 
 		margin: 0;
 		padding: 0;
 		position: relative;
+
+		@include media($phone-landscape) {
+			@include size(230px 43px);
+		}
 
 		// First list {descriptors}.
 		&:first-of-type {
