@@ -309,13 +309,13 @@ function atarr_get_styled_pagination() {
 
 		<div class="nav-previous">
 		<?php if ( $next_link ) : ?>
-			<h4 class="pre-title"><?php echo get_next_posts_link( 'Previous', 'starry' ); // WPCS: XSS OK.  ?> </h4>
+			<h4 class="pre-title"><?php echo $next_link; // WPCS: XSS OK.  ?> </h4>
 		<?php endif; ?>
 		</div>
 
 		<div class="nav-next">
 		<?php if ( $prev_link ) : ?>
-			<h4 class="pre-title"><?php echo get_previous_posts_link( 'Next', 'starry' ); // WPCS: XSS OK.  ?></h4>
+			<h4 class="pre-title"><?php echo $prev_link; // WPCS: XSS OK.  ?></h4>
 		<?php endif; ?>
 		</div>
 
