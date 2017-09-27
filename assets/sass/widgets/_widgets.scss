@@ -76,3 +76,56 @@
 		justify-content: space-between;
 	}
 }
+
+
+//--------------------------------------------------------------
+// Goodreads shortcode styling.
+//--------------------------------------------------------------
+.bookshelf {
+	@include list-reset;
+
+	overflow: hidden;
+
+	li {
+		display: inline-block;
+		float: left;
+		font-size: 0;
+		margin-bottom: $gutter;
+		width: calc(100% / 2);
+
+		@include media($phone-landscape) {
+			width: calc(100% / 4);
+		}
+	}
+
+	// Overwrites default link styles.
+	a {
+		border-bottom: none;
+		display: inline-block;
+
+		&:hover {
+			border-bottom: none;
+		}
+	} // a
+
+	.cover {
+		min-height: 160px;
+		overflow: hidden;
+	}
+
+	.temp-cover {
+		@include size(110px 160px);
+
+		background-color: lighten($aqua, 25%);
+		border: 2px solid $aqua;
+		line-height: 1.2;
+		overflow: hidden;
+
+		.title {
+			color: $revolver;
+			font-size: 15px;
+			margin: 10px 8px;
+			padding: 3px;
+		}
+	}
+} // .bookshelf
