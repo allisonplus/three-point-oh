@@ -15,6 +15,18 @@ function atarr_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+	// Add a setting for the GoodReads API key.
+	$wp_customize->add_setting( 'gr_api_key' );
+	// Add a control for API key.
+	$wp_customize->add_control( 'gr_api_key',
+		array(
+			'label'    => 'GoodReads API key',
+			'section'  => 'title_tagline',
+			'settings' => 'gr_api_key',
+			'type'     => 'text',
+		)
+	);
+
 	// Add our social link options.
 	$wp_customize->add_section(
 		'atarr_social_links_section',
