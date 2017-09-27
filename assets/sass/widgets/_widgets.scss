@@ -84,6 +84,7 @@
 .bookshelf {
 	@include list-reset;
 
+	max-width: 500px;
 	overflow: hidden;
 
 	li {
