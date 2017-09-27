@@ -326,3 +326,54 @@ function atarr_get_styled_pagination() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Goodreads API shortcode
+ *
+ * @param string $passed_values Values for Desired book data.
+ * @return string Desired list of books from Goodreads API.
+ */
+function goodreads_api( $passed_values ) {
+
+	// If API value doesn't exist within customizer, forget about it.
+	if ( ! get_theme_mod( 'gr_api_key' ) ) {
+		return false;
+	}
+
+	$key = get_theme_mod( 'gr_api_key' );
+
+	$attributes = shortcode_atts( array(
+		'user'         => '80235',
+		'shelf'        => 'read',
+		'num_of_books' => '4',
+		'sort'         => 'date_read',
+	), $passed_values );
+
+	$books_path = 'http://www.goodreads.com/review/list/' . $attributes['user'] . '.xml?key=' . $key . '&v=2&shelf=' . $attributes['shelf'] . '&sort=' . $attributes['sort'] . '&order=d&page=1&per_page=' . $attributes['num_of_books'];
+	$books_get_xml = wp_remote_fopen( $books_path );
+	$books_get_json = new SimpleXMLElement( $books_get_xml );
+
+	$value = '<ul class="bookshelf">';
+
+	foreach ( $books_get_json->reviews->review as $book ) {
+		$image_url_check = $book->book->image_url;
+
+		if ( 0 === strpos( $image_url_check, 'http://s.gr-assets.com/assets/nophoto' ) ) {
+			$imagecover = '<div class="temp-cover"><h4 class="title">' . $book->book->title . '</h4></div>';
+		} else {
+			$imagecover = '<img class="cover" src="' . $book->book->image_url . '"/ alt="' . $book->book->title . '">';
+		}
+
+		$value .= '<li class="bookshelf-book ';
+
+		foreach ( $book->shelves->children() as $bookshelf ) {
+			$value .= 'category-' . $bookshelf['name'] . ' ';
+		}
+			$value .= '"><a href="' . $book->book->link . '">' . $imagecover . '</a></li>';
+	}
+		$value .= '</ul>';
+
+	return $value;
+
+}
+add_shortcode( 'gr-books', 'goodreads_api' );
