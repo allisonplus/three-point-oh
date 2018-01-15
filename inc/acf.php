@@ -6,7 +6,7 @@
  */
 
 // Hide ACF menu.
-add_filter( 'acf/settings/show_admin', '__return_false' );
+// add_filter( 'acf/settings/show_admin', '__return_false' );
 
 /**
  * 'How I Can Help' Section
@@ -31,20 +31,26 @@ function atarr_get_help() {
 				<?php if ( have_rows( 'help_list' ) ) : ?>
 
 				<div class="help-shell">
-					<?php while ( have_rows( 'help_list' ) ) : the_row(); ?>
 
+					<?php while ( have_rows( 'help_list' ) ) : the_row(); ?>
 							<div class="help-single">
+
+								<div class="module">
+
 								<?php echo esc_html( the_sub_field( 'icon' ) ); ?>
 								<h3><?php echo esc_html( the_sub_field( 'title' ) ); ?></h3>
-								<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
+								</div>
+
+								<div class="module">
+									<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
 
 								<?php if ( get_sub_field( 'cta_button' ) ) : ?>
 
-								<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
+									<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
 
 								<?php endif; ?>
+								</div><!--.module-->
 							</div><!--.help-single-->
-
 					<?php endwhile; ?>
 				</div><!--.help-shell-->
 			</section><!--.section-->
