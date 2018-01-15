@@ -19,7 +19,7 @@ var timer;
 function isFront() {
 	var front = document.body;
 
-	return front.classList.contains( 'home' ) ? heightOfCanvas = 400 : heightOfCanvas = 150;
+	return front.classList.contains( 'home' ) ? heightOfCanvas = 300 : heightOfCanvas = 150;
 }
 
 // Setup.
