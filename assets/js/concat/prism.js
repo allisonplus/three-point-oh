@@ -10,3 +10,123 @@ Prism.languages.php=Prism.languages.extend("clike",{keyword:/\b(and|or|xor|array
 Prism.languages.insertBefore("php","variable",{"this":/\$this\b/,global:/\$(?:_(?:SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE)|GLOBALS|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/,scope:{pattern:/\b[\w\\]+::/,inside:{keyword:/(static|self|parent)/,punctuation:/(::|\\)/}}});
 !function(e){e.languages.sass=e.languages.extend("css",{comment:{pattern:/^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t]+.+)*/m,lookbehind:!0}}),e.languages.insertBefore("sass","atrule",{"atrule-line":{pattern:/^(?:[ \t]*)[@+=].+/m,inside:{atrule:/(?:@[\w-]+|[+=])/m}}}),delete e.languages.sass.atrule;var a=/((\$[-_\w]+)|(#\{\$[-_\w]+\}))/i,t=[/[+*\/%]|[=!]=|<=?|>=?|\b(?:and|or|not)\b/,{pattern:/(\s+)-(?=\s)/,lookbehind:!0}];e.languages.insertBefore("sass","property",{"variable-line":{pattern:/^[ \t]*\$.+/m,inside:{punctuation:/:/,variable:a,operator:t}},"property-line":{pattern:/^[ \t]*(?:[^:\s]+ *:.*|:[^:\s]+.*)/m,inside:{property:[/[^:\s]+(?=\s*:)/,{pattern:/(:)[^:\s]+/,lookbehind:!0}],punctuation:/:/,variable:a,operator:t,important:e.languages.sass.important}}}),delete e.languages.sass.property,delete e.languages.sass.important,delete e.languages.sass.selector,e.languages.insertBefore("sass","punctuation",{selector:{pattern:/([ \t]*)\S(?:,?[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,?[^,\r\n]+)*)*/,lookbehind:!0}})}(Prism);
 Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,lookbehind:!0},atrule:{pattern:/@[\w-]+(?:\([^()]+\)|[^(])*?(?=\s+[{;])/,inside:{rule:/@[\w-]+/}},url:/(?:[-a-z]+-)*url(?=\()/i,selector:{pattern:/(?=\S)[^@;\{\}\(\)]?([^@;\{\}\(\)]|&|#\{\$[-_\w]+\})+(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/m,inside:{parent:{pattern:/&/,alias:"important"},placeholder:/%[-_\w]+/,variable:/\$[-_\w]+|#\{\$[-_\w]+\}/}}}),Prism.languages.insertBefore("scss","atrule",{keyword:[/@(?:if|else(?: if)?|for|each|while|import|extend|debug|warn|mixin|include|function|return|content)/i,{pattern:/( +)(?:from|through)(?= )/,lookbehind:!0}]}),Prism.languages.scss.property={pattern:/(?:[\w-]|\$[-_\w]+|#\{\$[-_\w]+\})+(?=\s*:)/i,inside:{variable:/\$[-_\w]+|#\{\$[-_\w]+\}/}},Prism.languages.insertBefore("scss","important",{variable:/\$[-_\w]+|#\{\$[-_\w]+\}/}),Prism.languages.insertBefore("scss","function",{placeholder:{pattern:/%[-_\w]+/,alias:"selector"},statement:{pattern:/\B!(?:default|optional)\b/i,alias:"keyword"},"boolean":/\b(?:true|false)\b/,"null":/\bnull\b/,operator:{pattern:/(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|or|not)(?=\s)/,lookbehind:!0}}),Prism.languages.scss.atrule.inside.rest=Prism.util.clone(Prism.languages.scss);
+/* global Prism */
+
+(function () {
+  var _annotation = '@\\w+'
+
+  // Match an annotation
+  var annotation = {
+    pattern: RegExp('^' + _annotation, 'gi'),
+    alias: 'atrule'
+  }
+
+  var _type = '{[^}]+}'
+
+  // Match a type (always following an annotation)
+  var type = {
+    pattern: RegExp('^(' + _annotation + ')\\s+' + _type, 'gi'),
+    lookbehind: true,
+    alias: 'string'
+  }
+
+  var _param = '[\\$%]?[\\w\\._-]+'
+
+  // Match a param (always following an annotation and optionally a type)
+  var param = {
+    pattern: RegExp('^(' + _annotation + '(\\s+' + _type + ')?)\\s+' + _param, 'gi'),
+    lookbehind: true,
+    alias: 'variable'
+  }
+
+  // Match a delimited URL
+  var url = /<[^>]+>/g
+
+  Prism.languages.insertBefore('scss', 'comment', {
+    'docblock': {
+      pattern: /(^|[^\\])(\/\*\*[\w\W]*?\*\/|\/\/\/.*?(\r?\n|$))/g,
+      lookbehind: true,
+      alias: 'comment',
+      inside: {
+
+        // Annotation with param
+        'annotation-param': {
+          pattern: /@(access|example|alias|since)( .*|\n)/g,
+          inside: {
+            'param': param,
+            'annotation': annotation,
+            'url': url
+          }
+        },
+
+        // Annotation with type and param
+        'annotation-type-param-default': {
+          pattern: /@(param|arg(ument)?|prop|requires|see)( .*|\r?\n|$)/g,
+          inside: {
+            'default': {
+              pattern: RegExp('^(' + _annotation + '(\\s+' + _type + ')?\\s+' + _param + ')\\s+\\[[^\\)]+\\]', 'gi'),
+              lookbehind: true,
+              alias: 'string'
+            },
+            'param': param,
+            'type': type,
+            'annotation': annotation,
+            'url': url
+          }
+        },
+
+        // Annotation with only type
+        'annotation-type': {
+          pattern: /@(returns?)( .*|\r?\n|$)/g,
+          inside: {
+            'type': type,
+            'annotation': annotation,
+            'url': url
+          }
+        },
+
+        // Annation with an URL
+        'annotation-url': {
+          pattern: /@(link|source)( .*|\r?\n|$)/g,
+          inside: {
+            'annotation': annotation,
+            'url': /[^ ]+/
+          }
+        },
+
+        // Type annotation
+        'annotation-type-custom': {
+          pattern: /@(type)( .*|\r?\n|$)/g,
+          inside: {
+            'annotation': annotation,
+            'type': {
+              pattern: /.*/,
+              alias: 'string'
+            }
+          }
+        },
+
+        // Group annotation
+        'annotation-group-custom': {
+          pattern: /@(group)( .*|\r?\n|$)/g,
+          inside: {
+            'annotation': annotation,
+            'group': {
+              pattern: /.*/,
+              alias: 'variable'
+            }
+          }
+        },
+
+        // Other annotations
+        'annotation-single': {
+          pattern: /@(content|deprecated|ignore|output|author|todo|throws?|exception)( .*|\r?\n|$)/g,
+          inside: {
+            'annotation': annotation,
+            'url': url
+          }
+        }
+      }
+    }
+  })
+}())
