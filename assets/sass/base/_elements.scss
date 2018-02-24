@@ -3,7 +3,6 @@
 //--------------------------------------------------------------
 
 // Iframes
-
 embed,
 iframe,
 object {
@@ -23,11 +22,14 @@ figure {
 }
 
 // Lists
-
 ul,
 ol {
 	font-size: 18px;
 	margin: 0 0 48px 0;
+
+	.type-post & {
+		margin: 0;
+	}
 }
 
 ul {
