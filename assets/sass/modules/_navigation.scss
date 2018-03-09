@@ -36,6 +36,11 @@ a {
 			border-bottom: 2px solid $loulou;
 			color: $loulou;
 		}
+
+		&.simple-footnote,
+		&.return-to-content {
+			border-bottom: none;
+		}
 	}
 } // a
 

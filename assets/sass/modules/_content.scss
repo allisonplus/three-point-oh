@@ -48,3 +48,45 @@
 .archive .format-aside .entry-title {
 	display: none;
 }
+
+// Footnotes.
+// Initialiazing `footnotes` counter on the wrapper.
+article {
+	counter-reset: footnotes;
+}
+
+// Inline footnotes references.
+[aria-describedby='footnote-label'] {
+	color: inherit;
+	counter-increment: footnotes;
+	cursor: default;
+	outline: none;
+	text-decoration: none;
+}
+
+// Actual numbered references.
+[aria-describedby='footnote-label']::after {
+	content: '[' counter(footnotes) ']';
+	color: $aqua;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 600;
+	vertical-align: super;
+}
+
+// Resetting default focused styles on the number.
+[aria-describedby='footnote-label']:focus::after {
+	outline: thin dotted;
+	outline-offset: 2px;
+}
+
+[aria-label='Back to content'] {
+	font-size: 12px;
+}
+
+// Highlight target note.
+footer {
+	:target {
+		background-color: $pearl;
+	}
+}
