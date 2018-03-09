@@ -51,8 +51,17 @@
 
 // Footnotes.
 // Initialiazing `footnotes` counter on the wrapper.
-article {
+.type-post article {
 	counter-reset: footnotes;
+}
+
+.simple-footnotes {
+	ol a {
+		color: $loulou;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1;
+	}
 }
 
 // Inline footnotes references.
