@@ -51,7 +51,7 @@
 
 // Footnotes.
 // Initialiazing `footnotes` counter on the wrapper.
-.type-post article {
+article.type-post {
 	counter-reset: footnotes;
 }
 
