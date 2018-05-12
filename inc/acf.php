@@ -24,33 +24,32 @@ function atarr_get_help() {
 
 		<section class="i-can-help">
 
-		<?php if ( have_rows( 'helping_section' ) ) :
+		<?php if ( have_rows( 'helping_section' ) ) : ?>
 
-			while ( have_rows( 'helping_section' ) ) : the_row(); ?>
+			<?php while ( have_rows( 'helping_section' ) ) : the_row(); ?>
+				<h2 class="section-title"><?php echo esc_html( the_sub_field( 'help_title' ) ); ?></h2>
 
 				<?php if ( have_rows( 'help_list' ) ) : ?>
 
 				<div class="help-shell">
 
 					<?php while ( have_rows( 'help_list' ) ) : the_row(); ?>
-							<div class="help-single">
+						<div class="help-single">
 
-								<div class="module">
+							<div class="module">
 
-								<?php echo esc_html( the_sub_field( 'icon' ) ); ?>
-								<h3><?php echo esc_html( the_sub_field( 'title' ) ); ?></h3>
-								</div>
+							<?php echo esc_html( the_sub_field( 'icon' ) ); ?>
+							<h3><?php echo esc_html( the_sub_field( 'title' ) ); ?></h3>
 
-								<div class="module">
-									<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
+								<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
 
-								<?php if ( get_sub_field( 'cta_button' ) ) : ?>
+							<?php if ( get_sub_field( 'show_cta_button' ) ) : ?>
 
-									<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
+								<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
 
-								<?php endif; ?>
-								</div><!--.module-->
-							</div><!--.help-single-->
+							<?php endif; ?>
+							</div><!--.module-->
+						</div><!--.help-single-->
 					<?php endwhile; ?>
 				</div><!--.help-shell-->
 			</section><!--.section-->
