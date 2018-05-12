@@ -16,6 +16,7 @@
 
 	.section-title {
 		text-align: center;
+		margin-top: 0;
 	}
 
 	.help-single {
@@ -23,40 +24,33 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		// margin-top: $gutter * 2;
+		margin-top: $gutter * 2;
 		padding: $gutter $gutter * 2;
-
-		@include media($phone-landscape) {
-		}
 
 		@include media($tablet-portrait) {
 			flex-direction: row;
-			// margin-top: 0;
-		}
-
-		.module {
-
-			@include media($tablet-portrait) {
-				max-width: 66%;
-			}
+			margin-top: 0;
+			width: calc((100% / 3 - 8px));
 		}
 
 		.fa {
 			color: $loulou;
-			display: inline-block;
+			display: block;
 			font-size: 50px;
-			margin-right: $gutter * 2;
-			vertical-align: middle;
+			text-align: center;
+			// margin-right: $gutter * 2;
+			// vertical-align: middle;
 		}
 
 		h3 {
 			color: $revolver;
-			display: inline-block;
+			display: block;
 			margin: 0 0 $gutter;
+			text-align: center;
 
 			&:after {
 				background: $gradient;
-				content: "";
+				content: '';
 				display: block;
 				height: 2px;
 				margin-top: $gutter / 2;

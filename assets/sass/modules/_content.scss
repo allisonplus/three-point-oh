@@ -15,6 +15,10 @@
 
 .hentry {
 	margin: 0 0 24px 0;
+
+	.home & {
+		margin: 0;
+	}
 }
 
 .byline,
