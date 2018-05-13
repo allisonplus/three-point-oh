@@ -43,15 +43,18 @@ function atarr_get_help() {
 
 								<?php echo wp_kses_data( the_sub_field( 'content' ) ); ?>
 
-							<?php if ( get_sub_field( 'show_cta_button' ) ) : ?>
-
-								<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
-
-							<?php endif; ?>
 							</div><!--.module-->
 						</div><!--.help-single-->
+
 					<?php endwhile; ?>
+
 				</div><!--.help-shell-->
+
+				<?php if ( get_sub_field( 'show_cta_button' ) ) : ?>
+
+					<a class="button button-cta" href="<?php echo esc_url( get_sub_field( 'cta_button' ) ); ?>"><?php echo esc_html( the_sub_field( 'button_text' ) ); ?></a>
+
+				<?php endif; ?>
 			</section><!--.section-->
 
 				<?php endif; ?>
