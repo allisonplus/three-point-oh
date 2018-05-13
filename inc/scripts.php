@@ -103,7 +103,10 @@ function atarr_external_scripts() {
 	$suffix = ( true === $debug ) ? '' : '.min';
 
 	// Font Awesome.
-	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/bb54077af8.js' );
+	wp_enqueue_script( 'atarr-fa', 'https://use.fontawesome.com/977434bdbf.js' );
+	wp_enqueue_style( 'atarr-fa-style-solid', 'https://use.fontawesome.com/releases/v5.0.13/css/solid.css' );
+	wp_enqueue_style( 'atarr-fa-style-brands', 'https://use.fontawesome.com/releases/v5.0.13/css/brands.css' );
+	wp_enqueue_style( 'atarr-fa-style-all', 'https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css' );
 
 	// Slider.
 	wp_enqueue_style( 'atarr-carousel-style', 'https://unpkg.com/flickity@2/dist/flickity.min.css' );
