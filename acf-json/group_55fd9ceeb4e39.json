@@ -1,0 +1,67 @@
+{
+    "key": "group_55fd9ceeb4e39",
+    "title": "Portfolio Items",
+    "fields": [
+        {
+            "key": "field_5500d1eda3348",
+            "label": "URL",
+            "name": "url",
+            "type": "url",
+            "instructions": "Enter URL of portfolio piece.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5500d6028a381",
+            "label": "Images",
+            "name": "images",
+            "type": "gallery",
+            "instructions": "Add additional images here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": "",
+            "insert": "append",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": 1800,
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "portfolio"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1526223510
+}
