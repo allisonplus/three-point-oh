@@ -34,12 +34,18 @@
 		}
 
 		&:nth-of-type(2) {
-			margin-bottom: $gutter * 2.5;
+
+			@include media($tablet-portrait) {
+				margin-bottom: $gutter * 2.5;
+			}
 		}
 
 		// Emphasizes middle card.
 		&:not(:nth-of-type(2)) {
-			margin-top: $gutter * 3;
+
+			@include media($tablet-portrait) {
+				margin-top: $gutter * 3;
+			}
 		}
 
 		.fa,
@@ -80,11 +86,15 @@
 		color: $revolver;
 		display: block;
 		font-size: 16px;
-		margin: 0 auto;
-		max-width: 135px;
-		padding: 8px 24px;
+		margin: $gutter * 2 auto;
+		max-width: 195px;
+		padding: 10px 24px;
 		text-align: center;
 		transition: all 0.2s ease-in-out;
+
+		@include media($tablet-portrait) {
+			margin: 0 auto;
+		}
 
 		&:hover,
 		&:active,
