@@ -60,10 +60,9 @@ article.type-post {
 }
 
 .simple-footnotes {
-	margin-top: 22px;
+	margin-top: $gutter * 2;
 
 	ol {
-		border: 2px dotted $pearl;
 		padding-left: 22px;
 	}
 
@@ -76,7 +75,7 @@ article.type-post {
 }
 
 // Inline footnotes references.
-[aria-describedby='footnote-label'] {
+[aria-describedby="footnote-label"] {
 	color: inherit;
 	counter-increment: footnotes;
 	cursor: default;
@@ -85,9 +84,9 @@ article.type-post {
 }
 
 // Actual numbered references.
-[aria-describedby='footnote-label']::after {
+[aria-describedby="footnote-label"]::after {
 	color: $aqua;
-	content: '[' counter(footnotes) ']';
+	content: "[" counter(footnotes) "]";
 	cursor: pointer;
 	font-size: 13px;
 	font-weight: 600;
@@ -95,18 +94,18 @@ article.type-post {
 }
 
 // Resetting default focused styles on the number.
-[aria-describedby='footnote-label']:focus::after {
+[aria-describedby="footnote-label"]:focus::after {
 	outline: thin dotted;
 	outline-offset: 2px;
 }
 
-[aria-label='Back to content'] {
+[aria-label="Back to content"] {
 	font-size: 12px;
 }
 
 // Highlight target note.
 footer {
 	:target {
-		background-color: $pearl;
+		background-color: lighten($pearl, 10%);
 	}
 }
