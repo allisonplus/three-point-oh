@@ -60,11 +60,18 @@ article.type-post {
 }
 
 .simple-footnotes {
+	margin-top: 22px;
+
+	ol {
+		border: 2px dotted $pearl;
+		padding-left: 22px;
+	}
+
 	ol a {
 		color: $loulou;
 		display: inline-block;
-		vertical-align: middle;
 		line-height: 1;
+		vertical-align: middle;
 	}
 }
 
@@ -79,8 +86,8 @@ article.type-post {
 
 // Actual numbered references.
 [aria-describedby='footnote-label']::after {
-	content: '[' counter(footnotes) ']';
 	color: $aqua;
+	content: '[' counter(footnotes) ']';
 	cursor: pointer;
 	font-size: 13px;
 	font-weight: 600;
