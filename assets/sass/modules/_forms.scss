@@ -95,3 +95,47 @@ textarea {
 	overflow: auto; // Removes default vertical scrollbar in IE6/7/8/9
 	vertical-align: top; // Improves readability and alignment in all browsers
 }
+
+.button {
+
+	&.hire {
+		background: $gradient;
+		border-bottom: none;
+		color: $white;
+		display: block;
+		margin-top: $gutter;
+		text-align: center;
+
+		&:hover {
+			border-bottom: none;
+			color: $white;
+		}
+	}
+} // .button
+
+.hire-wrapper {
+	background-color: $white;
+	color: $black;
+	display: block;
+	font-family: $font-serif;
+	margin: $gutter * 2 auto 0;
+	max-width: 454px;
+	padding: $gutter;
+	position: relative;
+
+	&:after {
+			@include size( calc(100% + 20px));
+			@include position(absolute, -10px null null -10px);
+
+			background: $gradient;
+			box-sizing: inherit;
+			content: '';
+			border: 7px solid $white;
+			border-radius: 3px;
+			z-index: -1;
+		}
+
+	p {
+		margin: 0;
+	}
+}
