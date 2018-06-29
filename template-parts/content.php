@@ -34,6 +34,14 @@
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 
+			$cta = get_field( 'cta_button' );
+			if ( $cta ) : ?>
+				<div class="hire-wrapper">
+					<p><?php esc_html_e( 'Like what you read & want to benefit from my skills?', 'starry' ); ?></p>
+					<a class="button hire" href="/contact"><?php esc_html_e( 'Hire me!', 'starry' ); ?></a>
+				</div>
+			<?php endif;
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'starry' ),
 				'after'  => '</div>',
