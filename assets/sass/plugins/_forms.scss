@@ -2,6 +2,10 @@
 .caldera-grid {
 	max-width: 900px;
 
+	a {
+		border-bottom: none;
+	}
+
 	input[type="submit"] {
 		background-color: $white;
 		border: 1px solid darken($pearl, 20%);
@@ -18,6 +22,46 @@
 		&:active,
 		&:focus {
 			background-color: $pearl;
+		}
+	}
+
+	// Project proposal breadcrumbs.
+	.breadcrumb {
+
+		> .active > a {
+			border-bottom: 2px solid $aqua;
+			color: $cinder!important;
+			font-weight: 800;
+		}
+
+		li+li:before {
+			content: "\f30b"!important;
+			font-family: "Font Awesome 5 Free";
+			padding: 0 10px!important;
+		}
+	}
+
+	// Descriptions.
+	.form-group span {
+		font-style: italic;
+		font-size: 16px;
+		margin-top: 0;
+	}
+
+	.btn.cf-page-btn-next {
+		border: 1px solid $revolver;
+		color: $revolver;
+		display: inline-block;
+		font-size: 18px;
+		margin: 0 auto;
+		padding: 10px 20px;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: $pearl;
+			color: $loulou;
+			transition: all 0.2s ease-in-out;
 		}
 	}
 }
