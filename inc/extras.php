@@ -377,3 +377,21 @@ function goodreads_api( $passed_values ) {
 
 }
 add_shortcode( 'gr-books', 'goodreads_api' );
+
+
+/**
+ * Caldera Forms - move field description (caption) above input, below label.
+ *
+ * @param string $field_structure.
+ * @param string $form.
+ * @return string new $field_structure.
+ */
+add_filter( 'caldera_forms_render_field_structure', function( $field_structure, $form ) {
+
+	// Place description after label.
+	$field_structure['label_after'] .= $field_structure['field_caption'];
+
+	// Empty description so it doesn't show twice.
+	$field_structure['field_caption'] = '';
+	return $field_structure;
+}, 10, 2 );
